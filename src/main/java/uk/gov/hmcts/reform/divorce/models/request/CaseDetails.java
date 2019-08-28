@@ -16,4 +16,5 @@ public class CaseDetails {
 
     @JsonProperty("state")
     private String state;
+
 }

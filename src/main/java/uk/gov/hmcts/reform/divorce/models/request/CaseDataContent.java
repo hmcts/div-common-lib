@@ -11,11 +11,15 @@ import java.util.Map;
 @Builder
 public class CaseDataContent {
     private Event event;
+
     private Map<String, JsonNode> data;
+
     @JsonProperty("security_classification")
     private Map<String, JsonNode> securityClassification;
+
     @JsonProperty("event_token")
     private String token;
+
     @JsonProperty("ignore_warning")
     private Boolean ignoreWarning;
 

@@ -7,6 +7,8 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SubmitEvent {
+
     @JsonProperty("id")
     private long caseId;
+
 }

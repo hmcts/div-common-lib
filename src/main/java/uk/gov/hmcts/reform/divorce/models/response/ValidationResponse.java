@@ -25,4 +25,5 @@ public class ValidationResponse {
 
         return hasNoErrors && hasNoWarnings;
     }
+
 }

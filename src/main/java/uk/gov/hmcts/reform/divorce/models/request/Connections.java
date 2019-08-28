@@ -7,6 +7,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class Connections {
+
     @JsonProperty("A")
     private String a;
 
@@ -27,4 +28,5 @@ public class Connections {
 
     @JsonProperty("G")
     private String g;
+
 }
