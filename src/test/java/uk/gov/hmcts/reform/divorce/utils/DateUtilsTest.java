@@ -38,35 +38,57 @@ public class DateUtilsTest {
     }
 
     @Test
-    public void givenAnInsant_whenGetFullFormattedInstantIsCalled_thenInstantAsStringIsReturned() {
-        LocalDateTime localDate = LocalDate.of(2000, 01, 01).atStartOfDay();
-        Instant instant = localDate.toInstant(ZoneOffset.UTC);
-
-        String expectedInstantString = "2000-01-01T00:00:00Z";
-        String instantString = DateUtils.getFullFormattedDateFromInstant(instant);
-
-        assertEquals(expectedInstantString, instantString);
-    }
-
-    @Test
-    public void givenDate_whenGetFormattedDateIsCalled_thenDateStringIsReturned() {
+    public void givenDate_whenFormatDateIsCalled_thenDateStringIsReturned() {
         LocalDateTime localDate = LocalDate.of(2000, 01, 01).atStartOfDay();
         Instant instant = localDate.toInstant(ZoneOffset.UTC);
         Date date = Date.from(instant);
 
         String expectedDateString = "2000-01-01";
-        String dateString = DateUtils.getFormattedDate(date);
+        String dateString = DateUtils.formatDate(date);
 
         assertEquals(expectedDateString, dateString);
     }
 
     @Test
-    public void givenInstant_whenGetFormattedDateIsCalled_thenDateStringIsReturned() {
+    public void givenInstant_whenFormatDateIsCalled_thenDateStringIsReturned() {
         LocalDateTime localDate = LocalDate.of(2000, 01, 01).atStartOfDay();
         Instant instant = localDate.toInstant(ZoneOffset.UTC);
 
         String expectedDateString = "2000-01-01";
-        String dateString = DateUtils.getFormattedDate(instant);
+        String dateString = DateUtils.formatDate(instant);
+
+        assertEquals(expectedDateString, dateString);
+    }
+
+    @Test
+    public void givenLocalDate_whenFormatDateFromLocalDateIsCalled_thenDateStringIsReturned() {
+        LocalDate localDate = LocalDate.of(2000, 01, 01)
+            .atStartOfDay()
+            .toLocalDate();
+
+        String expectedDateString = "2000-01-01";
+        String dateString = DateUtils.formatDateFromLocalDate(localDate);
+
+        assertEquals(expectedDateString, dateString);
+    }
+
+    @Test
+    public void givenLocalDateTime_whenFormatDateFromDateTimeIsCalled_thenDateStringIsReturned() {
+        LocalDateTime localDate = LocalDate.of(2000, 01, 01).atStartOfDay();
+
+        String expectedDateString = "2000-01-01";
+        String dateString = DateUtils.formatDateFromDateTime(localDate);
+
+        assertEquals(expectedDateString, dateString);
+    }
+
+    @Test
+    public void givenLocalDateTime_whenFormatTimeFromDateTimeIsCalled_thenDateStringIsReturned() {
+        LocalDateTime localDate = LocalDate.of(2000, 01, 01)
+            .atTime(12,34);
+
+        String expectedDateString = "12:34";
+        String dateString = DateUtils.formatTimeFromDateTime(localDate);
 
         assertEquals(expectedDateString, dateString);
     }
