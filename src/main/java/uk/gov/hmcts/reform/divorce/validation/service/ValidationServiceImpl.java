@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.models.request.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.models.request.DivorceSession;
 import uk.gov.hmcts.reform.divorce.models.request.ValidationRequest;
 import uk.gov.hmcts.reform.divorce.models.response.ValidationResponse;
 
@@ -25,36 +24,23 @@ public class ValidationServiceImpl implements ValidationService {
     @Qualifier("D8RuleBook")
     private RuleBook<List<String>> d8RuleBook;
 
-    @Autowired
-    @Qualifier("SessionRuleBook")
-    private RuleBook<List<String>> divorceSessionRuleBook;
-
     @Override
     public ValidationResponse validate(final ValidationRequest validationRequest) {
+        log.info("Validating CoreCaseData");
+
         ObjectMapper mapper = new ObjectMapper();
+        NameValueReferableMap<CoreCaseData> facts = new FactMap<>();
+
+        facts.setValue("coreCaseData", mapper.convertValue(validationRequest.getData(), CoreCaseData.class));
+        d8RuleBook.setDefaultResult(new ArrayList<>());
+        d8RuleBook.run(facts);
 
         ValidationResponse validationResponse = ValidationResponse.builder()
             .validationStatus("success")
             .build();
 
-        if (validationRequest.getFormId().contains("case")) {
-            log.info("Validating CoreCaseData");
-            NameValueReferableMap<CoreCaseData> facts = new FactMap<>();
-            facts.setValue("coreCaseData", mapper.convertValue(validationRequest.getData(), CoreCaseData.class));
-            d8RuleBook.setDefaultResult(new ArrayList<>());
-            d8RuleBook.run(facts);
-            d8RuleBook.getResult().map(Result::getValue).ifPresent(result -> errorResponse(validationResponse, result));
-        }
-
-        if (validationRequest.getFormId().contains("session")) {
-            log.info("Validating DivorceSession");
-            NameValueReferableMap<DivorceSession> facts = new FactMap<>();
-            facts.setValue("divorceSession", mapper.convertValue(validationRequest.getData(), DivorceSession.class));
-            divorceSessionRuleBook.setDefaultResult(new ArrayList<>());
-            divorceSessionRuleBook.run(facts);
-            divorceSessionRuleBook.getResult().map(Result::getValue)
-                .ifPresent(result -> errorResponse(validationResponse, result));
-        }
+        d8RuleBook.getResult().map(Result::getValue)
+            .ifPresent(result -> errorResponse(validationResponse, result));
 
         return validationResponse;
     }
@@ -63,6 +49,9 @@ public class ValidationServiceImpl implements ValidationService {
         if (!result.isEmpty()) {
             validationResponse.setErrors(result);
             validationResponse.setValidationStatus("failed");
+        } else {
+            validationResponse.setValidationStatus("success");
         }
+
     }
 }
