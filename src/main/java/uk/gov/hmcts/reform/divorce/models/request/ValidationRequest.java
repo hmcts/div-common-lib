@@ -21,4 +21,5 @@ public class ValidationRequest {
 
     @JsonProperty(value = "data", required = true)
     private final Object data;
+
 }

@@ -12,6 +12,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class DivorceSession {
+
     private long expires;
     private String screenHasMarriageBroken;
     private String screenHasRespondentAddress;
@@ -271,4 +272,5 @@ public class DivorceSession {
         d8Documents.forEach(doc -> doc.setFileType("petition"));
         this.d8Documents = d8Documents;
     }
+
 }

@@ -37,7 +37,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void whenShouldReturnTrueWhenD8MarriageDateLessThanOneYearAgo() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().minus(100, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(100, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -48,7 +48,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void whenShouldReturnTrueWhenD8MarriageDateMoreThanOneHundredYearsAgo() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().minus(365 * 105, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(365 * 105, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -59,7 +59,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void whenShouldReturnTrueWhenD8MarriageDateIsInTheFuture() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().plus(100, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -70,7 +70,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void whenShouldReturnFalseWhenD8MarriageDateIsValid() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().minus(365 * 2, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(365 * 2, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -91,7 +91,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void thenShouldReturnErrorMessageWhenD8MarriageDateLessThanOneYearAgo() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().minus(100, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(100, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -105,7 +105,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void thenShouldReturnErrorMessageWhenD8MarriageDateMoreThanOneHundredYearsAgo() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().minus(365 * 105, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(365 * 105, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);
@@ -119,7 +119,7 @@ public class D8MarriageDateTest {
 
     @Test
     public void thenShouldReturnErrorMessageWhenD8MarriageDateIsInTheFuture() {
-        String d8MarriageDate = DateUtils.getFormattedDate(Instant.now().plus(100, ChronoUnit.DAYS));
+        String d8MarriageDate = DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
 
         rule.setCoreCaseData(coreCaseData);

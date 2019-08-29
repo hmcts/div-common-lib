@@ -38,7 +38,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnTrueWhenFactIsSeparation2YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(500, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -49,7 +49,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnTrueWhenFactIsDesertionButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("desertion");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(500, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -60,7 +60,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnTrueWhenFactIsSeparation5YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(500, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -71,7 +71,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnTrueWhenFactIsSeparation5YearsButMarriageDateIsBetweenTwoAndFiveYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -92,7 +92,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnFalseWhenFactIsAdulteryAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("adultery");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(500, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -103,7 +103,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnFalseWhenFactIsBehaviourAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(500, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -114,7 +114,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnFalseWhenFactIsSeparation2YearsAndMarriageDateIsMoreThanTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -125,7 +125,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnFalseWhenFactIsDesertionAndMarriageDateIsMoreThanTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("desertion");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
@@ -136,7 +136,7 @@ public class D8ReasonForDivorceTest {
     @Test
     public void whenShouldReturnFalseWhenFactIsSeparation5YearsAndMarriageDateIsMoreThan5YearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
-        coreCaseData.setD8MarriageDate(DateUtils.getFormattedDate(Instant.now().minus(365 * 6, ChronoUnit.DAYS)));
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 6, ChronoUnit.DAYS)));
 
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();

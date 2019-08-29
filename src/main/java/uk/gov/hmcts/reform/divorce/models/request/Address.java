@@ -28,4 +28,5 @@ public class Address {
 
     @JsonProperty("Country")
     private String country;
+
 }

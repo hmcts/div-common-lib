@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.divorce.models.request;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Gender {
+
     FEMALE("female"),
     MALE("male"),
     NOT_GIVEN("notGiven");
@@ -17,4 +18,5 @@ public enum Gender {
     public String getValue() {
         return value;
     }
+
 }

@@ -23,4 +23,5 @@ public class Document {
 
     @JsonProperty("DocumentEmailContent")
     private String documentEmailContent;
+
 }

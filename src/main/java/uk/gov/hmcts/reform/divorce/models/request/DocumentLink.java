@@ -18,4 +18,5 @@ public class DocumentLink {
 
     @JsonProperty("document_filename")
     private String documentFilename;
+
 }
