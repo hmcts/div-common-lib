@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
 @Data
 public class DocumentLink {
 
