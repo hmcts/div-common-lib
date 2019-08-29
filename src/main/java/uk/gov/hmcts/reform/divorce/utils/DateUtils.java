@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 @Slf4j
 public class DateUtils {
@@ -27,7 +28,9 @@ public class DateUtils {
     public static Instant parseToInstant(String date) {
         Instant instant = null;
         try {
-            instant = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+            instant = simpleDateFormat
                 .parse(date)
                 .toInstant();
         } catch (ParseException e) {
