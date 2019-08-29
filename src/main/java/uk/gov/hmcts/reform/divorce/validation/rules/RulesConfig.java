@@ -11,17 +11,10 @@ import java.util.List;
 public class RulesConfig {
 
     public static final String D8_RULEBOOK = "uk.gov.hmcts.reform.divorce.validation.rules.d8";
-    public static final String SESSION_RULEBOOK = "uk.gov.hmcts.reform.divorce.validation.rules.session";
 
     @SuppressWarnings("unchecked")
     @Bean("D8RuleBook")
     public RuleBook<List<String>> d8RuleBook() {
         return new RuleBookRunner(D8_RULEBOOK);
-    }
-
-    @SuppressWarnings("unchecked")
-    @Bean("SessionRuleBook")
-    public RuleBook<List<String>> sessionRuleBook() {
-        return new RuleBookRunner(SESSION_RULEBOOK);
     }
 }
