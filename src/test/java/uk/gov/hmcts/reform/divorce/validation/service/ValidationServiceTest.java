@@ -8,11 +8,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.config.BeanConfig;
 import uk.gov.hmcts.reform.divorce.models.request.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.models.request.ValidationRequest;
 import uk.gov.hmcts.reform.divorce.models.response.ValidationResponse;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
+import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
 @ContextConfiguration(classes = BeanConfig.class)
 @RunWith(SpringRunner.class)
@@ -31,31 +32,27 @@ public class ValidationServiceTest {
         coreCaseData.setD8ScreenHasMarriageBroken("YES");
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void givenNoFormId_whenValidationIsCalled_thenThrowsIllegalArgumentException() {
-        ValidationRequest request = ValidationRequest.builder().formId("").data(new Object()).build();
-        validationService.validate(request);
-    }
-
     @Test
     public void givenCaseId_whenValidationIsCalledWithNoData_thenValidationWillFail() {
-        ValidationRequest request = ValidationRequest.builder().formId("case").data(new CoreCaseData()).build();
-        assertEquals("failed", validationService.validate(request).getValidationStatus());
+        assertEquals(FAILED.getValue(), validationService.validate(new CoreCaseData()).getValidationStatus());
     }
 
     @Test
     public void givenCaseId_whenValidationIsCalledWithValidData_thenValidationWillSucceed() {
-        ValidationRequest request = ValidationRequest.builder().formId("case").data(coreCaseData).build();
-        assertEquals("success", validationService.validate(request).getValidationStatus());
+        assertEquals(SUCCESS.getValue(), validationService.validate(coreCaseData).getValidationStatus());
     }
 
     @Test
     public void givenCaseId_whenValidationIsCalledWithInvalidData_thenValidationWillFail() {
         coreCaseData.setD8ScreenHasMarriageBroken(null);
-        ValidationRequest request = ValidationRequest.builder().formId("case").data(coreCaseData).build();
-        ValidationResponse response = validationService.validate(request);
-        assertEquals("failed", response.getValidationStatus());
+        ValidationResponse response = validationService.validate(coreCaseData);
+        assertEquals(FAILED.getValue(), response.getValidationStatus());
         assertEquals(1, response.getErrors().size());
+    }
+
+    @Test
+    public void givenNull_whenValidationIsCalledWithValidData_thenValidationWillFail() {
+        assertEquals(FAILED.getValue(), validationService.validate(null).getValidationStatus());
     }
 
 }
