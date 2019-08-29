@@ -11,7 +11,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.0.3'
+version '1.0.4'
 
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
@@ -173,10 +173,6 @@ dependencies {
 
 wrapper {
     distributionType = Wrapper.DistributionType.ALL
-}
-
-test {
-    useJUnitPlatform()
 }
 
 bootJar {
