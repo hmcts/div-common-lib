@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.divorce.validation.rules.session;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.gov.hmcts.reform.divorce.models.request.DivorceSession;
 
@@ -13,7 +12,6 @@ import java.util.Date;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
 public class ReasonForDivorceDesertionDateTest {
 
     private ReasonForDivorceDesertionDate rule;

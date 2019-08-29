@@ -175,10 +175,6 @@ wrapper {
     distributionType = Wrapper.DistributionType.ALL
 }
 
-test {
-    useJUnitPlatform()
-}
-
 bootJar {
     enabled = false
 }
