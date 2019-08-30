@@ -2,13 +2,11 @@ package uk.gov.hmcts.reform.divorce.models.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
 @Data
 public class UploadedFile {
 
