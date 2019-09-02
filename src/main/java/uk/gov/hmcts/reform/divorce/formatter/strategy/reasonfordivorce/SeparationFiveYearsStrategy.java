@@ -1,9 +1,9 @@
 package uk.gov.hmcts.reform.divorce.formatter.strategy.reasonfordivorce;
 
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.reform.divorce.formatter.util.DateUtil;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 
 @Component
 public class SeparationFiveYearsStrategy implements ReasonForDivorceStrategy {
@@ -20,7 +20,7 @@ public class SeparationFiveYearsStrategy implements ReasonForDivorceStrategy {
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
-        String prettySeparationDate = DateUtil.format(
+        String prettySeparationDate = DateUtils.formatNullableDate(
             divorceSession.getReasonForDivorceSeperationDate(), "dd MMMM yyyy"
         );
 

@@ -1,9 +1,9 @@
 package uk.gov.hmcts.reform.divorce.formatter.strategy.reasonfordivorce;
 
 import org.springframework.stereotype.Component;
-import uk.gov.hmcts.reform.divorce.formatter.util.DateUtil;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 
 import static org.apache.commons.lang3.StringUtils.join;
 import static uk.gov.hmcts.reform.divorce.formatter.mapper.MappingCommons.toYesNoPascalCase;
@@ -20,12 +20,12 @@ public class DesertionStrategy implements ReasonForDivorceStrategy {
 
     @Override
     public String deriveStatementOfCase(DivorceSession divorceSession) {
-        String prettyDesertionDate = DateUtil.format(
+        String prettyDesertionDate = DateUtils.formatNullableDate(
             divorceSession.getReasonForDivorceDesertionDate(), "dd MMMM yyyy"
         );
-
-        String derivedStatementOfCase = String.format(DESERTION_STRING, divorceSession.getDivorceWho(),
-            prettyDesertionDate);
+        String derivedStatementOfCase = String.format(
+            DESERTION_STRING, divorceSession.getDivorceWho(), prettyDesertionDate
+        );
 
         return join(derivedStatementOfCase, LINE_SEPARATOR, divorceSession.getReasonForDivorceDesertionDetails());
     }

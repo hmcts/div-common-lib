@@ -8,7 +8,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
 
@@ -91,4 +93,25 @@ public class DateUtilsTest {
         assertEquals(expectedDateString, dateString);
     }
 
+    @Test
+    public void givenNull_whenFormatNullableDateIsCalled_thenDateStringIsReturned() {
+        String expectedDateString = "1970 00 01";
+        String dateString = DateUtils.formatNullableDate(null, "YYYY mm dd");
+
+        assertEquals(expectedDateString, dateString);
+    }
+
+    @Test
+    public void givenDate_whenFormatNullableDateIsCalled_thenDateStringIsReturned() {
+        Date date = new Date();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+
+        String expectedDateString = calendar.get(Calendar.YEAR)
+            + " " + (calendar.get(Calendar.MONTH) + 1)
+            + " " + calendar.get(Calendar.DAY_OF_MONTH);
+        String dateString = DateUtils.formatNullableDate(date, "YYYY m d");
+
+        assertEquals(expectedDateString, dateString);
+    }
 }
