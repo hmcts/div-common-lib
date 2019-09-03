@@ -1,10 +1,12 @@
 package uk.gov.hmcts.reform.divorce.model.ccd;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+@Builder(builderClassName = "CaseLinkBuilder", toBuilder = true)
+@JsonDeserialize(builder = CaseLink.CaseLinkBuilder.class)
 @Data
 public class CaseLink {
 

@@ -210,7 +210,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentSolicitorRepresented(DivorceSession divorceSession,
-                                                        @MappingTarget CoreCaseData result) {
+                                                     @MappingTarget CoreCaseData result) {
         result.setRespondentSolicitorRepresented(
             toYesNoUpperCase(divorceSession.getRespondentSolicitorRepresented()));
     }
@@ -288,7 +288,7 @@ public abstract class DivorceCaseToCCDMapper {
     @AfterMapping
     protected void mapHelpWithFeesNeedHelp(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
         result.setD8HelpWithFeesNeedHelp(
-                toYesNoUpperCase(divorceSession.getHelpWithFeesNeedHelp()));
+            toYesNoUpperCase(divorceSession.getHelpWithFeesNeedHelp()));
     }
 
     @AfterMapping
@@ -650,7 +650,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentContactDetailsConfidential(DivorceSession divorceSession,
-                                                            @MappingTarget CoreCaseData result) {
+                                                           @MappingTarget CoreCaseData result) {
         if (Objects.isNull(divorceSession.getRespondentContactDetailsConfidential())) {
             result.setRespondentContactDetailsConfidential(SHARE_DETAILS);
         }
@@ -658,7 +658,7 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapReasonForDivorceAdulterySecondHandInfo(DivorceSession divorceSession,
-                                                         @MappingTarget CoreCaseData result) {
+                                                             @MappingTarget CoreCaseData result) {
         result.setD8ReasonForDivorceAdulteryAnyInfo2ndHand(
             toYesNoUpperCase(divorceSession.getReasonForDivorceAdulterySecondHandInfo())
         );
@@ -666,13 +666,13 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapTimeLivedTogetherFields(DivorceSession divorceSession,
-                                           @MappingTarget CoreCaseData result) {
+                                              @MappingTarget CoreCaseData result) {
         reasonForDivorceContext.setLivedApartFieldsFromDivorceSession(divorceSession, result);
     }
 
     @AfterMapping
     protected void mapSeparationReferenceDate(DivorceSession divorceSession,
-                                           @MappingTarget CoreCaseData result) {
+                                              @MappingTarget CoreCaseData result) {
         if (divorceSession.getLivingTogetherMonths() != null) {
             if (divorceSession.getLivingTogetherMonths() >= 6) {
                 result.setReferenceDate(divorceSession.getReferenceDate());

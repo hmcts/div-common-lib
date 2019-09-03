@@ -107,10 +107,8 @@ public class DateUtilsTest {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
 
-        String expectedDateString = calendar.get(Calendar.YEAR)
-            + " " + (calendar.get(Calendar.MONTH) + 1)
-            + " " + calendar.get(Calendar.DAY_OF_MONTH);
-        String dateString = DateUtils.formatNullableDate(date, "YYYY m d");
+        String expectedDateString = String.valueOf(calendar.get(Calendar.YEAR));
+        String dateString = DateUtils.formatNullableDate(date, "YYYY");
 
         assertEquals(expectedDateString, dateString);
     }

@@ -34,6 +34,9 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
 
     @Autowired
@@ -78,17 +81,18 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
                     .collect(Collectors.toList());
 
             List<CollectionMember<Document>> documentsGenerated =
-                new ObjectMapper().convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
-                    new TypeReference<List<CollectionMember<Document>>>() {});
+                objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
+                    new TypeReference<List<CollectionMember<Document>>>() {
+                    });
 
             if (CollectionUtils.isNotEmpty(documentsGenerated)) {
                 List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
-                        .filter(documentCollectionMember ->
-                            !generatedDocumentInfos.stream()
-                                .map(GeneratedDocumentInfo::getDocumentType)
-                                .collect(Collectors.toSet())
-                                .contains(documentCollectionMember.getValue().getDocumentType()))
-                        .collect(Collectors.toList());
+                    .filter(documentCollectionMember ->
+                        !generatedDocumentInfos.stream()
+                            .map(GeneratedDocumentInfo::getDocumentType)
+                            .collect(Collectors.toSet())
+                            .contains(documentCollectionMember.getValue().getDocumentType()))
+                    .collect(Collectors.toList());
 
                 resultDocuments.addAll(existingDocuments);
             }
@@ -112,7 +116,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
         }
 
         List<CollectionMember<Document>> allDocuments =
-            new ObjectMapper().convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
+            objectMapper.convertValue(coreCaseData.get(D8_DOCUMENTS_GENERATED_CCD_FIELD),
                 new TypeReference<List<CollectionMember<Document>>>() {
                 });
 

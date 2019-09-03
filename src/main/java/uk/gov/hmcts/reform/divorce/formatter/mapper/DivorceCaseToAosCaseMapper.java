@@ -55,7 +55,7 @@ public abstract class DivorceCaseToAosCaseMapper {
     protected void setReceivedAosFromResp(DivorceSession divorceSession, @MappingTarget AosCaseData result) {
         if (StringUtils.isNotEmpty(divorceSession.getReceivedAosFromResp())) {
             result.setReceivedAosFromResp(toYesNoUpperCase(
-                    YesNoNeverAnswer.fromInput(divorceSession.getReceivedAosFromResp()).getAnswer()
+                YesNoNeverAnswer.fromInput(divorceSession.getReceivedAosFromResp()).getAnswer()
                 )
             );
         }

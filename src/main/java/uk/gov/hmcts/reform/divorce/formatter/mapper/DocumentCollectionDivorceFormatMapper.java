@@ -36,7 +36,7 @@ public abstract class DocumentCollectionDivorceFormatMapper {
 
     @AfterMapping
     protected void mapDocumentIDToDocumentObject(CollectionMember<Document> document,
-                                                 @MappingTarget  UploadedFile result) {
+                                                 @MappingTarget UploadedFile result) {
 
         Optional.of(document)
             .map(documentEntry -> document.getValue())
@@ -47,7 +47,7 @@ public abstract class DocumentCollectionDivorceFormatMapper {
 
     @AfterMapping
     protected void mapCreatedDateCheckEmpty(CollectionMember<Document> document,
-                                            @MappingTarget  UploadedFile result) {
+                                            @MappingTarget UploadedFile result) {
         try {
             if (document.getValue().getDocumentDateAdded() != null
                 && !document.getValue().getDocumentDateAdded().isEmpty()) {

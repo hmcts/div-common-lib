@@ -103,7 +103,7 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapSeparationTimeLivedTogetherDetailsDN(DivorceSession divorceSession,
-                                                          @MappingTarget DnCaseData result) {
+                                                           @MappingTarget DnCaseData result) {
 
         if (StringUtils.isNotBlank(divorceSession.getLivedApartSinceSeparation())) {
             result.setSeparationTimeLivedTogetherDetailsDN(divorceSession.getApproximateDatesOfLivingTogetherField());
@@ -128,7 +128,7 @@ public abstract class DivorceCaseToDnCaseMapper {
 
     @AfterMapping
     protected void mapDesertionAskedToResumeDNDetails(DivorceSession divorceSession,
-                                                          @MappingTarget DnCaseData result) {
+                                                      @MappingTarget DnCaseData result) {
 
         if (StringUtils.equalsIgnoreCase(divorceSession.getDesertionAskedToResumeDNRefused(), YES)) {
             result.setDesertionAskedToResumeDNDetails(divorceSession.getDesertionAskedToResumeDNDetails());

@@ -3,13 +3,11 @@ package uk.gov.hmcts.reform.divorce.model.ccd;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel(description = "The response from retrieving a fee from fees and payments service")
-@Builder
 public class FeeResponse {
     @ApiModelProperty(value = "The fee identifier")
     private String feeCode;
