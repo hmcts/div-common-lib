@@ -1,6 +1,9 @@
 package uk.gov.hmcts.reform.divorce.model.payment;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
@@ -8,7 +11,9 @@ import lombok.Data;
 
 @ApiModel(value = "Payment details.")
 @Data
-@Builder
+@Builder(builderClassName = "PaymentBuilder", toBuilder = true)
+@JsonDeserialize(builder = Payment.PaymentBuilder.class)
+@JsonIgnoreProperties
 public class Payment {
 
     @ApiModelProperty("Payment channel.")
@@ -42,4 +47,9 @@ public class Payment {
     @ApiModelProperty("ID of site the payment was made.")
     @JsonProperty("PaymentSiteId")
     private String paymentSiteId;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static class PaymentBuilder {
+
+    }
 }

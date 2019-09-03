@@ -1,0 +1,13 @@
+{
+    "D8RespondentHomeAddress" : {
+        "AddressLine1" : null,
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "PostTown" : null,
+        "PostCode" : null,
+        "County" : null,
+        "Country" : null
+    },
+    "D8Cohort" : "onlineSubmissionPrivateBeta",
+    "RespondentContactDetailsConfidential": "share"
+}

@@ -1,0 +1,12 @@
+{
+    "CourtName": "placeholder Court",
+    "DateAndTimeOfHearing": [
+        {
+            "id": "0042963b-ffff-ffff-ffff-4d7a40f10581",
+            "value": {
+                "DateOfHearing": "2020-10-10",
+                "TimeOfHearing": "10:50"
+            }
+        }
+    ]
+}

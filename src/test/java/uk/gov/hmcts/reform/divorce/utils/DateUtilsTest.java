@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DateUtilsTest {
@@ -34,7 +35,7 @@ public class DateUtilsTest {
         String dateString = "abcdefg";
         Instant instant = DateUtils.parseToInstant(dateString);
 
-        assertEquals(null, instant);
+        assertNull(instant);
     }
 
     @Test
@@ -84,8 +85,9 @@ public class DateUtilsTest {
 
     @Test
     public void givenLocalDateTime_whenFormatTimeFromDateTimeIsCalled_thenDateStringIsReturned() {
-        LocalDateTime localDate = LocalDate.of(2000, 01, 01)
-            .atTime(12,34);
+        LocalDateTime localDate = LocalDate
+            .of(2000, 01, 01)
+            .atTime(12, 34);
 
         String expectedDateString = "12:34";
         String dateString = DateUtils.formatTimeFromDateTime(localDate);

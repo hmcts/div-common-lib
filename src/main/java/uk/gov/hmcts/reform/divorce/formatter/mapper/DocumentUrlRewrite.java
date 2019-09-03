@@ -14,7 +14,6 @@ public class DocumentUrlRewrite {
 
     private static final String URL_REGEX = ".*?(/documents/.*)";
 
-
     private final String documentManagementStoreUrl;
 
     private final Pattern urlPatter; // Document pattern
