@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ import static org.hamcrest.Matchers.samePropertyValuesAs;
 @ContextConfiguration(classes = BeanConfig.class)
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@Ignore
 public class PaymentCaseToCCDMapperUTest {
 
     @Autowired
@@ -51,13 +49,13 @@ public class PaymentCaseToCCDMapperUTest {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/additionalpayment.json",
-                    CoreCaseData.class);
+                CoreCaseData.class);
 
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/additional-payment.json",
-                    DivorceSession.class);
+                DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -75,7 +73,7 @@ public class PaymentCaseToCCDMapperUTest {
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/overwrite-payment.json",
-                    DivorceSession.class);
+                DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 
@@ -92,7 +90,7 @@ public class PaymentCaseToCCDMapperUTest {
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/payment-id-only.json",
-                    DivorceSession.class);
+                DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

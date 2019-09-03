@@ -62,6 +62,11 @@ court:
               }
            }"
 
+document:
+  management:
+    store:
+      url: ${DOCUMENT_MANAGEMENT_STORE_URL:http://localhost:5006}
+
 documentation:
   swagger:
     enabled: true
@@ -69,6 +74,6 @@ documentation:
 logging:
   level:
     org.springframework.web: ERROR
-    uk.gov.hmcts.reform.divorce.casedataformatterservice: DEBUG
+    uk.gov.hmcts.reform.divorce: DEBUG
   pattern:
     console: "%d{yyyy-MMM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n"

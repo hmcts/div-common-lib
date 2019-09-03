@@ -30,25 +30,23 @@ public class ExistingPaymentReferenceStrategy implements PaymentStrategy {
     private PaymentCollection mapExistingPayment(PaymentCollection existingPayment, Payment newPayment) {
         if (existingPayment.getValue().getPaymentReference().equals(newPayment.getPaymentReference())) {
             // Overwrite non-null values only, as we could get a subset of payment data to be updated
-            Payment updatedPayment = Payment.builder()
-                .paymentReference(newPayment.getPaymentReference())
-                .paymentAmount(Optional.ofNullable(newPayment.getPaymentAmount())
-                    .orElse(existingPayment.getValue().getPaymentAmount()))
-                .paymentChannel(Optional.ofNullable(newPayment.getPaymentChannel())
-                    .orElse(existingPayment.getValue().getPaymentChannel()))
-                .paymentDate(Optional.ofNullable(newPayment.getPaymentDate())
-                    .orElse(existingPayment.getValue().getPaymentDate()))
-                .paymentFeeId(Optional.ofNullable(newPayment.getPaymentFeeId())
-                    .orElse(existingPayment.getValue().getPaymentFeeId()))
-                .paymentSiteId(Optional.ofNullable(newPayment.getPaymentSiteId())
-                    .orElse(existingPayment.getValue().getPaymentSiteId()))
-                .paymentStatus(Optional.ofNullable(newPayment.getPaymentStatus())
-                    .orElse(existingPayment.getValue().getPaymentStatus()))
-                .paymentTransactionId(Optional.ofNullable(newPayment.getPaymentTransactionId())
-                    .orElse(existingPayment.getValue().getPaymentTransactionId()))
-                .build();
-
-            return existingPayment.toBuilder().value(updatedPayment).build();
+            Payment updatedPayment = new Payment();
+            updatedPayment.setPaymentReference(newPayment.getPaymentReference());
+            updatedPayment.setPaymentAmount(Optional.ofNullable(newPayment.getPaymentAmount())
+                .orElse(existingPayment.getValue().getPaymentAmount()));
+            updatedPayment.setPaymentChannel(Optional.ofNullable(newPayment.getPaymentChannel())
+                .orElse(existingPayment.getValue().getPaymentChannel()));
+            updatedPayment.setPaymentDate(Optional.ofNullable(newPayment.getPaymentDate())
+                .orElse(existingPayment.getValue().getPaymentDate()));
+            updatedPayment.setPaymentFeeId(Optional.ofNullable(newPayment.getPaymentFeeId())
+                .orElse(existingPayment.getValue().getPaymentFeeId()));
+            updatedPayment.setPaymentSiteId(Optional.ofNullable(newPayment.getPaymentSiteId())
+                .orElse(existingPayment.getValue().getPaymentSiteId()));
+            updatedPayment.setPaymentStatus(Optional.ofNullable(newPayment.getPaymentStatus())
+                .orElse(existingPayment.getValue().getPaymentStatus()));
+            updatedPayment.setPaymentTransactionId(Optional.ofNullable(newPayment.getPaymentTransactionId())
+                .orElse(existingPayment.getValue().getPaymentTransactionId()));
+            existingPayment.setValue(updatedPayment);
         }
 
         return existingPayment;

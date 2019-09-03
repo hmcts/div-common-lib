@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +29,17 @@ public class AddressesNullFieldsCaseToCCDMapperUTest {
     private DivorceCaseToCCDMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForAddressWithNullValuesMappingScenario()
         throws URISyntaxException, IOException {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/nulladdressfields.json",
-                    CoreCaseData.class);
+                CoreCaseData.class);
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/null-address-fields.json",
-                    DivorceSession.class);
+                DivorceSession.class);
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

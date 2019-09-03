@@ -9,18 +9,17 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static uk.gov.hmcts.reform.divorce.formatter.strategy.payment.PaymentUtils.createPayment;
+import static uk.gov.hmcts.reform.divorce.formatter.strategy.payment.PaymentUtils.createPaymentCollection;
 
 public class NoExistingPaymentStrategyUTest {
     private final NoExistingPaymentStrategy noExistingPaymentStrategy = new NoExistingPaymentStrategy();
 
     @Test
     public void testNoExistingPaymentsAddsJustNewPayment() {
-        final Payment newPayment = Payment.builder().paymentReference("111222333").build();
-
-        final List<PaymentCollection> existingPaymentsList = null;
-
-        final List<PaymentCollection> expectedPaymentsList = Collections.singletonList(PaymentCollection.builder()
-            .value(newPayment).build());
+        Payment newPayment = createPayment("111222333", "success");
+        List<PaymentCollection> existingPaymentsList = null;
+        List<PaymentCollection> expectedPaymentsList = Collections.singletonList(createPaymentCollection(newPayment));
 
         final List<PaymentCollection> returnedPaymentsList =
             noExistingPaymentStrategy.getCurrentPaymentsList(newPayment, existingPaymentsList);

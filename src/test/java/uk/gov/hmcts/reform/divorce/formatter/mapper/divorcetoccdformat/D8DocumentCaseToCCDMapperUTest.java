@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.config.BeanConfig;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToCCDMapper;
+import uk.gov.hmcts.reform.divorce.formatter.mapper.DocumentUrlRewrite;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.ObjectMapperTestUtil;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
@@ -27,19 +27,26 @@ import static org.hamcrest.Matchers.samePropertyValuesAs;
 public class D8DocumentCaseToCCDMapperUTest {
 
     @Autowired
+    DocumentUrlRewrite documentUrlRewrite;
+
+    @Autowired
     private DivorceCaseToCCDMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForD8DocumentGenerated() throws URISyntaxException, IOException {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/d8document.json", CoreCaseData.class);
+            .retrieveFileContentsAsObject(
+                "fixtures/divorcetoccdmapping/ccd/d8document.json",
+                CoreCaseData.class
+            );
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
         DivorceSession divorceSession = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/d8-document.json",
-                    DivorceSession.class);
+            .retrieveFileContentsAsObject(
+                "fixtures/divorcetoccdmapping/divorce/d8-document.json",
+                DivorceSession.class
+            );
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

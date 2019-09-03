@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.ccdtodivorceformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +27,18 @@ public class NullHelpFeesCaseToDivorceMapperUTest {
     private CCDCaseToDivorceMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForNullHelpFeesFieldMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData coreCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject(
-                "fixtures/ccdtodivorcemapping/ccd/helpfeesnullcase.json",
-                CoreCaseData.class
-            );
+        CoreCaseData coreCaseData = ObjectMapperTestUtil.retrieveFileContentsAsObject(
+            "fixtures/ccdtodivorcemapping/ccd/helpfeesnullcase.json",
+            CoreCaseData.class
+        );
 
-        DivorceSession expectedDivorceSession = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject(
-                "fixtures/ccdtodivorcemapping/divorce/help-fees-null.json",
-                DivorceSession.class
-            );
+        DivorceSession expectedDivorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
+            "fixtures/ccdtodivorcemapping/divorce/help-fees-null.json",
+            DivorceSession.class
+        );
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(coreCaseData);
 

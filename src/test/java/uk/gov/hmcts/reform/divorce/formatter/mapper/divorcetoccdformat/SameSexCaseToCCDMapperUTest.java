@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ public class SameSexCaseToCCDMapperUTest {
     private DivorceCaseToCCDMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForSameSexScenario() throws URISyntaxException, IOException {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil

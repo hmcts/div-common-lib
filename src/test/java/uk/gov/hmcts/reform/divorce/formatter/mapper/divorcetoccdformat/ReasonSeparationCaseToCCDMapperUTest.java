@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,6 @@ public class ReasonSeparationCaseToCCDMapperUTest {
     private DivorceCaseToCCDMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForReasonSeparationScenario() throws URISyntaxException, IOException {
 
         CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
@@ -47,7 +45,6 @@ public class ReasonSeparationCaseToCCDMapperUTest {
     }
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForReasonSeparationLivedLessThan6MonthTogetherScenario()
         throws URISyntaxException, IOException {
 

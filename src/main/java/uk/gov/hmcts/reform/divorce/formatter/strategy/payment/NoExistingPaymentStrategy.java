@@ -14,7 +14,10 @@ public class NoExistingPaymentStrategy implements PaymentStrategy {
     @Override
     public List<PaymentCollection> getCurrentPaymentsList(Payment newPayment,
                                                           List<PaymentCollection> existingPayments) {
-        return Collections.singletonList(PaymentCollection.builder().value(newPayment).build());
+        PaymentCollection paymentCollection = new PaymentCollection();
+        paymentCollection.setValue(newPayment);
+
+        return Collections.singletonList(paymentCollection);
     }
 
     @Override

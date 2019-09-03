@@ -13,7 +13,10 @@ public class NoExistingPaymentReferenceStrategy implements PaymentStrategy {
     @Override
     public List<PaymentCollection> getCurrentPaymentsList(Payment newPayment,
                                                           List<PaymentCollection> existingPayments) {
-        existingPayments.add(PaymentCollection.builder().value(newPayment).build());
+        PaymentCollection paymentCollection = new PaymentCollection();
+        paymentCollection.setValue(newPayment);
+
+        existingPayments.add(paymentCollection);
 
         return existingPayments;
     }

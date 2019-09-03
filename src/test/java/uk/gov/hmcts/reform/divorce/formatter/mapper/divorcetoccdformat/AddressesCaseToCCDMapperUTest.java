@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.divorcetoccdformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +29,17 @@ public class AddressesCaseToCCDMapperUTest {
     private DivorceCaseToCCDMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForAdulteryDifferentAddressMappingScenario()
         throws URISyntaxException, IOException {
 
-        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/addresscase.json", CoreCaseData.class);
+        CoreCaseData expectedCoreCaseData = ObjectMapperTestUtil.retrieveFileContentsAsObject(
+                "fixtures/divorcetoccdmapping/ccd/addresscase.json", CoreCaseData.class
+        );
         expectedCoreCaseData.setCreatedDate(LocalDate.now().format(ofPattern("yyyy-MM-dd")));
 
-        DivorceSession divorceSession = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/addresses.json", DivorceSession.class);
+        DivorceSession divorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
+            "fixtures/divorcetoccdmapping/divorce/addresses.json", DivorceSession.class
+        );
 
         CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
 

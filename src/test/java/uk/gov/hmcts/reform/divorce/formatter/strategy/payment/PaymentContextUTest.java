@@ -11,6 +11,8 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
+import static uk.gov.hmcts.reform.divorce.formatter.strategy.payment.PaymentUtils.createPayment;
+import static uk.gov.hmcts.reform.divorce.formatter.strategy.payment.PaymentUtils.createPaymentCollection;
 
 public class PaymentContextUTest {
     private final PaymentContext paymentContext = new PaymentContext();
@@ -35,18 +37,4 @@ public class PaymentContextUTest {
 
         assertThat(returnedPaymentsList, equalTo(expectedPaymentsList));
     }
-
-    private PaymentCollection createPaymentCollection(String reference, String status) {
-        return PaymentCollection.builder().value(createPayment(reference, status)).build();
-    }
-
-    private Payment createPayment(String reference, String status) {
-        final Payment payment = Payment.builder()
-            .paymentReference(reference)
-            .paymentStatus(status)
-            .build();
-
-        return payment;
-    }
-
 }

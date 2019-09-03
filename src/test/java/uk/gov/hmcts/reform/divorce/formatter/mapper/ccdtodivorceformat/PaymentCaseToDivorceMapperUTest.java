@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.divorce.formatter.mapper.ccdtodivorceformat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ public class PaymentCaseToDivorceMapperUTest {
     private CCDCaseToDivorceMapper mapper;
 
     @Test
-    @Ignore
     public void shouldMapAllAndTransformAllFieldsForPaymentsMappingScenario() throws URISyntaxException, IOException {
 
         CoreCaseData caseData = ObjectMapperTestUtil
@@ -43,16 +41,15 @@ public class PaymentCaseToDivorceMapperUTest {
     }
 
     @Test
-    @Ignore
     public void shouldAddANewPaymentToExistingPaymentsMappingScenario() throws URISyntaxException, IOException {
 
         CoreCaseData caseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/ccd/additionalpayment.json",
-                    CoreCaseData.class);
+                CoreCaseData.class);
 
         DivorceSession expectedDivorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/ccdtodivorcemapping/divorce/additional-payment.json",
-                    DivorceSession.class);
+                DivorceSession.class);
 
         DivorceSession actualDivorceSession = mapper.courtCaseDataToDivorceCaseData(caseData);
 
