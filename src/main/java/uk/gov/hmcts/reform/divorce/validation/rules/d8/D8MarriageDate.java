@@ -24,9 +24,9 @@ public class D8MarriageDate {
     private static final String ACTUAL_DATA = "Actual data is: %s";
     private static final String ERROR_MESSAGE_NULL = "D8MarriageDate can not be null or empty.";
     private static final String ERROR_MESSAGE_LESS_THAN_ONE_YEAR_AGO =
-            "D8MarriageDate can not be less than one year ago.";
+        "D8MarriageDate can not be less than one year ago.";
     private static final String ERROR_MESSAGE_MORE_THAN_ONE_HUNDRED_YEARS_AGO =
-            "D8MarriageDate can not be more than 100 years ago.";
+        "D8MarriageDate can not be more than 100 years ago.";
     private static final String ERROR_MESSAGE_IN_THE_FUTURE = "D8MarriageDate can not be in the future.";
 
     @Result
@@ -39,9 +39,9 @@ public class D8MarriageDate {
     public boolean when() {
         String marriageDate = coreCaseData.getD8MarriageDate();
         return isNull()
-                || isLessThanOneYearAgo(marriageDate)
-                || isOverOneHundredYearsAgo(marriageDate)
-                || isInTheFuture(marriageDate);
+            || isLessThanOneYearAgo(marriageDate)
+            || isOverOneHundredYearsAgo(marriageDate)
+            || isInTheFuture(marriageDate);
     }
 
     @Then
@@ -77,9 +77,9 @@ public class D8MarriageDate {
         return isNull()
             ? ERROR_MESSAGE_NULL
             : Stream.of(
-                isLessThanOneYearAgo(marriageDate) ? ERROR_MESSAGE_LESS_THAN_ONE_YEAR_AGO : "",
-                isOverOneHundredYearsAgo(marriageDate) ? ERROR_MESSAGE_MORE_THAN_ONE_HUNDRED_YEARS_AGO : "",
-                isInTheFuture(marriageDate) ? ERROR_MESSAGE_IN_THE_FUTURE : ""
-            ).filter(string -> !string.isEmpty()).collect(Collectors.joining(BLANK_SPACE));
+            isLessThanOneYearAgo(marriageDate) ? ERROR_MESSAGE_LESS_THAN_ONE_YEAR_AGO : "",
+            isOverOneHundredYearsAgo(marriageDate) ? ERROR_MESSAGE_MORE_THAN_ONE_HUNDRED_YEARS_AGO : "",
+            isInTheFuture(marriageDate) ? ERROR_MESSAGE_IN_THE_FUTURE : ""
+        ).filter(string -> !string.isEmpty()).collect(Collectors.joining(BLANK_SPACE));
     }
 }

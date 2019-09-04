@@ -23,7 +23,7 @@ public class D8ReasonForDivorce {
     private static final String ACTUAL_DATA = "Actual data is: %s";
     private static final String ERROR_MESSAGE_NULL = "D8ReasonForDivorce can not be null or empty.";
     private static final String ERROR_MESSAGE_INVALID =
-            "D8ReasonForDivorce is invalid for the current date of marriage.";
+        "D8ReasonForDivorce is invalid for the current date of marriage.";
 
     @Result
     public List<String> result;
@@ -35,7 +35,7 @@ public class D8ReasonForDivorce {
     public boolean when() {
         return !Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).isPresent()
             || getAllowedReasonsForDivorce(coreCaseData.getD8MarriageDate()).stream()
-                .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()));
+            .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()));
     }
 
     @Then
