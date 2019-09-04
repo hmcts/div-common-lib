@@ -8,7 +8,6 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-@Builder
 public class CaseDataContent {
     private Event event;
 

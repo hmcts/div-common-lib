@@ -107,7 +107,7 @@ public class CaseFormatterServiceImplUTest {
     @Test(expected = IllegalArgumentException.class)
     public void givenCoreCaseDataIsNull_whenAddDocuments_thenReturnThrowException() {
         classUnderTest.addDocuments(null,
-            Collections.singletonList(GeneratedDocumentInfo.builder().build()));
+            Collections.singletonList(new GeneratedDocumentInfo()));
     }
 
     @Test
@@ -289,11 +289,12 @@ public class CaseFormatterServiceImplUTest {
     }
 
     private GeneratedDocumentInfo createGeneratedDocument(String url, String documentType, String fileName) {
-        return GeneratedDocumentInfo.builder()
-            .url(url)
-            .documentType(documentType)
-            .fileName(fileName)
-            .build();
+        final GeneratedDocumentInfo generatedDocumentInfo = new GeneratedDocumentInfo();
+        generatedDocumentInfo.setUrl(url);
+        generatedDocumentInfo.setDocumentType(documentType);
+        generatedDocumentInfo.setFileName(fileName);
+
+        return generatedDocumentInfo;
     }
 
     private CollectionMember<Document> createCollectionMemberDocument(String url, String documentType,

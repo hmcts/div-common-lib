@@ -50,11 +50,10 @@ public class DocumentCollectionCCDFormatMapperUTest {
         final Date createdOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 28));
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
-        final UploadedFile uploadedFile = UploadedFile.builder()
-            .fileName(FILE_NAME)
-            .createdOn(createdOn)
-            .fileUrl(FILE_URL)
-            .build();
+        final UploadedFile uploadedFile = new UploadedFile();
+        uploadedFile.setFileName(FILE_NAME);
+        uploadedFile.setFileUrl(FILE_URL);
+        uploadedFile.setCreatedOn(createdOn);
 
         final CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
 
@@ -79,10 +78,9 @@ public class DocumentCollectionCCDFormatMapperUTest {
 
     @Test
     public void shouldIgnoreMissingCreatedOnField() {
-        UploadedFile uploadedFile = UploadedFile.builder()
-            .fileName(FILE_NAME)
-            .fileUrl(FILE_URL)
-            .build();
+        UploadedFile uploadedFile = new UploadedFile();
+        uploadedFile.setFileName(FILE_NAME);
+        uploadedFile.setFileUrl(FILE_URL);
 
         CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
 
@@ -100,10 +98,9 @@ public class DocumentCollectionCCDFormatMapperUTest {
 
     @Test
     public void shouldCallTheDocumentUrlRewriteToUpdateTheUrl() {
-        UploadedFile uploadedFile = UploadedFile.builder()
-            .fileName(FILE_NAME)
-            .fileUrl(FILE_URL)
-            .build();
+        UploadedFile uploadedFile = new UploadedFile();
+        uploadedFile.setFileName(FILE_NAME);
+        uploadedFile.setFileUrl(FILE_URL);
 
         CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
 

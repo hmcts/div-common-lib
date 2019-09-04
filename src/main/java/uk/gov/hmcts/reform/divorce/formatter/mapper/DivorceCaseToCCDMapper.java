@@ -695,6 +695,9 @@ public abstract class DivorceCaseToCCDMapper {
             return null;
         }
 
-        return CaseLink.builder().caseReference(value).build();
+        CaseLink caseLink = new CaseLink();
+        caseLink.setCaseReference(value);
+
+        return caseLink;
     }
 }

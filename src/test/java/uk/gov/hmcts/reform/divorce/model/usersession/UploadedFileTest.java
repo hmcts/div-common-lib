@@ -17,20 +17,10 @@ import static org.junit.Assert.assertEquals;
 public class UploadedFileTest {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    private final Date createdOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 28));
-    private final Date modifiedOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 29));
+    private static final Date createdOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 28));
+    private static final Date modifiedOn = java.sql.Date.valueOf(LocalDate.of(2017, 11, 29));
 
-    private final UploadedFile uploadedFile = UploadedFile.builder()
-        .fileName("marriage-certificate.pdf")
-        .id("DocumentId")
-        .fileUrl("http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855")
-        .createdBy(8)
-        .lastModifiedBy(8)
-        .createdOn(createdOn)
-        .modifiedOn(modifiedOn)
-        .mimeType("application/pdf")
-        .status("OK")
-        .build();
+    private final UploadedFile uploadedFile = createUploadFile();
 
     private String json;
 
@@ -53,5 +43,21 @@ public class UploadedFileTest {
             .withDefaultPrettyPrinter();
 
         assertEquals(json.trim(), objectWriter.writeValueAsString(uploadedFile));
+    }
+
+    private static UploadedFile createUploadFile() {
+        UploadedFile uploadedFile = new UploadedFile();
+
+        uploadedFile.setFileName("marriage-certificate.pdf");
+        uploadedFile.setId("DocumentId");
+        uploadedFile.setFileUrl("http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855");
+        uploadedFile.setCreatedBy(8);
+        uploadedFile.setLastModifiedBy(8);
+        uploadedFile.setCreatedOn(createdOn);
+        uploadedFile.setModifiedOn(modifiedOn);
+        uploadedFile.setMimeType("application/pdf");
+        uploadedFile.setStatus("OK");
+
+        return uploadedFile;
     }
 }

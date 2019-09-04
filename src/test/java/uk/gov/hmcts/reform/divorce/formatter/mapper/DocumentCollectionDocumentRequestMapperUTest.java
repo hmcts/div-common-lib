@@ -34,11 +34,10 @@ public class DocumentCollectionDocumentRequestMapperUTest {
         final String documentType = "petition";
         final String fileName = "fileName";
 
-        final GeneratedDocumentInfo generatedDocumentInfo = GeneratedDocumentInfo.builder()
-            .url(url)
-            .documentType(documentType)
-            .fileName(fileName)
-            .build();
+        final GeneratedDocumentInfo generatedDocumentInfo = new GeneratedDocumentInfo();
+        generatedDocumentInfo.setUrl(url);
+        generatedDocumentInfo.setDocumentType(documentType);
+        generatedDocumentInfo.setFileName(fileName);
 
         CollectionMember<Document> actual = mapper.map(generatedDocumentInfo);
 
