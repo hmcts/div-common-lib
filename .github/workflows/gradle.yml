@@ -22,7 +22,7 @@ jobs:
       run: ./gradlew check
     - name: Release
       env:
-        BINTRAY_USER: yarpo
+        BINTRAY_USER: jenkins-reform-hmcts
         BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
       run: ./gradlew bintrayUpload
       if: startsWith(github.ref, 'refs/tags')
