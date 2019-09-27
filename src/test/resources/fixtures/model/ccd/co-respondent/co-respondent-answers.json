@@ -1,0 +1,14 @@
+{
+  "CoRespConfirmReadPetition": "NO",
+  "CoRespStatementOfTruth": "YES",
+  "CoRespAdmitAdultery": "YES",
+  "CoRespDefendsDivorce": "NO",
+  "CoRespAgreeToCosts": "YES",
+  "CoRespCostsReason": "It's the right thing to do...",
+  "CoRespEmailAddress": "co-respondent@divorce.co.uk",
+  "CoRespPhoneNumber": "+4404839202839",
+  "CoRespConsentToEmail": "YES",
+  "CoRespContactMethodIsDigital": "NO",
+  "CoRespLinkedToCase" : "YES",
+  "CoRespLinkedToCaseDate" : "2019-03-01"
+}

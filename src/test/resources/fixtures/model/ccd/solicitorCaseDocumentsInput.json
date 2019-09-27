@@ -1,0 +1,165 @@
+{
+    "documents":[
+        {
+            "url":"url1",
+            "documentType":"petition",
+            "fileName":"fileName1"
+        },
+        {
+            "url":"url2",
+            "documentType":"aos",
+            "fileName":"fileName2"
+        }
+    ],
+    "caseData":{
+        "PetitionerSolicitorEmail": "test-solicitor@example.com",
+        "D8DerivedRespondentHomeAddress": "Respondent\nHome\nAddress",
+        "D8PetitionerNameChangedHow": [
+            "marriageCertificate",
+            "deedPoll",
+            "other"
+        ],
+        "D8DerivedPetitionerHomeAddress": "Petitioner\nHome\nAddress",
+        "D8DivorceCostsClaim": "Yes",
+        "D8InferredRespondentGender": "female",
+        "FeeAccountReference": "Solicitor PBA",
+        "respondentSolicitorRepresented": "Yes",
+        "D8FinancialOrderFor": [
+            "petitioner",
+            "children"
+        ],
+        "solSignStatementofTruth": "Yes",
+        "SolStatementOfReconciliationName": "Test Solicitor",
+        "SolStatementOfReconciliationFirm": "Solicitor Firm",
+        "D8RespondentLastName": "Doe",
+        "D8PetitionerNameDifferentToMarriageCert": "Yes",
+        "D8JurisdictionConnection": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G"
+        ],
+        "SolStatementOfReconciliationCertify": "Yes",
+        "D8LegalProceedingsDetails": "Other legal matters.",
+        "D8SelectedDivorceCentreSiteId": "AA01",
+        "D8PetitionerLastName": "Smith",
+        "D8SolicitorReference": "SolicitorReference",
+        "D8PetitionerPhoneNumber": "01234567890",
+        "D8StatementOfTruth": "Yes",
+        "PetitionerSolicitorFirm": "Test Firm",
+        "D8RespondentSolicitorCompany": "Solicitor Firm",
+        "SolStatementOfReconciliationDiscussed": "Yes",
+        "SolicitorAgreeToReceiveEmails": "Yes",
+        "SolServiceMethod": "courtService",
+        "D8PetitionerEmail": "petitioner-test-email@example.com",
+        "D8ReasonForDivorceBehaviourDetails": "Bad Behaviour from everybody.",
+        "SolClaimCostsDetails": "Claiming costs for everything.",
+        "D8DivorceUnit": "eastMidlands",
+        "D8MarriagePetitionerName": "John Smith",
+        "PetitionerSolicitorPhone": "01234567890",
+        "D8MarriageIsSameSexCouple": "No",
+        "D8FinancialOrder": "Yes",
+        "D8RespondentNameAsOnMarriageCertificate": "Yes",
+        "D8MarriageDate": "2000-01-01",
+        "SolPaymentHowToPay": "feePayByAccount",
+        "D8RespondentSolicitorName": "Respondent Solicitor",
+        "StatementOfReconciliationComments": "No comment.",
+        "D8RespondentFirstName": "Jane",
+        "D8DocumentsUploaded": [
+            {
+                "id": "40610c8b-4c9d-4b8d-b047-719631ba38b2",
+                "value": {
+                    "DocumentLink": {
+                        "document_url": "http://dm-store-aat.service.core-compute-aat.internal:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689",
+                        "document_filename": "PBAOrderSummary.png",
+                        "document_binary_url": "http://dm-store-aat.service.core-compute-aat.internal:443/documents/bba741e7-cec8-42c2-bc69-465a01da3689/binary"
+                    },
+                    "DocumentType": "marriageCert",
+                    "DocumentComment": "Some comment",
+                    "DocumentFileName": "PbaOrder",
+                    "DocumentDateAdded": "2018-01-01",
+                    "DocumentEmailContent": "Test Marriage Certificate"
+                }
+            }
+        ],
+        "RespNameDifferentToMarriageCertExplain": "Name Change Certificate",
+        "SolicitorFeeAccountNumber": "PBA0896366",
+        "DerivedPetitionerSolicitorAddr": "Test Firm\nTest Address\nTest Postcode",
+        "PetitionerSolicitorName": "Test Solicitor",
+        "D8MarriedInUk": "Yes",
+        "D8PetitionerFirstName": "John",
+        "D8MarriageRespondentName": "Jane Doe",
+        "D8PetitionerContactDetailsConfidential": "share",
+        "D8DerivedRespondentSolicitorAddr": "Solicitor Firm\nAddress\nPostcode",
+        "D8LegalProceedings": "Yes",
+        "createdDate": "2018-09-27",
+        "PetitionerSolicitorToEffectService": "Yes",
+        "D8ReasonForDivorce": "unreasonable-behaviour",
+        "solApplicationFeeOrderSummary": {
+            "Fees": [
+                {
+                    "id": "816675f2-dd53-4950-8afa-7d4b164f0e34",
+                    "value": {
+                        "FeeCode": "FEE0002",
+                        "FeeAmount": "55000",
+                        "FeeVersion": "4",
+                        "FeeDescription": "Filing an application for a divorce, nullity or civil partnership dissolution – fees order 1.2."
+                    }
+                }
+            ],
+            "PaymentTotal": "55000",
+            "PaymentReference": null
+        },
+        "D8InferredPetitionerGender": "male",
+        "D8DocumentsGenerated":[
+            {
+                "id":null,
+                "value":{
+                    "DocumentType":"petition",
+                    "DocumentLink":{
+                        "document_url":"url1",
+                        "document_binary_url":"url1/binary",
+                        "document_filename":"fileName1.pdf"
+                    },
+                    "DocumentDateAdded":null,
+                    "DocumentComment":null,
+                    "DocumentFileName":"fileName1",
+                    "DocumentEmailContent":null
+                }
+            },
+            {
+                "id":null,
+                "value":{
+                    "DocumentType":"aos",
+                    "DocumentLink":{
+                        "document_url":"url2",
+                        "document_binary_url":"url2/binary",
+                        "document_filename":"fileName2.pdf"
+                    },
+                    "DocumentDateAdded":null,
+                    "DocumentComment":null,
+                    "DocumentFileName":"fileName2",
+                    "DocumentEmailContent":null
+                }
+            },
+            {
+                "id":null,
+                "value":{
+                    "DocumentType":"aos1",
+                    "DocumentLink":{
+                        "document_url":"url3",
+                        "document_binary_url":"url3/binary",
+                        "document_filename":"fileName3.pdf"
+                    },
+                    "DocumentDateAdded":null,
+                    "DocumentComment":null,
+                    "DocumentFileName":"fileName3",
+                    "DocumentEmailContent":null
+                }
+            }
+        ]
+    }
+}

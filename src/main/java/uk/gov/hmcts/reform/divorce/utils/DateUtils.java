@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.TimeZone;
 
 @Slf4j
@@ -69,4 +71,10 @@ public class DateUtils {
         return dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
+    public static String formatNullableDate(Date date, String pattern) {
+        return DateFormatUtils.format(
+            Optional.ofNullable(date).orElse(new Date(0)),
+            pattern
+        );
+    }
 }

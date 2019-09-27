@@ -2,13 +2,11 @@ package uk.gov.hmcts.reform.divorce.models.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.Map;
 
 @Data
-@Builder
 public class CaseDataContent {
     private Event event;
 
