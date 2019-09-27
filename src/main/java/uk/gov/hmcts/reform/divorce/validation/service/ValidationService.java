@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.divorce.validation.service;
 
-import uk.gov.hmcts.reform.divorce.models.request.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.models.response.ValidationResponse;
+import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 
 public interface ValidationService {
 
