@@ -87,4 +87,10 @@ public class DnCaseData {
 
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
+
+    @JsonProperty("DnClarificationResponse")
+    private List<String> dnClarificationResponse;
+
+    @JsonProperty("DocumentsUploadedDnClarification")
+    private List<CollectionMember<Document>> documentsUploadedDnClarification;
 }

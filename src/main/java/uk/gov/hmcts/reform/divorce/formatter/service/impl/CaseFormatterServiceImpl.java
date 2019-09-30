@@ -10,8 +10,10 @@ import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToAosCaseMapper;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToDaCaseMapper;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToDnCaseMapper;
+import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToDnClarificationMapper;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DocumentCollectionDocumentRequestMapper;
 import uk.gov.hmcts.reform.divorce.formatter.service.CaseFormatterService;
+import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
@@ -32,6 +34,7 @@ import static uk.gov.hmcts.reform.divorce.model.DocumentType.PETITION;
 public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     private static final String D8_DOCUMENTS_GENERATED_CCD_FIELD = "D8DocumentsGenerated";
+    private static final String GENERIC_DOCUMENT_TYPE = "other";
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -50,6 +53,9 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
 
     @Autowired
     private DivorceCaseToDnCaseMapper divorceCaseToDnCaseMapper;
+
+    @Autowired
+    private DivorceCaseToDnClarificationMapper divorceCaseToDnClarificationMapper;
 
     @Autowired
     private DivorceCaseToDaCaseMapper divorceCaseToDaCaseMapper;
@@ -88,7 +94,8 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
             if (CollectionUtils.isNotEmpty(documentsGenerated)) {
                 List<CollectionMember<Document>> existingDocuments = documentsGenerated.stream()
                     .filter(documentCollectionMember ->
-                        !generatedDocumentInfos.stream()
+                        GENERIC_DOCUMENT_TYPE.equals(documentCollectionMember.getValue().getDocumentType())
+                        || !generatedDocumentInfos.stream()
                             .map(GeneratedDocumentInfo::getDocumentType)
                             .collect(Collectors.toSet())
                             .contains(documentCollectionMember.getValue().getDocumentType()))
@@ -136,6 +143,11 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     @Override
     public DnCaseData getDnCaseData(DivorceSession divorceSession) {
         return divorceCaseToDnCaseMapper.divorceCaseDataToDnCaseData(divorceSession);
+    }
+
+    @Override
+    public DnCaseData getDnClarificationCaseData(DivorceCaseWrapper divorceCaseWrapper) {
+        return divorceCaseToDnClarificationMapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
     }
 
     @Override
