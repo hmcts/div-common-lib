@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.divorce.models.response;
+package uk.gov.hmcts.reform.divorce.model.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

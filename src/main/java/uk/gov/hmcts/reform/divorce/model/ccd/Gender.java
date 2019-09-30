@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum Gender {
     FEMALE("female"),
     MALE("male"),
-    NOTGIVEN("notGiven");
+    NOT_GIVEN("notGiven");
 
     private final String value;
 

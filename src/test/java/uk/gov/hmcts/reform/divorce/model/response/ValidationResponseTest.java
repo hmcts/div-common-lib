@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.divorce.models.response;
+package uk.gov.hmcts.reform.divorce.model.response;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
