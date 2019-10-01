@@ -1,6 +1,9 @@
 {
   "DnClarificationResponse" : [
-    "This is a response attempt."
+    {
+      "id" : null,
+      "value" : "This is a response attempt."
+    }
   ],
   "DocumentsUploadedDnClarification" : [
     {

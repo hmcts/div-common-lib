@@ -1,7 +1,13 @@
 {
   "DnClarificationResponse" : [
-    "This is the initial response",
-    "This is a response attempt."
+    {
+      "id" : "initial-id",
+      "value" : "This is the initial response"
+    },
+    {
+      "id" : null,
+      "value" : "This is a response attempt."
+    }
   ],
   "DocumentsUploadedDnClarification" : [
     {

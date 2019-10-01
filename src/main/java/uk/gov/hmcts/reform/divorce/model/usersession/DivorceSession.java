@@ -517,6 +517,12 @@ public class DivorceSession {
         value = "Final date to apply for Decree Absolute.")
     private Date dateCaseNoLongerEligibleForDA;
 
+    @ApiModelProperty("Reason for why clarification is needed.")
+    private List<String> refusalClarificationReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor.")
+    private String refusalClarificationAdditionalInfo;
+
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;
 

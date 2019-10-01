@@ -27,14 +27,17 @@ public abstract class DivorceCaseToDnClarificationMapper {
     protected void mapDnClarificationResponse(DivorceCaseWrapper divorceCaseWrapper,
                                               @MappingTarget DnCaseData result) {
 
-        List<String> clarificationReasons =
+        List<CollectionMember<String>> clarificationReasons =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse())
                 .orElse(new ArrayList<>());
 
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
         if (!divorceSession.getClarificationResponse().isEmpty()) {
-            clarificationReasons.add(divorceSession.getClarificationResponse());
+            CollectionMember<String> clarificationResponse = new CollectionMember<>();
+            clarificationResponse.setValue(divorceSession.getClarificationResponse());
+
+            clarificationReasons.add(clarificationResponse);
         }
 
         result.setDnClarificationResponse(clarificationReasons);

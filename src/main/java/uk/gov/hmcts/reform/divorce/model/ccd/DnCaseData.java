@@ -88,8 +88,14 @@ public class DnCaseData {
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
 
+    @JsonProperty("RefusalClarificationReason")
+    private List<String> refusalClarificationReason;
+
+    @JsonProperty("RefusalClarificationAdditionalInfo")
+    private String refusalClarificationAdditionalInfo;
+
     @JsonProperty("DnClarificationResponse")
-    private List<String> dnClarificationResponse;
+    private List<CollectionMember<String>> dnClarificationResponse;
 
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;
