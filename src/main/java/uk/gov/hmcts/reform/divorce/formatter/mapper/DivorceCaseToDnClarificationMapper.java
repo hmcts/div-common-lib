@@ -33,14 +33,14 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
-        if (!divorceSession.getClarificationResponse().isEmpty()) {
+        if (divorceSession.getClarificationResponse() != null) {
             CollectionMember<String> clarificationResponse = new CollectionMember<>();
             clarificationResponse.setValue(divorceSession.getClarificationResponse());
 
             clarificationReasons.add(clarificationResponse);
-        }
 
-        result.setDnClarificationResponse(clarificationReasons);
+            result.setDnClarificationResponse(clarificationReasons);
+        }
     }
 
     @AfterMapping
@@ -53,10 +53,10 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
         // New documents are already added to the result from the @Mapping annotation on the constructor
         // This can then be used in the AfterMapping
-        if (!result.getDocumentsUploadedDnClarification().isEmpty()) {
+        if (result.getDocumentsUploadedDnClarification() != null) {
             clarificationDocuments.addAll(result.getDocumentsUploadedDnClarification());
-        }
 
-        result.setDocumentsUploadedDnClarification(clarificationDocuments);
+            result.setDocumentsUploadedDnClarification(clarificationDocuments);
+        }
     }
 }

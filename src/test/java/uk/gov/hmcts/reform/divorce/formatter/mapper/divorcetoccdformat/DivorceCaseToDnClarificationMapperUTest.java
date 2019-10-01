@@ -90,4 +90,18 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }
+
+    @Test
+    public void shouldNotThrowErrorEventWhenClarificationDataIsNull() throws Exception {
+        CoreCaseData coreCaseData = new CoreCaseData();
+        DivorceSession divorceSession = new DivorceSession();
+
+        DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
+
+        DnCaseData expectedDnCaseData = new DnCaseData();
+
+        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+
+        assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
+    }
 }
