@@ -92,7 +92,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
     }
 
     @Test
-    public void shouldNotThrowErrorEventWhenClarificationDataIsNull() throws Exception {
+    public void shouldNotThrowErrorEvenWhenClarificationDataIsNull() throws Exception {
         CoreCaseData coreCaseData = new CoreCaseData();
         DivorceSession divorceSession = new DivorceSession();
 
