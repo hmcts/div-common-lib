@@ -203,6 +203,59 @@ public class CaseFormatterServiceImplUTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void givenMultipleGenericD8DocumentsExistsInCaseData_whenAddDocuments_thenAddDocuments() {
+        final String url1 = "url1";
+        final String documentType1 = "petition";
+        final String fileName1 = "fileName1";
+        final String url2 = "url2";
+        final String documentType2 = "aos";
+        final String fileName2 = "fileName2";
+
+        final String url3 = "url3";
+        final String documentType3 = "other";
+        final String fileName3 = "fileName3";
+
+        final String url4 = "url4";
+        final String documentType4 = "aos";
+        final String fileName4 = "fileName4";
+
+        final String url5 = "url5";
+        final String documentType5 = "other";
+        final String fileName5 = "fileName5";
+
+        final GeneratedDocumentInfo generatedDocumentInfo1 = createGeneratedDocument(url1, documentType1, fileName1);
+        final GeneratedDocumentInfo generatedDocumentInfo2 = createGeneratedDocument(url2, documentType2, fileName2);
+        final GeneratedDocumentInfo generatedDocumentInfo3 = createGeneratedDocument(url3, documentType3, fileName3);
+
+        final CollectionMember<Document> document1 = createCollectionMemberDocument(url1, documentType1, fileName1);
+        final CollectionMember<Document> document2 = createCollectionMemberDocument(url2, documentType2, fileName2);
+        final CollectionMember<Document> document3 = createCollectionMemberDocument(url3, documentType3, fileName3);
+        final CollectionMember<Document> document4 = createCollectionMemberDocument(url4, documentType4, fileName4);
+        final CollectionMember<Document> document5 = createCollectionMemberDocument(url5, documentType5, fileName5);
+
+        when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo1)).thenReturn(document1);
+        when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo2)).thenReturn(document2);
+        when(documentCollectionDocumentRequestMapper.map(generatedDocumentInfo3)).thenReturn(document3);
+
+        final Map<String, Object> expected =
+            Collections.singletonMap(D8_DOCUMENTS_GENERATED_CCD_FIELD,
+                Arrays.asList(document5, document1, document2, document3));
+
+        final Map<String, Object> input = new HashMap<>();
+        input.put(D8_DOCUMENTS_GENERATED_CCD_FIELD, Arrays.asList(document4, document5));
+
+        DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
+        documentUpdateRequest.setDocuments(
+            Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2, generatedDocumentInfo3));
+        documentUpdateRequest.setCaseData(input);
+
+        Map<String, Object> actual = classUnderTest.addDocuments(input,
+            Arrays.asList(generatedDocumentInfo1, generatedDocumentInfo2, generatedDocumentInfo3));
+
+        assertEquals(expected, actual);
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void givenCoreCaseDataIsNull_whenRemoveAllPetitions_thenReturnThrowException() {
         classUnderTest.removeAllPetitionDocuments(null);

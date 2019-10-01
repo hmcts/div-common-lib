@@ -155,6 +155,8 @@ public abstract class CCDCaseToDivorceMapper {
         dateFormat = SIMPLE_DATE_FORMAT, target = "dateRespondentEligibleForDA")
     @Mapping(source = "dateCaseNoLongerEligibleForDA",
         dateFormat = SIMPLE_DATE_FORMAT, target = "dateCaseNoLongerEligibleForDA")
+    @Mapping(source = "refusalClarificationReason", target = "refusalClarificationReason")
+    @Mapping(source = "refusalClarificationAdditionalInfo", target = "refusalClarificationAdditionalInfo")
     public abstract DivorceSession courtCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {

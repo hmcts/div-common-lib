@@ -517,6 +517,15 @@ public class DivorceSession {
         value = "Final date to apply for Decree Absolute.")
     private Date dateCaseNoLongerEligibleForDA;
 
+    @ApiModelProperty("Reason for why clarification is needed.")
+    private List<String> refusalClarificationReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor.")
+    private String refusalClarificationAdditionalInfo;
+
+    @ApiModelProperty(value = "Clarification response for the current clarification journey")
+    private String clarificationResponse;
+
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
             d8Documents.forEach(doc -> doc.setFileType("petition"));
