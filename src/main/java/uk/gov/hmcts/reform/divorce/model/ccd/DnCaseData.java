@@ -99,4 +99,7 @@ public class DnCaseData {
 
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;
+
+    @JsonProperty("DnOutcomeCase")
+    private String dnOutcomeCase;
 }
