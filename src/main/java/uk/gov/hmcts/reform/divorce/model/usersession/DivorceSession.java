@@ -526,6 +526,9 @@ public class DivorceSession {
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;
 
+    @ApiModelProperty(value = "Flag for online Decree Nisi Outcome journey")
+    private String dnOutcomeCase;
+
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
             d8Documents.forEach(doc -> doc.setFileType("petition"));

@@ -4,5 +4,6 @@
     "CostsOrderAdditionalInfo": "all",
     "DecreeNisiGrantedDate": "2020-01-01",
     "DAEligibleFromDate": "2020-02-13",
-    "CourtName": "London Court Number One"
+    "CourtName": "London Court Number One",
+    "DnOutcomeCase": "Yes"
 }
