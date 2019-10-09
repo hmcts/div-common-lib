@@ -71,11 +71,11 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         CollectionMember<String> clarificationResponse = new CollectionMember<>();
         clarificationResponse.setId("initial-id");
-        clarificationResponse.setValue("This is the initial response");
+        clarificationResponse.setValue("Clarification 1: This is the initial response");
 
         CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
         uploadAnyOtherDocuments.setId("initial-id");
-        uploadAnyOtherDocuments.setValue("No");
+        uploadAnyOtherDocuments.setValue("Clarification 1: No");
 
         CoreCaseData coreCaseData = new CoreCaseData();
         coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));

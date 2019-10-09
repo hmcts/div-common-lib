@@ -2,13 +2,13 @@
   "DnClarificationResponse" : [
     {
       "id" : null,
-      "value" : "This is a response attempt."
+      "value" : "Clarification 1: This is a response attempt."
     }
   ],
   "DnClarificationUploadDocuments" : [
     {
       "id" : null,
-      "value" : "Yes"
+      "value" : "Clarification 1: Yes"
     }
   ],
   "DocumentsUploadedDnClarification" : [

@@ -20,6 +20,8 @@ import java.util.Optional;
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class DivorceCaseToDnClarificationMapper {
 
+    private static final String CLARIFICATION_STRING = "Clarification %s: %s";
+
     @Mapping(source = "divorceSession.files", target = "documentsUploadedDnClarification")
     public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
 
@@ -35,7 +37,9 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
         if (divorceSession.getClarificationResponse() != null) {
             CollectionMember<String> clarificationResponse = new CollectionMember<>();
-            clarificationResponse.setValue(divorceSession.getClarificationResponse());
+            clarificationResponse.setValue(String.format(CLARIFICATION_STRING,
+                clarificationReasons.size() + 1, divorceSession.getClarificationResponse()
+            ));
 
             clarificationReasons.add(clarificationResponse);
 
@@ -55,7 +59,9 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
         if (divorceSession.getUploadAnyOtherDocuments() != null) {
             CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
-            uploadAnyOtherDocuments.setValue(divorceSession.getUploadAnyOtherDocuments());
+            uploadAnyOtherDocuments.setValue(String.format(CLARIFICATION_STRING,
+                uploadAnyOtherDocumentsList.size() + 1, divorceSession.getUploadAnyOtherDocuments()
+            ));
 
             uploadAnyOtherDocumentsList.add(uploadAnyOtherDocuments);
 
