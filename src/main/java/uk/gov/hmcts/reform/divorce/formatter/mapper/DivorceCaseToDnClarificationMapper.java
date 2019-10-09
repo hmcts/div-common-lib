@@ -44,6 +44,26 @@ public abstract class DivorceCaseToDnClarificationMapper {
     }
 
     @AfterMapping
+    protected void mapDnClarificationUploadAnyOtherDocuments(DivorceCaseWrapper divorceCaseWrapper,
+                                              @MappingTarget DnCaseData result) {
+
+        List<CollectionMember<String>> uploadAnyOtherDocumentsList =
+            Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationUploadAnyOtherDocuments())
+                .orElse(new ArrayList<>());
+
+        DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
+
+        if (divorceSession.getUploadAnyOtherDocuments() != null) {
+            CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
+            uploadAnyOtherDocuments.setValue(divorceSession.getUploadAnyOtherDocuments());
+
+            uploadAnyOtherDocumentsList.add(uploadAnyOtherDocuments);
+
+            result.setDnClarificationUploadAnyOtherDocuments(uploadAnyOtherDocumentsList);
+        }
+    }
+
+    @AfterMapping
     protected void mapDocumentsUploadedDnClarification(DivorceCaseWrapper divorceCaseWrapper,
                                                        @MappingTarget DnCaseData result) {
 

@@ -9,6 +9,16 @@
       "value" : "This is a response attempt."
     }
   ],
+  "DnClarificationUploadAnyOtherDocuments" : [
+    {
+      "id" : "initial-id",
+      "value" : "No"
+    },
+    {
+      "id" : null,
+      "value" : "Yes"
+    }
+  ],
   "DocumentsUploadedDnClarification" : [
     {
       "id" : null,
