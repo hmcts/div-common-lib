@@ -92,8 +92,8 @@ public class DnCaseData {
     @JsonProperty("DnClarificationResponse")
     private List<CollectionMember<String>> dnClarificationResponse;
 
-    @JsonProperty("DnClarificationUploadAnyOtherDocuments")
-    private List<CollectionMember<String>> dnClarificationUploadAnyOtherDocuments;
+    @JsonProperty("DnClarificationUploadDocuments")
+    private List<CollectionMember<String>> dnClarificationUploadDocuments;
 
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;

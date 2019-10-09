@@ -5,7 +5,7 @@
       "value" : "This is a response attempt."
     }
   ],
-  "DnClarificationUploadAnyOtherDocuments" : [
+  "DnClarificationUploadDocuments" : [
     {
       "id" : null,
       "value" : "Yes"

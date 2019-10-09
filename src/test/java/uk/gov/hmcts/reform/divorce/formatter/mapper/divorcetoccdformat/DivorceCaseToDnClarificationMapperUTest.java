@@ -79,7 +79,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         CoreCaseData coreCaseData = new CoreCaseData();
         coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));
-        coreCaseData.setDnClarificationUploadAnyOtherDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
+        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
         DnCaseData expectedDnCaseData = ObjectMapperTestUtil
