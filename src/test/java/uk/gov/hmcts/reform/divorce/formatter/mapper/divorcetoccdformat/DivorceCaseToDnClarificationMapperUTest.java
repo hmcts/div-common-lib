@@ -69,11 +69,17 @@ public class DivorceCaseToDnClarificationMapperUTest {
         List<CollectionMember<Document>> existingDocuments = new ArrayList<>();
         existingDocuments.add(collectionMember);
 
-        CoreCaseData coreCaseData = new CoreCaseData();
         CollectionMember<String> clarificationResponse = new CollectionMember<>();
         clarificationResponse.setId("initial-id");
         clarificationResponse.setValue("This is the initial response");
+
+        CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
+        uploadAnyOtherDocuments.setId("initial-id");
+        uploadAnyOtherDocuments.setValue("No");
+
+        CoreCaseData coreCaseData = new CoreCaseData();
         coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));
+        coreCaseData.setDnClarificationUploadAnyOtherDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
         DnCaseData expectedDnCaseData = ObjectMapperTestUtil
