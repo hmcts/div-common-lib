@@ -22,7 +22,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded" : "2017-12-11",
-        "DocumentComment" : "",
+        "DocumentComment" : "Clarification 1: Document",
         "DocumentFileName" : "govuklogo.png",
         "DocumentEmailContent" : ""
       }
@@ -37,7 +37,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded": "2017-12-11",
-        "DocumentComment": "",
+        "DocumentComment": "Clarification 1: Document",
         "DocumentFileName": "d8-eng.pdf",
         "DocumentEmailContent": ""
       }

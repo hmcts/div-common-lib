@@ -30,7 +30,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded" : "2011-11-11",
-        "DocumentComment" : "",
+        "DocumentComment" : "Existing Comment",
         "DocumentFileName" : "favicon.ico",
         "DocumentEmailContent" : ""
       }
@@ -45,7 +45,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded" : "2017-12-11",
-        "DocumentComment" : "",
+        "DocumentComment" : "Clarification 2: Document",
         "DocumentFileName" : "govuklogo.png",
         "DocumentEmailContent" : ""
       }
@@ -60,7 +60,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded": "2017-12-11",
-        "DocumentComment": "",
+        "DocumentComment": "Clarification 2: Document",
         "DocumentFileName": "d8-eng.pdf",
         "DocumentEmailContent": ""
       }

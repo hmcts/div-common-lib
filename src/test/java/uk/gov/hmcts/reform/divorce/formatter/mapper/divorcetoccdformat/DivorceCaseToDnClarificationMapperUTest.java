@@ -56,7 +56,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
         Document existingDocument = new Document();
         existingDocument.setDocumentType("other");
         existingDocument.setDocumentDateAdded("2011-11-11");
-        existingDocument.setDocumentComment("");
+        existingDocument.setDocumentComment("Existing Comment");
         existingDocument.setDocumentFileName("favicon.ico");
         existingDocument.setDocumentEmailContent("");
         DocumentLink documentLink = new DocumentLink();
