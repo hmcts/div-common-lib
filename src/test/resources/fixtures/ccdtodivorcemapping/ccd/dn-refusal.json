@@ -1,0 +1,13 @@
+{
+  "RefusalClarificationReason": [
+    "jurisdictionDetails",
+    "other"
+  ],
+  "RefusalClarificationAdditionalInfo": "The petitioner needs to provide more information.",
+  "RefusalRejectionReason": [
+    "noJurisdiction",
+    "other"
+  ],
+  "RefusalRejectionAdditionalInfo": "The petitioner needs to provide a lot more information.",
+  "RefusalAdminErrorInfo": "The petitioner needs to provide the admin more information."
+}

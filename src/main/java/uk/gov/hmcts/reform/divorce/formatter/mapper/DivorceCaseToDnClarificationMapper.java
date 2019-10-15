@@ -57,13 +57,15 @@ public abstract class DivorceCaseToDnClarificationMapper {
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationUploadDocuments())
                 .orElse(new ArrayList<>());
 
+        int clarificationNumber =
+            Optional.ofNullable(result.getDnClarificationResponse()).orElse(new ArrayList<>()).size();
+
         DivorceSession divorceSession = divorceCaseWrapper.getDivorceSession();
 
         if (divorceSession.getUploadAnyOtherDocuments() != null) {
             CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
             uploadAnyOtherDocuments.setValue(String.format(CLARIFICATION_STRING,
-                uploadAnyOtherDocumentsList.size() + 1,
-                StringUtils.capitalize(divorceSession.getUploadAnyOtherDocuments())
+                clarificationNumber, StringUtils.capitalize(divorceSession.getUploadAnyOtherDocuments())
             ));
 
             uploadAnyOtherDocumentsList.add(uploadAnyOtherDocuments);
@@ -81,8 +83,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
                 .orElse(new ArrayList<>());
 
         int clarificationNumber =
-            Optional.ofNullable(result.getDnClarificationResponse()).orElse(new ArrayList<>())
-                .size();
+            Optional.ofNullable(result.getDnClarificationResponse()).orElse(new ArrayList<>()).size();
 
         // New documents are already added to the result from the @Mapping annotation on the constructor
         // This can then be used in the AfterMapping

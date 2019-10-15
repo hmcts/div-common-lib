@@ -500,8 +500,7 @@ public class DivorceSession {
     private String previousCaseId;
 
     @ApiModelProperty(
-        value = "Issue date from previously amended case in one of the following formats "
-            + " (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
+        value = "Issue date from previously amended case in one of the following formats (\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\", "
             + "\"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\", \"yyyy-MM-dd'T'HH:mm:ss.SSS\", \"EEE, dd MMM yyyy HH:mm:ss zzz\", "
             + "\"yyyy-MM-dd\").")
     private Date previousIssueDate;
@@ -520,8 +519,17 @@ public class DivorceSession {
     @ApiModelProperty("Reason for why clarification is needed.")
     private List<String> refusalClarificationReason;
 
-    @ApiModelProperty("Any additional input by the legal advisor.")
+    @ApiModelProperty("Any additional input by the legal advisor for clarification.")
     private String refusalClarificationAdditionalInfo;
+
+    @ApiModelProperty("Reason for why refusal rejection is needed.")
+    private List<String> refusalRejectionReason;
+
+    @ApiModelProperty("Any additional input by the legal advisor for refusal rejection.")
+    private String refusalRejectionAdditionalInfo;
+
+    @ApiModelProperty("Any additional input by the legal advisor for admin error.")
+    private String refusalAdminErrorInfo;
 
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;

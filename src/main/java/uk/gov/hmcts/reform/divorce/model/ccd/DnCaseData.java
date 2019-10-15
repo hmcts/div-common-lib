@@ -89,12 +89,16 @@ public class DnCaseData {
     @JsonProperty("DesertionAskedToResumeDNDetails")
     private String desertionAskedToResumeDNDetails;
 
+    // These three JsonInclude are ignored for now until DN Refusal Config is in Production
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnClarificationResponse")
     private List<CollectionMember<String>> dnClarificationResponse;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnClarificationUploadDocuments")
     private List<CollectionMember<String>> dnClarificationUploadDocuments;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DocumentsUploadedDnClarification")
     private List<CollectionMember<Document>> documentsUploadedDnClarification;
 
@@ -106,6 +110,18 @@ public class DnCaseData {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("RefusalClarificationAdditionalInfo")
     private String refusalClarificationAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalRejectionReason")
+    private List<String> refusalRejectionReason;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalRejectionAdditionalInfo")
+    private String refusalRejectionAdditionalInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("RefusalAdminErrorInfo")
+    private String refusalAdminErrorInfo;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnOutcomeCase")
