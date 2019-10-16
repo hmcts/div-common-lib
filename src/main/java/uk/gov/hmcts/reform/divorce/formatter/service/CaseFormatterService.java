@@ -29,7 +29,7 @@ public interface CaseFormatterService {
 
     DnCaseData getDnCaseData(DivorceSession divorceSession);
 
-    DnRefusalCaseData getDnClarificationCaseData(DivorceCaseWrapper divorceCaseWrapper);
+    DnRefusalCaseData getDnRefusalCaseData(DivorceCaseWrapper divorceCaseWrapper);
 
     DaCaseData getDaCaseData(DivorceSession divorceSession);
 

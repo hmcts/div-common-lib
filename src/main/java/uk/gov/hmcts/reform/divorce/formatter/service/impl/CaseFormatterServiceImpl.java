@@ -147,7 +147,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public DnRefusalCaseData getDnClarificationCaseData(DivorceCaseWrapper divorceCaseWrapper) {
+    public DnRefusalCaseData getDnRefusalCaseData(DivorceCaseWrapper divorceCaseWrapper) {
         return divorceCaseToDnClarificationMapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
     }
 
