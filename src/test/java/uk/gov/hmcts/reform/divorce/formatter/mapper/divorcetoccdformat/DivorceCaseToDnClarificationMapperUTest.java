@@ -13,7 +13,7 @@ import uk.gov.hmcts.reform.divorce.formatter.mapper.ObjectMapperTestUtil;
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
@@ -37,8 +37,9 @@ public class DivorceCaseToDnClarificationMapperUTest {
     public void shouldMapDivorceSessionFieldsToDnCaseData() throws Exception {
         CoreCaseData coreCaseData = new CoreCaseData();
 
-        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
-            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification.json", DnCaseData.class);
+        DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
+            .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification.json",
+                DnRefusalCaseData.class);
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-clarification.json",
@@ -46,7 +47,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }
@@ -56,7 +57,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
         Document existingDocument = new Document();
         existingDocument.setDocumentType("other");
         existingDocument.setDocumentDateAdded("2011-11-11");
-        existingDocument.setDocumentComment("");
+        existingDocument.setDocumentComment("Existing Comment");
         existingDocument.setDocumentFileName("favicon.ico");
         existingDocument.setDocumentEmailContent("");
         DocumentLink documentLink = new DocumentLink();
@@ -69,16 +70,22 @@ public class DivorceCaseToDnClarificationMapperUTest {
         List<CollectionMember<Document>> existingDocuments = new ArrayList<>();
         existingDocuments.add(collectionMember);
 
-        CoreCaseData coreCaseData = new CoreCaseData();
         CollectionMember<String> clarificationResponse = new CollectionMember<>();
         clarificationResponse.setId("initial-id");
-        clarificationResponse.setValue("This is the initial response");
+        clarificationResponse.setValue("Clarification 1: This is the initial response");
+
+        CollectionMember<String> uploadAnyOtherDocuments = new CollectionMember<>();
+        uploadAnyOtherDocuments.setId("initial-id");
+        uploadAnyOtherDocuments.setValue("Clarification 1: No");
+
+        CoreCaseData coreCaseData = new CoreCaseData();
         coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));
+        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
-        DnCaseData expectedDnCaseData = ObjectMapperTestUtil
+        DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/ccd/dn-clarification-existing-data.json",
-                DnCaseData.class);
+                DnRefusalCaseData.class);
 
         DivorceSession divorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject("fixtures/divorcetoccdmapping/divorce/dn-clarification-existing-data.json",
@@ -86,7 +93,7 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }
@@ -98,9 +105,9 @@ public class DivorceCaseToDnClarificationMapperUTest {
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
 
-        DnCaseData expectedDnCaseData = new DnCaseData();
+        DnRefusalCaseData expectedDnCaseData = new DnRefusalCaseData();
 
-        DnCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
+        DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));
     }

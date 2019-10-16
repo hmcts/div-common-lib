@@ -2,11 +2,21 @@
   "DnClarificationResponse" : [
     {
       "id" : "initial-id",
-      "value" : "This is the initial response"
+      "value" : "Clarification 1: This is the initial response"
     },
     {
       "id" : null,
-      "value" : "This is a response attempt."
+      "value" : "Clarification 2: This is a response attempt."
+    }
+  ],
+  "DnClarificationUploadDocuments" : [
+    {
+      "id" : "initial-id",
+      "value" : "Clarification 1: No"
+    },
+    {
+      "id" : null,
+      "value" : "Clarification 2: Yes"
     }
   ],
   "DocumentsUploadedDnClarification" : [
@@ -20,7 +30,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded" : "2011-11-11",
-        "DocumentComment" : "",
+        "DocumentComment" : "Existing Comment",
         "DocumentFileName" : "favicon.ico",
         "DocumentEmailContent" : ""
       }
@@ -35,7 +45,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded" : "2017-12-11",
-        "DocumentComment" : "",
+        "DocumentComment" : "Clarification 2: Document",
         "DocumentFileName" : "govuklogo.png",
         "DocumentEmailContent" : ""
       }
@@ -50,7 +60,7 @@
           "document_filename" : null
         },
         "DocumentDateAdded": "2017-12-11",
-        "DocumentComment": "",
+        "DocumentComment": "Clarification 2: Document",
         "DocumentFileName": "d8-eng.pdf",
         "DocumentEmailContent": ""
       }

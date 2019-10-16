@@ -19,6 +19,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
@@ -146,7 +147,7 @@ public class CaseFormatterServiceImpl implements CaseFormatterService {
     }
 
     @Override
-    public DnCaseData getDnClarificationCaseData(DivorceCaseWrapper divorceCaseWrapper) {
+    public DnRefusalCaseData getDnRefusalCaseData(DivorceCaseWrapper divorceCaseWrapper) {
         return divorceCaseToDnClarificationMapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
     }
 

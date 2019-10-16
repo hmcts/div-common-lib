@@ -32,13 +32,13 @@ public class DecreeNisiClarificationMapperUTest {
 
         CoreCaseData coreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject(
-                "fixtures/ccdtodivorcemapping/ccd/dn-clarification.json",
+                "fixtures/ccdtodivorcemapping/ccd/dn-refusal.json",
                 CoreCaseData.class
             );
 
         DivorceSession expectedDivorceSession = ObjectMapperTestUtil
             .retrieveFileContentsAsObject(
-                "fixtures/ccdtodivorcemapping/divorce/dn-clarification.json",
+                "fixtures/ccdtodivorcemapping/divorce/dn-refusal.json",
                 DivorceSession.class
             );
 

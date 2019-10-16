@@ -5,6 +5,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.AosCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DaCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.documentupdate.GeneratedDocumentInfo;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
@@ -28,7 +29,7 @@ public interface CaseFormatterService {
 
     DnCaseData getDnCaseData(DivorceSession divorceSession);
 
-    DnCaseData getDnClarificationCaseData(DivorceCaseWrapper divorceCaseWrapper);
+    DnRefusalCaseData getDnRefusalCaseData(DivorceCaseWrapper divorceCaseWrapper);
 
     DaCaseData getDaCaseData(DivorceSession divorceSession);
 
