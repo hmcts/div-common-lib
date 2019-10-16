@@ -9,7 +9,7 @@ import org.mapstruct.ReportingPolicy;
 
 import uk.gov.hmcts.reform.divorce.model.DivorceCaseWrapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
-import uk.gov.hmcts.reform.divorce.model.ccd.DnCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.DnRefusalCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
@@ -25,11 +25,11 @@ public abstract class DivorceCaseToDnClarificationMapper {
     private static final String DOCUMENT_COMMENT = "Document";
 
     @Mapping(source = "divorceSession.files", target = "documentsUploadedDnClarification")
-    public abstract DnCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
+    public abstract DnRefusalCaseData divorceCaseDataToDnCaseData(DivorceCaseWrapper divorceCaseWrapper);
 
     @AfterMapping
     protected void mapDnClarificationResponse(DivorceCaseWrapper divorceCaseWrapper,
-                                              @MappingTarget DnCaseData result) {
+                                              @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<String>> clarificationReasons =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationResponse())
@@ -51,7 +51,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
     @AfterMapping
     protected void mapDnClarificationUploadAnyOtherDocuments(DivorceCaseWrapper divorceCaseWrapper,
-                                              @MappingTarget DnCaseData result) {
+                                              @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<String>> uploadAnyOtherDocumentsList =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDnClarificationUploadDocuments())
@@ -76,7 +76,7 @@ public abstract class DivorceCaseToDnClarificationMapper {
 
     @AfterMapping
     protected void mapDocumentsUploadedDnClarification(DivorceCaseWrapper divorceCaseWrapper,
-                                                       @MappingTarget DnCaseData result) {
+                                                       @MappingTarget DnRefusalCaseData result) {
 
         List<CollectionMember<Document>> clarificationDocuments =
             Optional.ofNullable(divorceCaseWrapper.getCaseData().getDocumentsUploadedDnClarification())
