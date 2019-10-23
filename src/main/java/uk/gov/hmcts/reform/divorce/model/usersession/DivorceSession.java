@@ -534,6 +534,11 @@ public class DivorceSession {
     @ApiModelProperty(value = "Clarification response for the current clarification journey")
     private String clarificationResponse;
 
+    @ApiModelProperty(
+        value = "List of previous reasons used for divorce, "
+            + "before amending petition for refusal rejection")
+    private List<String> previousReasonsForDivorceRefusal;
+
     @ApiModelProperty(value = "Flag for online Decree Nisi Outcome journey")
     private String dnOutcomeCase;
 
