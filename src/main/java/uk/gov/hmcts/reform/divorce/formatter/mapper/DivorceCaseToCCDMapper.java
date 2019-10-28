@@ -125,6 +125,15 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(ignore = true, target = "previousCaseId")
     @Mapping(source = "previousIssueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
+    @Mapping(source = "previousReasonsForDivorceRefusal", target = "previousReasonsForDivorceRefusal")
+    @Mapping(ignore = true, target = "refusalClarificationReason")
+    @Mapping(ignore = true, target = "refusalClarificationAdditionalInfo")
+    @Mapping(ignore = true, target = "refusalRejectionReason")
+    @Mapping(ignore = true, target = "refusalRejectionAdditionalInfo")
+    @Mapping(ignore = true, target = "refusalAdminErrorInfo")
+    @Mapping(ignore = true, target = "dnOutcomeCase")
+    @Mapping(source = "refusalRejectionReason", target = "previousRefusalRejectionReason")
+    @Mapping(source = "refusalRejectionAdditionalInfo", target = "previousRefusalRejectionAdditionalInfo")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping

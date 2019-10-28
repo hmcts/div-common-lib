@@ -46,4 +46,17 @@ public class DnRefusalCaseData {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("DnOutcomeCase")
     private String dnOutcomeCase;
+
+    // Previous case data
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("PreviousReasonsForDivorceRefusal")
+    private List<String> previousReasonsForDivorceRefusal;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("PreviousRefusalRejectionReason")
+    private List<String> previousRefusalRejectionReason;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("PreviousRefusalRejectionAdditionalInfo")
+    private String previousRefusalRejectionAdditionalInfo;
 }
