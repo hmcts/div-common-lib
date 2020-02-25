@@ -4,10 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Arrays;
-import java.util.Collections;
-
-import static org.junit.Assert.assertEquals;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ValidationResponseTest {
@@ -15,12 +15,11 @@ public class ValidationResponseTest {
     @Test
     public void givenNoErrorsOrWarnings_whenIsValidCalled_thenReturnsTrue() {
         ValidationResponse validationResponse = ValidationResponse.builder()
-            .errors(Collections.emptyList())
-            .warnings(Collections.emptyList())
+            .errors(emptyList())
+            .warnings(emptyList())
             .build();
 
-
-        assertEquals(true, validationResponse.isValid());
+        assertTrue(validationResponse.isValid());
     }
 
     @Test
@@ -30,44 +29,43 @@ public class ValidationResponseTest {
             .warnings(null)
             .build();
 
-        assertEquals(true, validationResponse.isValid());
+        assertTrue(validationResponse.isValid());
     }
 
     @Test
     public void givenValuesNotSet_whenIsValidCalled_thenReturnsTrue() {
         ValidationResponse validationResponse = ValidationResponse.builder().build();
 
-        assertEquals(true, validationResponse.isValid());
+        assertTrue(validationResponse.isValid());
     }
 
     @Test
     public void givenOnlyWarningsSet_whenIsValidCalled_thenReturnsTrue() {
         ValidationResponse validationResponse = ValidationResponse.builder()
-            .errors(Collections.emptyList())
-            .warnings(Arrays.asList("Warning!"))
+            .errors(emptyList())
+            .warnings(singletonList("Warning!"))
             .build();
 
-        assertEquals(false, validationResponse.isValid());
+        assertFalse(validationResponse.isValid());
     }
 
     @Test
     public void givenOnlyErrorsSet_whenIsValidCalled_thenReturnsTrue() {
         ValidationResponse validationResponse = ValidationResponse.builder()
-            .errors(Arrays.asList("ERROR!"))
-            .warnings(Collections.emptyList())
+            .errors(singletonList("ERROR!"))
+            .warnings(emptyList())
             .build();
 
-        assertEquals(false, validationResponse.isValid());
+        assertFalse(validationResponse.isValid());
     }
 
     @Test
     public void givenBothSet_whenIsValidCalled_thenReturnsTrue() {
         ValidationResponse validationResponse = ValidationResponse.builder()
-            .errors(Arrays.asList("ERROR!"))
-            .warnings(Arrays.asList("Warning!"))
+            .errors(singletonList("ERROR!"))
+            .warnings(singletonList("Warning!"))
             .build();
 
-        assertEquals(false, validationResponse.isValid());
+        assertFalse(validationResponse.isValid());
     }
-
 }

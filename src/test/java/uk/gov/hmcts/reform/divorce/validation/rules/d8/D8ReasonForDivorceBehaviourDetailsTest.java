@@ -9,6 +9,8 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class D8ReasonForDivorceBehaviourDetailsTest {
@@ -28,7 +30,7 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
 
-        assertEquals(true, result);
+        assertTrue(result);
     }
 
     @Test
@@ -36,7 +38,7 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
 
-        assertEquals(false, result);
+        assertFalse(result);
     }
 
     @Test
@@ -46,7 +48,7 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
         rule.setCoreCaseData(coreCaseData);
         boolean result = rule.when();
 
-        assertEquals(false, result);
+        assertFalse(result);
     }
 
     @Test

@@ -15,12 +15,12 @@ public class CoreCaseDataJsonTest {
     @Test
     public void givenJsonOfCoreCaseDataModel_whenMappedToCoreCaseData_thenReturnAllModelledProperties()
         throws Exception {
-        Map<String, Object> expectedCoreCaseData = ObjectMapperTestUtil
+        Map expectedCoreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject(expectedJsonPath, Map.class);
 
         CoreCaseData coreCaseData = ObjectMapperTestUtil
             .retrieveFileContentsAsObject(inputJsonPath, CoreCaseData.class);
-        Map<String, Object> coreCaseDataMap = ObjectMapperTestUtil
+        Map coreCaseDataMap = ObjectMapperTestUtil
             .convertJsonToObject(ObjectMapperTestUtil.convertObjectToJson(coreCaseData), Map.class);
 
         assertEquals(expectedCoreCaseData, coreCaseDataMap);

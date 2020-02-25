@@ -102,9 +102,7 @@ public class DocumentCollectionCCDFormatMapperUTest {
         uploadedFile.setFileName(FILE_NAME);
         uploadedFile.setFileUrl(FILE_URL);
 
-        CollectionMember<Document> collectionMember = mapper.map(uploadedFile);
-
-        collectionMember.getValue();
+        mapper.map(uploadedFile);
 
         verify(documentUrlRewrite).getDocumentUrl(FILE_URL);
     }

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -27,7 +27,7 @@ public abstract class ObjectMapperTestUtil {
         URL resource = ObjectMapperTestUtil.class.getClassLoader().getResource(absoluteFilePath);
         if (resource != null) {
             URI uri = resource.toURI();
-            return new String(Files.readAllBytes(Paths.get(uri)), Charset.forName("utf-8"));
+            return new String(Files.readAllBytes(Paths.get(uri)), StandardCharsets.UTF_8);
         } else {
             throw new RuntimeException(format("File %s not found", absoluteFilePath));
         }
@@ -40,5 +40,4 @@ public abstract class ObjectMapperTestUtil {
     public static <T> T convertJsonToObject(final String json, Class<T> type) throws IOException {
         return objectMapper.readValue(json, type);
     }
-
 }

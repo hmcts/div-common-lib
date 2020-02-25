@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import uk.gov.hmcts.reform.divorce.config.BeanConfig;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.DivorceCaseToDnClarificationMapper;
 import uk.gov.hmcts.reform.divorce.formatter.mapper.ObjectMapperTestUtil;
@@ -19,9 +18,9 @@ import uk.gov.hmcts.reform.divorce.model.ccd.DocumentLink;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.samePropertyValuesAs;
 
@@ -79,8 +78,8 @@ public class DivorceCaseToDnClarificationMapperUTest {
         uploadAnyOtherDocuments.setValue("Clarification 1: No");
 
         CoreCaseData coreCaseData = new CoreCaseData();
-        coreCaseData.setDnClarificationResponse(new ArrayList<>(Arrays.asList(clarificationResponse)));
-        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(Arrays.asList(uploadAnyOtherDocuments)));
+        coreCaseData.setDnClarificationResponse(new ArrayList<>(singletonList(clarificationResponse)));
+        coreCaseData.setDnClarificationUploadDocuments(new ArrayList<>(singletonList(uploadAnyOtherDocuments)));
         coreCaseData.setDocumentsUploadedDnClarification(existingDocuments);
 
         DnRefusalCaseData expectedDnCaseData = ObjectMapperTestUtil
@@ -99,14 +98,12 @@ public class DivorceCaseToDnClarificationMapperUTest {
     }
 
     @Test
-    public void shouldNotThrowErrorEvenWhenClarificationDataIsNull() throws Exception {
+    public void shouldNotThrowErrorEvenWhenClarificationDataIsNull() {
         CoreCaseData coreCaseData = new CoreCaseData();
         DivorceSession divorceSession = new DivorceSession();
 
         DivorceCaseWrapper divorceCaseWrapper = new DivorceCaseWrapper(coreCaseData, divorceSession);
-
         DnRefusalCaseData expectedDnCaseData = new DnRefusalCaseData();
-
         DnRefusalCaseData actualDnCaseData = mapper.divorceCaseDataToDnCaseData(divorceCaseWrapper);
 
         assertThat(actualDnCaseData, samePropertyValuesAs(expectedDnCaseData));

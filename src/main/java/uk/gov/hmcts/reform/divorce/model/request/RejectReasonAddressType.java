@@ -9,7 +9,7 @@ public enum RejectReasonAddressType {
 
     private String name;
 
-    private RejectReasonAddressType(String name) {
+    RejectReasonAddressType(String name) {
         this.name = name;
     }
 
@@ -17,5 +17,4 @@ public enum RejectReasonAddressType {
     public String toString() {
         return this.name;
     }
-
 }

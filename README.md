@@ -1,5 +1,5 @@
 # div-common-lib
-Re-usable features for all divorce java projects
+Re-usable components for all HMCTS Divorce Java based projects
 
 ### Prerequisites
 
