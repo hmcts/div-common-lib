@@ -15,14 +15,6 @@ import static uk.gov.hmcts.reform.divorce.config.WelshTemplateConfig.MONTHS;
 import static uk.gov.hmcts.reform.divorce.config.WelshTemplateConfig.RELATION;
 import static uk.gov.hmcts.reform.divorce.config.WelshTemplateConfig.WELSH;
 
-/*@ContextConfiguration(
-        classes = { WelshTemplateConfig.class},
-        initializers = {ConfigFileApplicationContextInitializer.class} )
-@TestPropertySource(properties = { "spring.config.location=classpath:application.yml" })
-//@RunWith(SpringJUnit4ClassRunner.class)
-
-
- */
 @ContextConfiguration(classes = WelshTemplateConfig.class)
 @SpringBootTest
 @RunWith(SpringRunner.class)
