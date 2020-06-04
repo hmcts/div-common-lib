@@ -18,10 +18,13 @@ import java.util.TimeZone;
 
 @Slf4j
 public class DateUtils {
+    public static final String DEFAULT_FORMATTING = "yyyy-MM-dd";
+    public static final String TIME_FORMAT = "HH:mm";
 
     private static final DateTimeFormatter CLIENT_FACING_DATE_FORMAT = DateTimeFormatter
         .ofLocalizedDate(FormatStyle.LONG)
         .withLocale(Locale.UK);
+    public static final String DATE_FORMAT_FOR_DOCUMENTS = "dd MMM yyyy";
 
     private DateUtils() {
         // utility class
@@ -30,7 +33,7 @@ public class DateUtils {
     public static Instant parseToInstant(String date) {
         Instant instant = null;
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DEFAULT_FORMATTING, Locale.getDefault());
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             instant = simpleDateFormat
                 .parse(date)
@@ -58,9 +61,20 @@ public class DateUtils {
         return date.format(CLIENT_FACING_DATE_FORMAT);
     }
 
-    public static String formatDateFromLocalDate(LocalDate date) {
+    public static String formatDateForDocuments(String date) {
+        return formatDateForDocuments(
+            parseToInstant(date)
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate()
+        );
+    }
 
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    public static String formatDateForDocuments(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern(DATE_FORMAT_FOR_DOCUMENTS, Locale.UK));
+    }
+
+    public static String formatDateFromLocalDate(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern(DEFAULT_FORMATTING, Locale.UK));
     }
 
     public static String formatDateFromDateTime(LocalDateTime dateTime) {
@@ -68,7 +82,7 @@ public class DateUtils {
     }
 
     public static String formatTimeFromDateTime(LocalDateTime dateTime) {
-        return dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+        return dateTime.toLocalTime().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
     }
 
     public static String formatNullableDate(Date date, String pattern) {
