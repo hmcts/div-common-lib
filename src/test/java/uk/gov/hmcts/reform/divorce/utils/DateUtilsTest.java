@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateForDocuments;
+import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateTimeForCcd;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateWithCustomerFacingFormat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -140,5 +141,13 @@ public class DateUtilsTest {
                 is("20 Oct 1999")
         );
         assertThat(formatDateForDocuments("1999-10-20"), is("20 Oct 1999"));
+    }
+
+    @Test
+    public void formatDateTimeForCcdReturnsValidString() {
+        assertThat(
+            formatDateTimeForCcd(LocalDateTime.of(2020, Month.JUNE, 4, 2,1,5)),
+            is("2020-06-04T02:01:05.000")
+        );
     }
 }

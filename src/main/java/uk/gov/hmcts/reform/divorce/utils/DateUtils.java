@@ -25,6 +25,10 @@ public class DateUtils {
          */
         public static final String DEFAULT_DATE = "yyyy-MM-dd";
         /*
+         Format of datetime expected by CCD
+         */
+        public static final String CCD_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss.SSS";
+        /*
          Format of dates for documents to print, eg. 05 Nov 2000
          */
         public static final String DOCUMENTS_DATE = "dd MMM yyyy";
@@ -39,6 +43,13 @@ public class DateUtils {
         public static TimeZone TIME_ZONE = TimeZone.getTimeZone(ZONE);
         public static Locale LOCALE = Locale.UK;
         public static ZoneId ZONE_ID = ZoneId.of(ZONE);
+    }
+
+    public static class Formatters {
+        public static DateTimeFormatter CLIENT_FACING = getFormatter(Formats.CLIENT_FACING_DATE);
+        public static DateTimeFormatter DOCUMENTS = getFormatter(Formats.DOCUMENTS_DATE);
+        public static DateTimeFormatter DEFAULT = getFormatter(Formats.DEFAULT_DATE);
+        public static DateTimeFormatter CCD_DATE_TIME = getFormatter(Formats.CCD_DATE_TIME);
     }
 
     private DateUtils() {
@@ -73,7 +84,7 @@ public class DateUtils {
     }
 
     public static String formatDateWithCustomerFacingFormat(LocalDate date) {
-        return date.format(getFormatter(Formats.CLIENT_FACING_DATE));
+        return date.format(Formatters.CLIENT_FACING);
     }
 
     public static String formatDateForDocuments(String date) {
@@ -85,11 +96,15 @@ public class DateUtils {
     }
 
     public static String formatDateForDocuments(LocalDate date) {
-        return date.format(getFormatter(Formats.DOCUMENTS_DATE));
+        return date.format(Formatters.DOCUMENTS);
+    }
+
+    public static String formatDateTimeForCcd(LocalDateTime dateTime) {
+        return dateTime.format(Formatters.CCD_DATE_TIME);
     }
 
     public static String formatDateFromLocalDate(LocalDate date) {
-        return date.format(getFormatter(Formats.DEFAULT_DATE));
+        return date.format(Formatters.DEFAULT);
     }
 
     public static String formatDateFromDateTime(LocalDateTime dateTime) {
