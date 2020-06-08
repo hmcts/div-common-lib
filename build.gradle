@@ -1,7 +1,7 @@
 plugins {
     id 'checkstyle'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'org.springframework.boot' version '2.2.4.RELEASE'
+    id 'org.springframework.boot' version '2.1.14.RELEASE'
     id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'java-library'
@@ -11,7 +11,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.1.20'
+version '1.1.21'
 
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
@@ -29,6 +29,8 @@ dependencyUpdates.resolutionStrategy = {
 checkstyle {
     maxWarnings = 0
     toolVersion = '8.22'
+
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
 }
 
 sourceCompatibility = 1.8
