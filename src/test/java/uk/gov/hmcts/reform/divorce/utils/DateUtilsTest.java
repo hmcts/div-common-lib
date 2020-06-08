@@ -7,13 +7,18 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateForDocuments;
+import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateWithCustomerFacingFormat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DateUtilsTest {
@@ -113,5 +118,27 @@ public class DateUtilsTest {
         String dateString = DateUtils.formatNullableDate(date, "YYYY");
 
         assertEquals(expectedDateString, dateString);
+    }
+
+    @Test
+    public void formatDateWithCustomerFacingFormatReturnsFormattedDateString() {
+        assertThat(
+            formatDateWithCustomerFacingFormat(LocalDate.of(2020, Month.JUNE, 4)),
+            is("4 June 2020")
+        );
+    }
+
+    @Test
+    public void formatDateForDocumentsReturnsFormattedDateStringLeadingZerosForDay() {
+        assertThat(
+            formatDateForDocuments(LocalDate.of(2020, Month.JUNE, 4)),
+            is("04 Jun 2020")
+        );
+        assertThat(formatDateForDocuments("2020-06-04"), is("04 Jun 2020"));
+        assertThat(
+                formatDateForDocuments(LocalDate.of(1999, Month.OCTOBER, 20)),
+                is("20 Oct 1999")
+        );
+        assertThat(formatDateForDocuments("1999-10-20"), is("20 Oct 1999"));
     }
 }

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Optional;
@@ -19,9 +18,28 @@ import java.util.TimeZone;
 @Slf4j
 public class DateUtils {
 
-    private static final DateTimeFormatter CLIENT_FACING_DATE_FORMAT = DateTimeFormatter
-        .ofLocalizedDate(FormatStyle.LONG)
-        .withLocale(Locale.UK);
+    public static class Formats {
+        public static final String TIME = "HH:mm";
+        /*
+         Format of Date stored in CCD, eg: 2010-05-08
+         */
+        public static final String DEFAULT_DATE = "yyyy-MM-dd";
+        /*
+         Format of dates for documents to print, eg. 05 Nov 2000
+         */
+        public static final String DOCUMENTS_DATE = "dd MMM yyyy";
+        /*
+         Format of dates to display to user, eg. 7 July 1999
+         */
+        public static final String CLIENT_FACING_DATE = "d MMMM yyyy";
+    }
+
+    public static class Settings {
+        public static String ZONE = "Europe/London";
+        public static TimeZone TIME_ZONE = TimeZone.getTimeZone(ZONE);
+        public static Locale LOCALE = Locale.UK;
+        public static ZoneId ZONE_ID = ZoneId.of(ZONE);
+    }
 
     private DateUtils() {
         // utility class
@@ -30,8 +48,8 @@ public class DateUtils {
     public static Instant parseToInstant(String date) {
         Instant instant = null;
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Formats.DEFAULT_DATE, Settings.LOCALE);
+            simpleDateFormat.setTimeZone(Settings.TIME_ZONE);
             instant = simpleDateFormat
                 .parse(date)
                 .toInstant();
@@ -45,7 +63,7 @@ public class DateUtils {
     public static String formatDate(Date date) {
         return formatDateFromLocalDate(
             date.toInstant()
-                .atZone(ZoneId.systemDefault())
+                .atZone(Settings.ZONE_ID)
                 .toLocalDate()
         );
     }
@@ -55,12 +73,23 @@ public class DateUtils {
     }
 
     public static String formatDateWithCustomerFacingFormat(LocalDate date) {
-        return date.format(CLIENT_FACING_DATE_FORMAT);
+        return date.format(getFormatter(Formats.CLIENT_FACING_DATE));
+    }
+
+    public static String formatDateForDocuments(String date) {
+        return formatDateForDocuments(
+            parseToInstant(date)
+                .atZone(Settings.ZONE_ID)
+                .toLocalDate()
+        );
+    }
+
+    public static String formatDateForDocuments(LocalDate date) {
+        return date.format(getFormatter(Formats.DOCUMENTS_DATE));
     }
 
     public static String formatDateFromLocalDate(LocalDate date) {
-
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return date.format(getFormatter(Formats.DEFAULT_DATE));
     }
 
     public static String formatDateFromDateTime(LocalDateTime dateTime) {
@@ -68,7 +97,7 @@ public class DateUtils {
     }
 
     public static String formatTimeFromDateTime(LocalDateTime dateTime) {
-        return dateTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+        return dateTime.toLocalTime().format(getFormatter(Formats.TIME));
     }
 
     public static String formatNullableDate(Date date, String pattern) {
@@ -76,5 +105,9 @@ public class DateUtils {
             Optional.ofNullable(date).orElse(new Date(0)),
             pattern
         );
+    }
+
+    private static DateTimeFormatter getFormatter(String formatPattern) {
+        return DateTimeFormatter.ofPattern(formatPattern, Settings.LOCALE);
     }
 }
