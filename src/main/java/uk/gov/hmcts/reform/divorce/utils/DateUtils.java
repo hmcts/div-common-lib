@@ -23,15 +23,11 @@ public class DateUtils {
         /*
          Format of Date stored in CCD, eg: 2010-05-08
          */
-        public static final String DEFAULT_DATE = "yyyy-MM-dd";
+        public static final String CCD_DATE = "yyyy-MM-dd";
         /*
          Format of datetime expected by CCD
          */
         public static final String CCD_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss.SSS";
-        /*
-         Format of dates for documents to print, eg. 05 Nov 2000
-         */
-        public static final String DOCUMENTS_DATE = "dd MMM yyyy";
         /*
          Format of dates to display to user, eg. 7 July 1999
          */
@@ -46,10 +42,9 @@ public class DateUtils {
     }
 
     public static class Formatters {
-        public static DateTimeFormatter CLIENT_FACING = getFormatter(Formats.CLIENT_FACING_DATE);
-        public static DateTimeFormatter DOCUMENTS = getFormatter(Formats.DOCUMENTS_DATE);
-        public static DateTimeFormatter DEFAULT = getFormatter(Formats.DEFAULT_DATE);
+        public static DateTimeFormatter CCD_DATE = getFormatter(Formats.CCD_DATE);
         public static DateTimeFormatter CCD_DATE_TIME = getFormatter(Formats.CCD_DATE_TIME);
+        public static DateTimeFormatter CLIENT_FACING = getFormatter(Formats.CLIENT_FACING_DATE);
     }
 
     private DateUtils() {
@@ -59,7 +54,7 @@ public class DateUtils {
     public static Instant parseToInstant(String date) {
         Instant instant = null;
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Formats.DEFAULT_DATE, Settings.LOCALE);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Formats.CCD_DATE, Settings.LOCALE);
             simpleDateFormat.setTimeZone(Settings.TIME_ZONE);
             instant = simpleDateFormat
                 .parse(date)
@@ -87,16 +82,12 @@ public class DateUtils {
         return date.format(Formatters.CLIENT_FACING);
     }
 
-    public static String formatDateForDocuments(String date) {
-        return formatDateForDocuments(
+    public static String formatDateWithCustomerFacingFormat(String date) {
+        return formatDateWithCustomerFacingFormat(
             parseToInstant(date)
                 .atZone(Settings.ZONE_ID)
                 .toLocalDate()
         );
-    }
-
-    public static String formatDateForDocuments(LocalDate date) {
-        return date.format(Formatters.DOCUMENTS);
     }
 
     public static String formatDateTimeForCcd(LocalDateTime dateTime) {
@@ -104,7 +95,7 @@ public class DateUtils {
     }
 
     public static String formatDateFromLocalDate(LocalDate date) {
-        return date.format(Formatters.DEFAULT);
+        return date.format(Formatters.CCD_DATE);
     }
 
     public static String formatDateFromDateTime(LocalDateTime dateTime) {
