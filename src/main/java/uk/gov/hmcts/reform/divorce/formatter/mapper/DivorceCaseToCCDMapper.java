@@ -31,7 +31,7 @@ import static uk.gov.hmcts.reform.divorce.formatter.mapper.MappingCommons.toYesN
 @Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 @SuppressWarnings({"PMD.GodClass", "common-java:DuplicatedBlocks"})
-public abstract class DivorceCaseToCCDMapper {
+public abstract class DivorceCaseToCCDMapper {//TODO - do we need this?
 
     private static final String BLANK_SPACE = " ";
     private static final String LINE_SEPARATOR = "\n";

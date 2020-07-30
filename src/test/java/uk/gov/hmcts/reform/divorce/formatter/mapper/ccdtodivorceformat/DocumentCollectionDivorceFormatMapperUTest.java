@@ -27,7 +27,7 @@ import static org.junit.Assert.assertNull;
 public class DocumentCollectionDivorceFormatMapperUTest {
     private static final String FILE_URL =
         "http://em-api-gateway-web:3404/documents/3627acc4-cb3b-4c95-9588-fea94e6c5855";
-    private static final String FILE_NAME = "test-file";
+    private static final String FILE_NAME = "test-file";//TODO - we probably want to get rid of this
 
     @Autowired
     private DocumentCollectionDivorceFormatMapper mapper;

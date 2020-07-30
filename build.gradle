@@ -13,6 +13,8 @@ plugins {
 group 'uk.gov.hmcts.reform'
 version '1.1.23'
 
+//TODO - bootRun task should not exist for this project
+
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
         rules.all { ComponentSelection selection ->
