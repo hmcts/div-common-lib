@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.divorce.formatter.mapper;
+package uk.gov.hmcts.reform.divorce.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
