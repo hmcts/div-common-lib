@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Before;
 import org.junit.Test;
-import uk.gov.hmcts.reform.divorce.formatter.mapper.ObjectMapperTestUtil;
+import uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;

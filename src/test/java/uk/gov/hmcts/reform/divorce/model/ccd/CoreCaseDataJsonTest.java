@@ -1,7 +1,7 @@
 package uk.gov.hmcts.reform.divorce.model.ccd;
 
 import org.junit.Test;
-import uk.gov.hmcts.reform.divorce.formatter.mapper.ObjectMapperTestUtil;
+import uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil;
 
 import java.util.Map;
 
