@@ -10,7 +10,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.1.25'
+version '1.1.26'
 
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
@@ -123,7 +123,6 @@ bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
     publications = ['Main']
-    publish = true
     pkg {
         repo = 'hmcts-maven'
         name = 'div-common-lib'
