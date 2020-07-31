@@ -10,7 +10,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.1.24'
+version '1.1.25'
 
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
