@@ -151,7 +151,7 @@ public class DateUtilsTest {
     public void formatDateTimeForDocumentReturnsValidString() {
         assertThat(
                 formatDateTimeForDocument(LocalDateTime.of(2020, Month.OCTOBER, 14, 2, 1, 5)),
-                is("2020-10-14T02:01:05")
+                is("2020-10-14T02:01")
         );
     }
 
@@ -159,7 +159,7 @@ public class DateUtilsTest {
     public void givenDateBeforeYear2000_whenformatDateTimeForDocument_thenReturnsValidString() {
         assertThat(
                 formatDateTimeForDocument(LocalDateTime.of(1999, Month.MAY, 1, 2, 1, 5)),
-                is("1999-05-01T02:01:05")
+                is("1999-05-01T02:01")
         );
     }
 
@@ -167,7 +167,7 @@ public class DateUtilsTest {
     public void givenYearWith3Digits_whenformatDateTimeForDocument_thenReturnsValidString() {
         assertThat(
                 formatDateTimeForDocument(LocalDateTime.of(345, Month.OCTOBER, 20, 2, 1, 5)),
-                is("0345-10-20T02:01:05")
+                is("0345-10-20T02:01")
         );
     }
 
@@ -175,7 +175,7 @@ public class DateUtilsTest {
     public void givenAfternoonTime_whenformatDateTimeForDocument_thenReturnsValidString() {
         assertThat(
                 formatDateTimeForDocument(LocalDateTime.of(2020, Month.OCTOBER, 14, 13, 1, 5)),
-                is("2020-10-14T13:01:05")
+                is("2020-10-14T13:01")
         );
     }
 }
