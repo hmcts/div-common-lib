@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateTimeForCcd;
+import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateTimeForDocument;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateWithCustomerFacingFormat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -143,6 +144,38 @@ public class DateUtilsTest {
         assertThat(
             formatDateTimeForCcd(LocalDateTime.of(2020, Month.JUNE, 4, 2, 1, 5)),
             is("2020-06-04T02:01:05.000")
+        );
+    }
+
+    @Test
+    public void formatDateTimeForDocumentReturnsValidString() {
+        assertThat(
+                formatDateTimeForDocument(LocalDateTime.of(2020, Month.OCTOBER, 14, 2, 1, 5)),
+                is("2020-10-14T02:01:05")
+        );
+    }
+
+    @Test
+    public void givenDateBeforeYear2000_whenformatDateTimeForDocument_thenReturnsValidString() {
+        assertThat(
+                formatDateTimeForDocument(LocalDateTime.of(1999, Month.MAY, 1, 2, 1, 5)),
+                is("1999-05-01T02:01:05")
+        );
+    }
+
+    @Test
+    public void givenYearWith3Digits_whenformatDateTimeForDocument_thenReturnsValidString() {
+        assertThat(
+                formatDateTimeForDocument(LocalDateTime.of(345, Month.OCTOBER, 20, 2, 1, 5)),
+                is("0345-10-20T02:01:05")
+        );
+    }
+
+    @Test
+    public void givenAfternoonTime_whenformatDateTimeForDocument_thenReturnsValidString() {
+        assertThat(
+                formatDateTimeForDocument(LocalDateTime.of(2020, Month.OCTOBER, 14, 13, 1, 5)),
+                is("2020-10-14T13:01:05")
         );
     }
 }

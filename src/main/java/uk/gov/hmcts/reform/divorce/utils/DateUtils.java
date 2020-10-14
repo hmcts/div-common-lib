@@ -32,6 +32,10 @@ public class DateUtils {
          Format of dates to display to user, eg. 7 July 1999
          */
         public static final String CLIENT_FACING_DATE = "d MMMM yyyy";
+        /*
+         Format of datetime expected for document names that can be generated multiple times
+         */
+        public static final String DOCUMENT_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss";
     }
 
     public static class Settings {
@@ -45,6 +49,7 @@ public class DateUtils {
         public static DateTimeFormatter CCD_DATE = getFormatter(Formats.CCD_DATE);
         public static DateTimeFormatter CCD_DATE_TIME = getFormatter(Formats.CCD_DATE_TIME);
         public static DateTimeFormatter CLIENT_FACING = getFormatter(Formats.CLIENT_FACING_DATE);
+        public static DateTimeFormatter DOCUMENT_DATE_TIME = getFormatter(Formats.DOCUMENT_DATE_TIME);
     }
 
     private DateUtils() {
@@ -92,6 +97,10 @@ public class DateUtils {
 
     public static String formatDateTimeForCcd(LocalDateTime dateTime) {
         return dateTime.format(Formatters.CCD_DATE_TIME);
+    }
+
+    public static String formatDateTimeForDocument(LocalDateTime dateTime) {
+        return dateTime.format(Formatters.DOCUMENT_DATE_TIME);
     }
 
     public static String formatDateFromLocalDate(LocalDate date) {
