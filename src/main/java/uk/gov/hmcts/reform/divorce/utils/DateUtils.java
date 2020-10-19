@@ -35,7 +35,7 @@ public class DateUtils {
         /*
          Format of datetime expected for document names that can be generated multiple times
          */
-        public static final String DOCUMENT_DATE_TIME = "yyyy-MM-dd'T'HH:mm";
+        public static final String DOCUMENT_DATE_TIME = "yyyy-MM-dd:HH:mm";
     }
 
     public static class Settings {
