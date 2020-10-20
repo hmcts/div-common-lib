@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
@@ -178,4 +179,21 @@ public class DateUtilsTest {
                 is("2020-10-14:13:01")
         );
     }
+
+    @Test
+    public void nonNullDateReturnsFormattedDateString() {
+        assertEquals("01 01 2001", DateUtils.format(
+            Date.from(LocalDate.of(2001, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant()),
+            "dd MM yyyy")
+        );
+    }
+
+    @Test
+    public void nullDateReturnsFormattedZeroDateString() {
+        assertEquals("01 01 1970", DateUtils.format(
+            null,
+            "dd MM yyyy")
+        );
+    }
+
 }
