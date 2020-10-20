@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
-import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 
 import java.util.List;
 

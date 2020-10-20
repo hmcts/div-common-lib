@@ -125,4 +125,11 @@ public class DateUtils {
     private static DateTimeFormatter getFormatter(String formatPattern) {
         return DateTimeFormatter.ofPattern(formatPattern, Settings.LOCALE);
     }
+
+    public static String format(Date date, String pattern) {
+        return DateFormatUtils.format(
+            Optional.ofNullable(date).orElse(new Date(0)),
+            pattern
+        );
+    }
 }
