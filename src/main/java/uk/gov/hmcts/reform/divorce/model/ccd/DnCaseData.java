@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
+import uk.gov.hmcts.reform.divorce.model.ccd.Document;
 
 import java.util.List;
 
@@ -21,6 +23,12 @@ public class DnCaseData extends DnRefusalCaseData {
     @JsonProperty("PetitionChangedDetailsDN")
     private String petitionChangedDetailsDN;
 
+    @JsonProperty("PetitionChangedDetailsDNTrans")
+    private String petitionChangedDetailsDNTrans;
+
+    @JsonProperty("PetitionChangedDetailsDNTransLang")
+    private String petitionChangedDetailsDNTransLang;
+
     @JsonProperty("ConfirmPetitionDN")
     private String confirmPetitionDN;
 
@@ -29,6 +37,12 @@ public class DnCaseData extends DnRefusalCaseData {
 
     @JsonProperty("CostsDifferentDetails")
     private String costsDifferentDetails;
+
+    @JsonProperty("CostsDifferentDetailsTrans")
+    private String costsDifferentDetailsTrans;
+
+    @JsonProperty("CostsDifferentDetailsTransLang")
+    private String costsDifferentDetailsTransLang;
 
     @JsonProperty("statementOfTruthDN")
     private String statementOfTruthDN;
@@ -51,6 +65,12 @@ public class DnCaseData extends DnRefusalCaseData {
     @JsonProperty("AdulteryTimeLivedTogetherDetailsDN")
     private String adulteryTimeLivedTogetherDetailsDN;
 
+    @JsonProperty("AdulteryTimeLivedTogetherDetailsDNTrans")
+    private String adulteryTimeLivedTogetherDetailsDNTrans;
+
+    @JsonProperty("AdulteryTimeLivedTogetherDetailsDNTransLang")
+    private String adulteryTimeLivedTogetherDetailsDNTransLang;
+
     @JsonProperty("BehaviourStillHappeningDN")
     private String behaviourStillHappeningDN;
 
@@ -63,11 +83,23 @@ public class DnCaseData extends DnRefusalCaseData {
     @JsonProperty("BehaviourTimeLivedTogetherDetailsDN")
     private String behaviourTimeLivedTogetherDetailsDN;
 
+    @JsonProperty("BehaviourTimeLivedTogetherDetailsDNTrans")
+    private String behaviourTimeLivedTogetherDetailsDNTrans;
+
+    @JsonProperty("BehaviourTimeLivedTogetherDetailsDNTransLang")
+    private String behaviourTimeLivedTogetherDetailsDNTransLang;
+
     @JsonProperty("DesertionLivedApartSinceEventDN")
     private String desertionLivedApartSinceEventDN;
 
     @JsonProperty("DesertionTimeLivedTogetherDetailsDN")
     private String desertionTimeLivedTogetherDetailsDN;
+
+    @JsonProperty("DesertionTimeLivedTogetherDetailsDNTrans")
+    private String desertionTimeLivedTogetherDetailsDNTrans;
+
+    @JsonProperty("DesertionTimeLivedTogetherDetailsDNTransLang")
+    private String desertionTimeLivedTogetherDetailsDNTransLang;
 
     @JsonProperty("SeparationLivedApartSinceEventDN")
     private String separationLivedApartSinceEventDN;
