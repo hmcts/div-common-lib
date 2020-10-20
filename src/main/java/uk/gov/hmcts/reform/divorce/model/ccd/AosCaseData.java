@@ -26,6 +26,12 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("RespJurisdictionDisagreeReason")
     private String respJurisdictionDisagreeReason;
 
+    @JsonProperty("RespJurisdictionDisagreeReasonTrans")
+    private String respJurisdictionDisagreeReasonTrans;
+
+    @JsonProperty("RespJurisdictionDisagreeReasonTransLang")
+    private String respJurisdictionDisagreeReasonTransLang;
+
     @JsonProperty("RespJurisdictionRespCountryOfResidence")
     private String respJurisdictionRespCountryOfResidence;
 
@@ -35,6 +41,12 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("RespLegalProceedingsDescription")
     private String respLegalProceedingsDescription;
 
+    @JsonProperty("RespLegalProceedingsDescriptionTrans")
+    private String respLegalProceedingsDescriptionTrans;
+
+    @JsonProperty("RespLegalProceedingsDescriptionTransLang")
+    private String respLegalProceedingsDescriptionTransLang;
+
     @JsonProperty("RespAgreeToCosts")
     private String respAgreeToCosts;
 
@@ -43,6 +55,12 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("RespCostsReason")
     private String respCostsReason;
+
+    @JsonProperty("RespCostsReasonTrans")
+    private String respCostsReasonTrans;
+
+    @JsonProperty("RespCostsReasonTransLang")
+    private String respCostsReasonTransLang;
 
     @JsonProperty("RespEmailAddress")
     private String respEmailAddress;
@@ -77,6 +95,9 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("ReceivedAOSfromResp")
     private String receivedAosFromResp;
 
+    @JsonProperty("RespondentPcqId")
+    private String respondentPcqId;
+
     //Co-respondent answers
 
     @JsonProperty("CoRespConfirmReadPetition")
@@ -96,6 +117,12 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("CoRespCostsReason")
     private String coRespCostsReason;
+
+    @JsonProperty("CoRespCostsReasonTrans")
+    private String coRespCostsReasonTrans;
+
+    @JsonProperty("CoRespCostsReasonTransLang")
+    private String coRespCostsReasonTransLang;
 
     @JsonProperty("CoRespDefendsDivorce")
     private String coRespDefendsDivorce;
@@ -157,4 +184,13 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("D8DerivedRespondentSolicitorAddr")
     private String d8DerivedRespondentSolicitorAddr;
+
+    @JsonProperty("CoRespondentPcqId")
+    private String coRespondentPcqId;
+
+    @JsonProperty("ServiceApplicationType")
+    private String serviceApplicationType;
+
+    @JsonProperty("ServiceApplicationGranted")
+    private String serviceApplicationGranted;
 }
