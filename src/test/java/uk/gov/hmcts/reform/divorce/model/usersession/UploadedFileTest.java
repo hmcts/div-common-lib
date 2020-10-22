@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Before;
 import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 import uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil;
 
 import java.text.SimpleDateFormat;
@@ -53,6 +54,6 @@ public class UploadedFileTest {
             .writer(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH))
             .withDefaultPrettyPrinter();
 
-        assertEquals(json.trim(), objectWriter.writeValueAsString(uploadedFile));
+        JSONAssert.assertEquals(json.trim(), objectWriter.writeValueAsString(uploadedFile), true);
     }
 }

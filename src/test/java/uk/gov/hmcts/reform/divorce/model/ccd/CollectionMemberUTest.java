@@ -6,15 +6,18 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Before;
 import org.junit.Test;
-import uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
+import static uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil.getObjectMapperInstance;
+import static uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil.retrieveFileContents;
 
 public class CollectionMemberUTest {
-    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    private final ObjectMapper objectMapper = getObjectMapperInstance();
 
     private CollectionMember<Document> collectionMember;
     private String json;
@@ -22,10 +25,9 @@ public class CollectionMemberUTest {
 
     @Before
     public void setUp() throws Exception {
-        json = ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/CollectionMember.json");
+        json = retrieveFileContents("fixtures/model/ccd/CollectionMember.json");
 
-        jsonNullDocumentFieldsRemoved =
-            ObjectMapperTestUtil.retrieveFileContents("fixtures/model/ccd/CollectionMemberNoNullFields.json");
+        jsonNullDocumentFieldsRemoved = retrieveFileContents("fixtures/model/ccd/CollectionMemberNoNullFields.json");
 
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl("http://localhost/document");
@@ -56,6 +58,6 @@ public class CollectionMemberUTest {
             .writer(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH))
             .withDefaultPrettyPrinter();
 
-        assertEquals(jsonNullDocumentFieldsRemoved.trim(), objectWriter.writeValueAsString(collectionMember));
+        JSONAssert.assertEquals(jsonNullDocumentFieldsRemoved.trim(), objectWriter.writeValueAsString(collectionMember), true);
     }
 }
