@@ -1,35 +1,35 @@
 {
-    "D8DivorceWho":"husband",
-    "D8DocumentsGenerated":[
-        {
-            "id":null,
-            "value":{
-                "DocumentType":"aos",
-                "DocumentLink":{
-                    "document_url":"url2",
-                    "document_binary_url":"url2/binary",
-                    "document_filename":"fileName2.pdf"
-                },
-                "DocumentDateAdded":null,
-                "DocumentComment":null,
-                "DocumentFileName":"fileName2",
-                "DocumentEmailContent":null
-            }
+  "D8DivorceWho": "husband",
+  "D8DocumentsGenerated": [
+    {
+      "id": null,
+      "value": {
+        "DocumentType": "aos",
+        "DocumentLink": {
+          "document_url": "url2",
+          "document_binary_url": "url2/binary",
+          "document_filename": "fileName2.pdf"
         },
-        {
-            "id":null,
-            "value":{
-                "DocumentType":"aos1",
-                "DocumentLink":{
-                    "document_url":"url3",
-                    "document_binary_url":"url3/binary",
-                    "document_filename":"fileName3.pdf"
-                },
-                "DocumentDateAdded":null,
-                "DocumentComment":null,
-                "DocumentFileName":"fileName3",
-                "DocumentEmailContent":null
-            }
-        }
-    ]
+        "DocumentDateAdded": null,
+        "DocumentComment": null,
+        "DocumentFileName": "fileName2",
+        "DocumentEmailContent": null
+      }
+    },
+    {
+      "id": null,
+      "value": {
+        "DocumentType": "aos1",
+        "DocumentLink": {
+          "document_url": "url3",
+          "document_binary_url": "url3/binary",
+          "document_filename": "fileName3.pdf"
+        },
+        "DocumentDateAdded": null,
+        "DocumentComment": null,
+        "DocumentFileName": "fileName3",
+        "DocumentEmailContent": null
+      }
+    }
+  ]
 }

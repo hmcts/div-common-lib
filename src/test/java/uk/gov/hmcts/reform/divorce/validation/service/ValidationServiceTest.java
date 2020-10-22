@@ -4,10 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
-import uk.gov.hmcts.reform.divorce.config.BeanConfig;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import uk.gov.hmcts.reform.divorce.config.MappingConfig;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 
@@ -16,9 +15,10 @@ import static org.junit.Assert.assertNotNull;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
-@ContextConfiguration(classes = BeanConfig.class)
-@SpringBootTest
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {
+    MappingConfig.class
+})
 public class ValidationServiceTest {
 
     @Autowired

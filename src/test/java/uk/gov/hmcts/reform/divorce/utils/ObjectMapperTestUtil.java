@@ -13,12 +13,12 @@ import java.nio.file.Paths;
 
 import static java.lang.String.format;
 
-public abstract class ObjectMapperTestUtil {
+public final class ObjectMapperTestUtil {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static <T> T retrieveFileContentsAsObject(final String absoluteFilePath, Class<T> type)
-            throws IOException, URISyntaxException {
+        throws IOException, URISyntaxException {
         String json = retrieveFileContents(absoluteFilePath);
         return convertJsonToObject(json, type);
     }
@@ -39,6 +39,10 @@ public abstract class ObjectMapperTestUtil {
 
     public static <T> T convertJsonToObject(final String json, Class<T> type) throws IOException {
         return objectMapper.readValue(json, type);
+    }
+
+    public static ObjectMapper getObjectMapperInstance() {
+        return objectMapper;
     }
 
 }
