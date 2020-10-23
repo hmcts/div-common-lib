@@ -4,7 +4,6 @@ import com.deliveredtechnologies.rulebook.FactMap;
 import com.deliveredtechnologies.rulebook.NameValueReferableMap;
 import com.deliveredtechnologies.rulebook.Result;
 import com.deliveredtechnologies.rulebook.model.RuleBook;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +26,6 @@ public class ValidationServiceImpl implements ValidationService {
     public ValidationResponse validate(CoreCaseData coreCaseData) {
         log.info("Validating CoreCaseData");
 
-        ObjectMapper mapper = new ObjectMapper();
         NameValueReferableMap<CoreCaseData> facts = new FactMap<>();
 
         facts.setValue("coreCaseData", coreCaseData);
@@ -50,4 +48,5 @@ public class ValidationServiceImpl implements ValidationService {
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
         }
     }
+
 }
