@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uk.gov.hmcts.reform.divorce.config.MappingConfig;
-import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
+import uk.gov.hmcts.reform.divorce.service.DataTransformer;
 import uk.gov.hmcts.reform.divorce.utils.ObjectMapperTestUtil;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ import static org.hamcrest.Matchers.samePropertyValuesAs;
 public class JurisdictionAllCaseToCCDMapperUTest {
 
     @Autowired
-    private DivorceCaseToCCDMapper mapper;
+    private DataTransformer dataTransformer;
 
     @Test
     public void shouldMapAllAndTransformAllFieldsForJurisdictionAllScenario() throws URISyntaxException, IOException {
@@ -37,7 +37,7 @@ public class JurisdictionAllCaseToCCDMapperUTest {
         DivorceSession divorceSession = ObjectMapperTestUtil.retrieveFileContentsAsObject(
             "fixtures/divorcetoccdmapping/divorce/jurisdiction-all.json", DivorceSession.class);
 
-        CoreCaseData actualCoreCaseData = mapper.divorceCaseDataToCourtCaseData(divorceSession);
+        CoreCaseData actualCoreCaseData = dataTransformer.transformDivorceCaseDataToCourtCaseData(divorceSession);
 
         assertThat(actualCoreCaseData, samePropertyValuesAs(expectedCoreCaseData));
     }
