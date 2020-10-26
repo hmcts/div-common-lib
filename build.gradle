@@ -10,7 +10,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.1.35'
+version '1.1.36'
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -145,6 +145,7 @@ ext {
     commonsLang3 = '3.9'
     springVersion = '2.1.14.RELEASE'
     mapstruct = '1.2.0.Final'
+    jsonPathAssert = '2.2.0'
 }
 
 ext["spring-cloud-openfeign.version"] = "2.1.2.RELEASE"
@@ -174,6 +175,7 @@ dependencies {
     testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.24.1'
     testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock'
     testCompile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: jsonPathAssert
 
     compile group: 'com.deliveredtechnologies', name: 'rulebook-core', version: '0.9.1'
     compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'

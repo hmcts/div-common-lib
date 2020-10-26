@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import uk.gov.hmcts.reform.divorce.mapper.CCDCaseToDivorceMapper;
 import uk.gov.hmcts.reform.divorce.mapper.DivorceCaseToCCDMapper;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
@@ -20,6 +21,9 @@ public class DataTransformerTest {
 
     @Mock
     private DivorceCaseToCCDMapper divorceCaseToCCDMapper;
+
+    @Mock
+    private CCDCaseToDivorceMapper ccdCaseToDivorceMapper;
 
     @InjectMocks
     private DataTransformer dataTransformer;
@@ -41,6 +45,16 @@ public class DataTransformerTest {
 
         assertThat(returnedCoreCaseData, is(testCoreCaseData));
         verify(divorceCaseToCCDMapper).divorceCaseDataToCourtCaseData(testDivorceSession);
+    }
+
+    @Test
+    public void shouldCallAdequateMapperForTransformingCoreCaseDataIntoDivorceCaseData() {
+        when(ccdCaseToDivorceMapper.coreCaseDataToDivorceCaseData(testCoreCaseData)).thenReturn(testDivorceSession);
+
+        DivorceSession returnedDivorceCaseData = dataTransformer.transformCoreCaseDataToDivorceCaseData(testCoreCaseData);
+
+        assertThat(returnedDivorceCaseData, is(testDivorceSession));
+        verify(ccdCaseToDivorceMapper).coreCaseDataToDivorceCaseData(testCoreCaseData);
     }
 
 }

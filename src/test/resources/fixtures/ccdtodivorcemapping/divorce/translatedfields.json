@@ -1,0 +1,213 @@
+{
+  "expires": 0,
+  "screenHasMarriageBroken": "Yes",
+  "screenHasRespondentAddress": "Yes",
+  "screenHasMarriageCert": "Yes",
+  "screenHasPrinter": "Yes",
+  "helpWithFeesNeedHelp": "Yes",
+  "helpWithFeesAppliedForFees": "Yes",
+  "helpWithFeesReferenceNumber": "HWF-123-456",
+  "divorceWho": "husband",
+  "marriageIsSameSexCouple": "No",
+  "marriageDateDay": 2,
+  "marriageDateMonth": 2,
+  "marriageDateYear": 2001,
+  "marriageDate": "2001-02-02T00:00:00.000Z",
+  "marriageCanDivorce": true,
+  "marriageDateIsFuture": false,
+  "marriageDateMoreThan100": false,
+  "marriageWhereMarried": "england",
+  "jurisdictionConnection": [
+    "A",
+    "C"
+  ],
+  "connections": {
+    "A": "The Petitioner and the Respondent are habitually resident in England and Wales",
+    "C": "The Respondent is habitually resident in England and Wales"
+  },
+  "jurisdictionPetitionerResidence": "Yes",
+  "jurisdictionRespondentResidence": "Yes",
+  "jurisdictionConfidentLegal": "Yes",
+  "petitionerContactDetailsConfidential": "share",
+  "petitionerFirstName": "John",
+  "petitionerLastName": "Smith",
+  "respondentFirstName": "Jane",
+  "respondentLastName": "Jamed",
+  "marriagePetitionerName": "John Doe",
+  "marriageRespondentName": "Jenny Benny",
+  "petitionerNameDifferentToMarriageCertificate": "Yes",
+  "petitionerNameChangedHowOtherDetails": "English text for name changed",
+  "petitionerNameChangedHowOtherDetailsTrans": "Welsh text for name changed",
+  "petitionerNameChangedHowOtherDetailsTransLang": "CY",
+  "petitionerNameChangedHow": [
+    "marriageCertificate"
+  ],
+  "petitionerEmail": "simulate-delivered@notifications.service.gov.uk",
+  "petitionerPhoneNumber": "01234567890",
+  "petitionerHomeAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "petitionerCorrespondenceUseHomeAddress": "Yes",
+  "petitionerCorrespondenceAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "livingArrangementsLiveTogether": "Yes",
+  "respondentHomeAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "respondentCorrespondenceUseHomeAddress": "No",
+  "respondentCorrespondenceAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "reasonForDivorce": "unreasonable-behaviour",
+  "reasonForDivorceHasMarriageDate": true,
+  "reasonForDivorceShowAdultery": true,
+  "reasonForDivorceShowUnreasonableBehaviour": true,
+  "reasonForDivorceShowTwoYearsSeparation": true,
+  "reasonForDivorceShowFiveYearsSeparation": true,
+  "reasonForDivorceShowDesertion": true,
+  "reasonForDivorceLimitReasons": false,
+  "reasonForDivorceEnableAdultery": true,
+  "reasonForDivorceBehaviourDetails": [
+    "My wife is having an affair this week."
+  ],
+  "reasonForDivorceBehaviourDetailsTrans": "Welsh - My wife is having an affair this week.",
+  "reasonForDivorceBehaviourDetailsTransLang": "CY",
+  "legalProceedings": "Yes",
+  "legalProceedingsRelated": [
+    "children"
+  ],
+  "legalProceedingsDetails": "The legal proceeding details",
+  "legalProceedingsDetailsTrans": "Welsh - The legal proceeding details",
+  "legalProceedingsDetailsTransLang": "CY",
+  "financialOrder": "Yes",
+  "financialOrderFor": [
+    "petitioner",
+    "children"
+  ],
+  "claimsCosts": "Yes",
+  "reasonForDivorceAdulteryIsNamed": "No",
+  "reasonForDivorceAdulteryDetails": "My wife is having an affair with the milkman",
+  "reasonForDivorceAdulteryDetailsTrans": "Welsh - My wife is having an affair with the milkman",
+  "reasonForDivorceAdulteryDetailsTransLang": "CY",
+  "reasonForDivorceAdulteryWhenDetails": "Yesterday afternoon",
+  "reasonForDivorceAdulteryWhenDetailsTrans": "Welsh - Yesterday afternoon",
+  "reasonForDivorceAdulteryWhenDetailsTransLang": "CY",
+  "reasonForDivorceAdulteryWhereDetails": "In the library",
+  "reasonForDivorceAdulteryWhereDetailsTrans": "Welsh - In the library",
+  "reasonForDivorceAdulteryWhereDetailsTransLang": "CY",
+  "reasonForDivorceAdulterySecondHandInfoDetails": "The postman saw them",
+  "reasonForDivorceAdulterySecondHandInfoDetailsTrans": "Welsh - The postman saw them",
+  "reasonForDivorceAdulterySecondHandInfoDetailsTransLang": "CY",
+  "reasonForDivorceDesertionDetails": "She left me",
+  "reasonForDivorceDesertionDetailsTrans": "Welsh - She left me",
+  "reasonForDivorceDesertionDetailsTransLang": "CY",
+  "claimsCostsFrom": [
+    "respondent"
+  ],
+  "claimsCostsAppliedForFees": true,
+  "reasonForDivorceClaiming5YearSeparation": false,
+  "reasonForDivorceClaimingAdultery": false,
+  "marriageCertificateFiles": [
+    {
+      "id": "7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+      "createdOn": "2017-12-11",
+      "fileName": "govuklogo.png",
+      "fileUrl": "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936"
+    },
+    {
+      "id": "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+      "createdOn": "2017-12-11",
+      "fileName": "d8-eng.pdf",
+      "fileUrl": "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
+    }
+  ],
+  "courts": "eastMidlands",
+  "petitionerConsent": "Yes",
+  "respJurisdictionDisagreeReason": "He is lying",
+  "respJurisdictionDisagreeReasonTrans": "Welsh - He is lying",
+  "respJurisdictionDisagreeReasonTransLang": "CY",
+  "respLegalProceedingsDescription": "Legal Proceedings desc",
+  "respLegalProceedingsDescriptionTrans": "Welsh - Legal Proceedings desc",
+  "respLegalProceedingsDescriptionTransLang": "CY",
+  "respCostsReason": "Respondent costs reason",
+  "respCostsReasonTrans": "Welsh - Respondent costs reason",
+  "respCostsReasonTransLang": "CY",
+  "coRespondentAnswers": {
+    "costs": {
+      "reason": "CoRespondent costs reason",
+      "reasonTrans": "Welsh - CoRespondent costs reason",
+      "reasonTransLang": "CY"
+    }
+  },
+  "refusalRejectionAdditionalInfo": "Refusal Reject additional info",
+  "refusalRejectionAdditionalInfoWelsh": "Welsh Refusal Reject additional info",
+  "refusalClarificationAdditionalInfo": "Refusal clarification additional info",
+  "refusalClarificationAdditionalInfoWelsh": "Welsh Refusal clarification additional info",
+  "costsOrderAdditionalInfo": "Costs orders additional info",
+  "costsOrderAdditionalInfoWelsh": "Welsh Costs orders additional info"
+}

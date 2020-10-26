@@ -1,0 +1,171 @@
+{
+  "expires": 0,
+  "screenHasMarriageBroken": "Yes",
+  "screenHasRespondentAddress": "Yes",
+  "screenHasMarriageCert": "Yes",
+  "screenHasPrinter": "Yes",
+  "helpWithFeesNeedHelp": "No",
+  "divorceWho": "wife",
+  "marriageIsSameSexCouple": "Yes",
+  "marriageDateDay": 2,
+  "marriageDateMonth": 2,
+  "marriageDateYear": 2001,
+  "marriageDate": "2001-02-02T00:00:00.000Z",
+  "marriageCanDivorce": true,
+  "marriageDateIsFuture": false,
+  "marriageDateMoreThan100": false,
+  "marriageWhereMarried": "wales",
+  "petitionerContactDetailsConfidential": "share",
+  "petitionerFirstName": "John",
+  "petitionerLastName": "Smith",
+  "respondentFirstName": "Jane",
+  "respondentLastName": "Jamed",
+  "marriagePetitionerName": "John Doe",
+  "marriageRespondentName": "Jenny Benny",
+  "petitionerNameDifferentToMarriageCertificate": "Yes",
+  "petitionerNameChangedHow": [
+    "marriageCertificate"
+  ],
+  "jurisdictionPath": [
+    "JurisdictionHabitualResidence",
+    "JurisdictionInterstitial"
+  ],
+  "petitionerEmail": "simulate-delivered@notifications.service.gov.uk",
+  "petitionerPhoneNumber": "01234567890",
+  "petitionerHomeAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "petitionerCorrespondenceUseHomeAddress": "Yes",
+  "petitionerCorrespondenceAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "livingArrangementsLiveTogether": "Yes",
+  "respondentHomeAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "respondentCorrespondenceUseHomeAddress": "No",
+  "respondentCorrespondenceAddress": {
+    "addressType": "postcode",
+    "postcode": "SW9 9PE",
+    "address": [
+      "82 Landor Road",
+      "London",
+      "SW9 9PE"
+    ],
+    "addressConfirmed": "true",
+    "validPostcode": true,
+    "postcodeError": "false",
+    "formattedAddress": {
+      "whereabouts": [
+        "82 Landor Road",
+        "London"
+      ],
+      "postcode": "SW9 9PE"
+    }
+  },
+  "reasonForDivorce": "unreasonable-behaviour",
+  "reasonForDivorceHasMarriageDate": true,
+  "reasonForDivorceShowAdultery": true,
+  "reasonForDivorceShowUnreasonableBehaviour": true,
+  "reasonForDivorceShowTwoYearsSeparation": true,
+  "reasonForDivorceShowFiveYearsSeparation": true,
+  "reasonForDivorceShowDesertion": true,
+  "reasonForDivorceLimitReasons": false,
+  "reasonForDivorceEnableAdultery": true,
+  "reasonForDivorceBehaviourDetails": [
+    "My wife is having an affair this week."
+  ],
+  "legalProceedings": "Yes",
+  "legalProceedingsRelated": [
+    "children"
+  ],
+  "legalProceedingsDetails": "The legal proceeding details",
+  "financialOrder": "Yes",
+  "financialOrderFor": [
+    "petitioner",
+    "children"
+  ],
+  "claimsCosts": "Yes",
+  "reasonForDivorceAdulteryIsNamed": "No",
+  "claimsCostsFrom": [
+    "respondent"
+  ],
+  "claimsCostsAppliedForFees": false,
+  "reasonForDivorceClaiming5YearSeparation": false,
+  "reasonForDivorceClaimingAdultery": false,
+  "marriageCertificateFiles": [
+    {
+      "id": "7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936",
+      "createdOn": "2017-12-11",
+      "fileName": "govuklogo.png",
+      "fileUrl": "http://localhost:5006/documents/7f63ca9b-c361-49ab-aa8c-8fbdb6bc2936"
+    },
+    {
+      "id": "560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+      "createdOn": "2017-12-11",
+      "fileName": "d8-eng.pdf",
+      "fileUrl": "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683"
+    }
+  ],
+  "courts": "eastMidlands",
+  "jurisdictionConnection": [
+    "A",
+    "C"
+  ],
+  "connections": {
+    "A": "The Petitioner and the Respondent are habitually resident in England and Wales",
+    "C": "The Respondent is habitually resident in England and Wales"
+  },
+  "jurisdictionPetitionerResidence": "Yes",
+  "jurisdictionRespondentResidence": "Yes",
+  "jurisdictionConfidentLegal": "Yes",
+  "petitionerConsent": "Yes"
+}
