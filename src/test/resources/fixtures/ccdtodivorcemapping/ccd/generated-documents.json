@@ -1,0 +1,93 @@
+{
+  "D8DocumentsGenerated": [
+    {
+      "id": null,
+      "value": {
+        "DocumentType": "petition",
+        "DocumentLink": {
+          "document_url": "http://localhost:5006/documents/560f4bd1-fcf2-4dc5-80d1-d7e00d861683",
+          "document_filename": "d8-eng.pdf"
+        },
+        "DocumentDateAdded": "2017-12-11",
+        "DocumentComment": "",
+        "DocumentEmailContent": ""
+      }
+    }
+  ],
+  "ServiceApplicationDocuments": [
+    {
+      "id": "04e78b6b-3a6f-4db7-b0c5-f8eeb814a83d",
+      "value": {
+        "DocumentType": "deemedServiceRefused",
+        "DocumentLink": {
+          "document_url": "http://localhost:5006/documents/04e78b6b-3a6f-4db7-b0c5-f8eeb814a83d",
+          "document_binary_url": null,
+          "document_filename": "deemedServiceRefused2020-09-28.pdf"
+        },
+        "DocumentDateAdded": "2017-12-11",
+        "DocumentComment": "",
+        "DocumentFileName": "deemedServiceRefused2020-09-28.pdf",
+        "DocumentEmailContent": ""
+      }
+    },
+    {
+      "id": "c4ca7cbc-adb2-4908-b522-ad69961ae9ff",
+      "value": {
+        "DocumentType": "deemedServiceRefused",
+        "DocumentLink": {
+          "document_url": "http://localhost:5006/documents/c4ca7cbc-adb2-4908-b522-ad69961ae9ff",
+          "document_binary_url": null,
+          "document_filename": "deemedServiceRefused2020-08-01.pdf"
+        },
+        "DocumentDateAdded": "2017-12-11",
+        "DocumentComment": "",
+        "DocumentFileName": "deemedServiceRefused2020-08-01.pdf",
+        "DocumentEmailContent": ""
+      }
+    }
+  ],
+  "GeneralOrders": [
+    {
+      "id": "9320ad41-4980-47b7-885d-76daae69ff9b",
+      "value": {
+        "Document": {
+          "DocumentLink": {
+            "document_url": "http://localhost:5006/documents/9320ad41-4980-47b7-885d-76daae69ff9b",
+            "document_filename": "generalOrder2020-09-28.pdf",
+            "document_binary_url": "http://localhost:5006/documents/9320ad41-4980-47b7-885d-76daae69ff9b/binary"
+          },
+          "DocumentType": "generalOrder",
+          "DocumentComment": null,
+          "DocumentFileName": "generalOrder2020-09-28.pdf",
+          "DocumentDateAdded": "2020-09-28",
+          "DocumentEmailContent": null
+        },
+        "GeneralOrderParties": [
+          "petitioner",
+          "respondent",
+          "co-respondent"
+        ]
+      }
+    },
+    {
+      "id": "649111b0-1aad-446d-b979-27f5862af583",
+      "value": {
+        "Document": {
+          "DocumentLink": {
+            "document_url": "http://localhost:5006/documents/649111b0-1aad-446d-b979-27f5862af583",
+            "document_filename": "generalOrder2020-09-29.pdf",
+            "document_binary_url": "http://localhost:5006/documents/649111b0-1aad-446d-b979-27f5862af583/binary"
+          },
+          "DocumentType": "generalOrder",
+          "DocumentComment": null,
+          "DocumentFileName": "generalOrder2020-09-29",
+          "DocumentDateAdded": null,
+          "DocumentEmailContent": null
+        },
+        "GeneralOrderParties": [
+          "petitioner"
+        ]
+      }
+    }
+  ]
+}

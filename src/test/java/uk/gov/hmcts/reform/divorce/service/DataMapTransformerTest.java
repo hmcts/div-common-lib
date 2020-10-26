@@ -23,6 +23,7 @@ import static org.mockito.Mockito.when;
 public class DataMapTransformerTest {
 
     private final ObjectMapper objectMapper = ObjectMapperTestUtil.getObjectMapperInstance();
+
     private DataMapTransformer classUnderTest;
 
     private DataTransformer dataTransformer;
@@ -30,24 +31,25 @@ public class DataMapTransformerTest {
     private DivorceSession testDivorceSession;
     private Map<String, Object> testDivorceSessionMap;
 
+    private CoreCaseData testCoreCaseData;
     private Map<String, Object> testCoreCaseDataMap;
 
     @Before
     public void setUp() {
-        dataTransformer = mock(DataTransformer.class);
-        classUnderTest = new DataMapTransformer(objectMapper, this.dataTransformer);
-
         testDivorceSession = new DivorceSession();
         testDivorceSession.setCaseReference("123");
         testDivorceSessionMap = objectMapper.convertValue(testDivorceSession, new TypeReference<Map<String, Object>>() {
         });
 
-        CoreCaseData testCoreCaseData = new CoreCaseData();
+        testCoreCaseData = new CoreCaseData();
         testCoreCaseData.setD8caseReference("123");
         testCoreCaseDataMap = objectMapper.convertValue(testCoreCaseData, new TypeReference<Map<String, Object>>() {
         });
 
-        when(this.dataTransformer.transformDivorceCaseDataToCourtCaseData(eq(testDivorceSession))).thenReturn(testCoreCaseData);
+        dataTransformer = mock(DataTransformer.class);
+        when(dataTransformer.transformDivorceCaseDataToCourtCaseData(eq(testDivorceSession))).thenReturn(testCoreCaseData);
+        when(dataTransformer.transformCoreCaseDataToDivorceCaseData(eq(testCoreCaseData))).thenReturn(testDivorceSession);
+        classUnderTest = new DataMapTransformer(objectMapper, dataTransformer);
     }
 
     @Test
@@ -56,6 +58,14 @@ public class DataMapTransformerTest {
 
         assertThat(returnedCoreCaseData, equalTo(testCoreCaseDataMap));
         verify(dataTransformer).transformDivorceCaseDataToCourtCaseData(eq(testDivorceSession));
+    }
+
+    @Test
+    public void shouldCallAdequateMapperForTransformingCoreCaseDataIntoDivorceCaseData() {
+        Map<String, Object> returnedDivorceCaseData = classUnderTest.transformCoreCaseDataToDivorceCaseData(testCoreCaseDataMap);
+
+        assertThat(returnedDivorceCaseData, equalTo(testDivorceSessionMap));
+        verify(dataTransformer).transformCoreCaseDataToDivorceCaseData(eq(testCoreCaseData));
     }
 
 }

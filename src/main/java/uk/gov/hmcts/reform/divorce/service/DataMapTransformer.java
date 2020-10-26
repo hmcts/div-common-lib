@@ -28,4 +28,12 @@ public class DataMapTransformer {
         });
     }
 
+    public Map<String, Object> transformCoreCaseDataToDivorceCaseData(Map<String, Object> coreCaseDataMap) {
+        CoreCaseData coreCaseData = objectMapper.convertValue(coreCaseDataMap, CoreCaseData.class);
+
+        DivorceSession divorceSession = dataTransformer.transformCoreCaseDataToDivorceCaseData(coreCaseData);
+
+        return objectMapper.convertValue(divorceSession, new TypeReference<Map<String, Object>>() {
+        });
+    }
 }

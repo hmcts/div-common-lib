@@ -2,7 +2,7 @@ package uk.gov.hmcts.reform.divorce.utils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -22,7 +22,7 @@ import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateTimeForCcd;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateTimeForDocument;
 import static uk.gov.hmcts.reform.divorce.utils.DateUtils.formatDateWithCustomerFacingFormat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 public class DateUtilsTest {
 
     @Test

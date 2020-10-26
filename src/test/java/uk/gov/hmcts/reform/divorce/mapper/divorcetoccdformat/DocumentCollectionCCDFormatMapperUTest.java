@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.config.MappingConfig;
 import uk.gov.hmcts.reform.divorce.mapper.DocumentCollectionCCDFormatMapper;
 import uk.gov.hmcts.reform.divorce.mapper.DocumentUrlRewriter;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {
     MappingConfig.class
 })
