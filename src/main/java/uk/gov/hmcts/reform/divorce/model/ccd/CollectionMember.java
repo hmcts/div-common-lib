@@ -10,4 +10,10 @@ import lombok.Data;
 public class CollectionMember<T> {
     private String id;
     private T value;
+
+    public static <T> CollectionMember<T> buildCollectionMember(T value) {
+        CollectionMember collectionMember = new CollectionMember();
+        collectionMember.setValue(value);
+        return collectionMember;
+    }
 }
