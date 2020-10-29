@@ -22,6 +22,7 @@ public class CollectionMemberUTest {
     private CollectionMember<Document> collectionMember;
     private String json;
     private String jsonNullDocumentFieldsRemoved;
+    private Document document;
 
     @Before
     public void setUp() throws Exception {
@@ -32,7 +33,7 @@ public class CollectionMemberUTest {
         final DocumentLink documentLink = new DocumentLink();
         documentLink.setDocumentUrl("http://localhost/document");
 
-        Document document = new Document();
+        document = new Document();
         document.setDocumentType("marriageCert");
         document.setDocumentFileName("test-file-name");
         document.setDocumentLink(documentLink);
@@ -59,5 +60,10 @@ public class CollectionMemberUTest {
             .withDefaultPrettyPrinter();
 
         JSONAssert.assertEquals(jsonNullDocumentFieldsRemoved.trim(), objectWriter.writeValueAsString(collectionMember), true);
+    }
+
+    @Test
+    public void buildCollectionMemberShouldReturnCollectionMemberWithValue() {
+        assertEquals(collectionMember, CollectionMember.buildCollectionMember(document));
     }
 }
