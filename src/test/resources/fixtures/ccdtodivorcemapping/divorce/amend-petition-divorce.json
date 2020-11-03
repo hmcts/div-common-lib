@@ -1,6 +1,6 @@
 {
   "expires": 0,
-  "issueDate": "2006-02-02T00:00:00.000+0000",
+  "issueDate": "2006-02-02",
   "screenHasMarriageBroken": "Yes",
   "screenHasRespondentAddress": "Yes",
   "screenHasMarriageCert": "Yes",
@@ -13,7 +13,7 @@
   "marriageDateDay": 2,
   "marriageDateMonth": 2,
   "marriageDateYear": 2001,
-  "marriageDate": "2001-02-02T00:00:00.000Z",
+  "marriageDate": "2001-02-02",
   "marriageCanDivorce": true,
   "marriageDateIsFuture": false,
   "marriageDateMoreThan100": false,
@@ -185,7 +185,7 @@
   "reasonForDivorceAdulteryWhereDetails": "On a washing machine.",
   "petitionerConsent": "Yes",
   "previousCaseId": "1234567891234567",
-  "previousIssueDate": "2006-03-03T00:00:00.000+0000",
+  "previousIssueDate": "2006-03-03",
   "previousReasonsForDivorce": [
     "reason-one",
     "reason-two"

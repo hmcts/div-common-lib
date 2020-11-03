@@ -6,8 +6,8 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.time.LocalDate;
+import java.time.Month;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -29,8 +29,7 @@ public class DesertionStrategyUTest {
         divorceSession.setReasonForDivorce(DESERTION);
         divorceSession.setDivorceWho("husband");
         divorceSession
-            .setReasonForDivorceDesertionDate(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
-                .parse("2015-02-01T00:00:00.000Z"));
+            .setReasonForDivorceDesertionDate(LocalDate.of(2015, Month.FEBRUARY, 1));
         divorceSession.setReasonForDivorceDesertionDetails("He told me that he is going to his mother.");
 
         final String derivedStatementOfCase = desertionStrategy.deriveStatementOfCase(divorceSession);

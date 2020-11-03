@@ -4,18 +4,18 @@ import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.service.SeparationDateService;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 public class SeparationDateServiceImpl implements SeparationDateService {
 
     @Override
     public void updateSeparationDate(DivorceSession divorceSession) {
-        Date separationDate = divorceSession.getReasonForDivorceDecisionDate();
+        LocalDate separationDate = divorceSession.getReasonForDivorceDecisionDate();
 
         if (separationDate == null
             || divorceSession.getReasonForDivorceLivingApartDate() != null
-            && separationDate.before(divorceSession.getReasonForDivorceLivingApartDate())) {
+            && separationDate.isBefore(divorceSession.getReasonForDivorceLivingApartDate())) {
             separationDate = divorceSession.getReasonForDivorceLivingApartDate();
         }
 
@@ -25,4 +25,5 @@ public class SeparationDateServiceImpl implements SeparationDateService {
 
         divorceSession.setReasonForDivorceSeperationDate(separationDate);
     }
+
 }

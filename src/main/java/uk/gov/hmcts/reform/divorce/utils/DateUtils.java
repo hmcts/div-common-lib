@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -126,10 +127,8 @@ public class DateUtils {
         return DateTimeFormatter.ofPattern(formatPattern, Settings.LOCALE);
     }
 
-    public static String format(Date date, String pattern) {
-        return DateFormatUtils.format(
-            Optional.ofNullable(date).orElse(new Date(0)),
-            pattern
-        );
+    public static String format(LocalDate date, String pattern) {
+        LocalDate localDate = Optional.ofNullable(date).orElse(LocalDate.of(1970, Month.JANUARY, 1));//TODO - ? - January 1, 1970, 00:00:00 GMT
+        return localDate.format(DateTimeFormatter.ofPattern(pattern));
     }
 }

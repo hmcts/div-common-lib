@@ -6,6 +6,8 @@ import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -29,7 +31,8 @@ public class ReasonForDivorceContextUTest {
         divorceSession.setReasonForDivorce(SEPARATION_FIVE_YEARS);
         divorceSession.setDivorceWho("wife");
         divorceSession.setReasonForDivorceSeperationDate(
-            new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).parse("2015-01-01T00:00:00.000Z"));
+            LocalDate.of(2015, Month.JANUARY, 1)
+        );
 
         final String derivedStatementOfCase = reasonForDivorceContext.deriveStatementOfWork(divorceSession);
 

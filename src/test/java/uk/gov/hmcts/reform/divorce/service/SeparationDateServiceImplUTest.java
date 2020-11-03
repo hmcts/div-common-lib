@@ -6,27 +6,23 @@ import org.junit.runners.Parameterized;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.service.impl.SeparationDateServiceImpl;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class SeparationDateServiceImplUTest {
-    private static final DateFormat SIMPLE_DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
     private static final SeparationDateService classUnderTest = new SeparationDateServiceImpl();
 
-    private final Date separationDate;
-    private final Date decisionDate;
-    private final Date livingApartDate;
-    private final Date expected;
+    private final LocalDate separationDate;
+    private final LocalDate decisionDate;
+    private final LocalDate livingApartDate;
+    private final LocalDate expected;
 
-    public SeparationDateServiceImplUTest(Date separationDate, Date decisionDate, Date livingApartDate, Date expected) {
+    public SeparationDateServiceImplUTest(LocalDate separationDate, LocalDate decisionDate, LocalDate livingApartDate, LocalDate expected) {
         this.separationDate = separationDate;
         this.decisionDate = decisionDate;
         this.livingApartDate = livingApartDate;
@@ -34,22 +30,22 @@ public class SeparationDateServiceImplUTest {
     }
 
     @Parameterized.Parameters
-    public static Collection<Date[]> data() {
-        return Arrays.asList(new Date[][] {
+    public static Collection<LocalDate[]> data() {
+        return Arrays.asList(new LocalDate[][] {
             {null, null, null, null},
-            {getDate("2015-1-1"), null, null, getDate("2015-1-1")},
-            {null, getDate("2015-1-1"), null, getDate("2015-1-1")},
-            {null, null, getDate("2015-1-1"), getDate("2015-1-1")},
-            {getDate("2015-1-1"), getDate("2015-1-2"), null, getDate("2015-1-2")},
-            {getDate("2015-1-2"), getDate("2015-1-1"), null, getDate("2015-1-1")},
-            {getDate("2015-1-1"), null, getDate("2015-1-2"), getDate("2015-1-2")},
-            {getDate("2015-1-2"), null, getDate("2015-1-1"), getDate("2015-1-1")},
-            {null, getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-2")},
-            {null, getDate("2015-1-2"), getDate("2015-1-1"), getDate("2015-1-2")},
-            {getDate("2015-1-1"), getDate("2015-1-1"), getDate("2015-1-1"), getDate("2015-1-1")},
-            {getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-3"), getDate("2015-1-3")},
-            {getDate("2015-1-3"), getDate("2015-1-2"), getDate("2015-1-1"), getDate("2015-1-2")},
-            {getDate("2015-1-3"), getDate("2015-1-1"), getDate("2015-1-2"), getDate("2015-1-2")},
+            {getDate("2015-01-01"), null, null, getDate("2015-01-01")},
+            {null, getDate("2015-01-01"), null, getDate("2015-01-01")},
+            {null, null, getDate("2015-01-01"), getDate("2015-01-01")},
+            {getDate("2015-01-01"), getDate("2015-01-02"), null, getDate("2015-01-02")},
+            {getDate("2015-01-02"), getDate("2015-01-01"), null, getDate("2015-01-01")},
+            {getDate("2015-01-01"), null, getDate("2015-01-02"), getDate("2015-01-02")},
+            {getDate("2015-01-02"), null, getDate("2015-01-01"), getDate("2015-01-01")},
+            {null, getDate("2015-01-01"), getDate("2015-01-02"), getDate("2015-01-02")},
+            {null, getDate("2015-01-02"), getDate("2015-01-01"), getDate("2015-01-02")},
+            {getDate("2015-01-01"), getDate("2015-01-01"), getDate("2015-01-01"), getDate("2015-01-01")},
+            {getDate("2015-01-01"), getDate("2015-01-02"), getDate("2015-01-03"), getDate("2015-01-03")},
+            {getDate("2015-01-03"), getDate("2015-01-02"), getDate("2015-01-01"), getDate("2015-01-02")},
+            {getDate("2015-01-03"), getDate("2015-01-01"), getDate("2015-01-02"), getDate("2015-01-02")},
         });
     }
 
@@ -65,13 +61,8 @@ public class SeparationDateServiceImplUTest {
         assertEquals(expected, divorceSession.getReasonForDivorceSeperationDate());
     }
 
-    private static Date getDate(String date) {
-        synchronized (SIMPLE_DATE_FORMATTER) {
-            try {
-                return SIMPLE_DATE_FORMATTER.parse(date);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    private static LocalDate getDate(String date) {
+        return LocalDate.parse(date);
     }
+
 }

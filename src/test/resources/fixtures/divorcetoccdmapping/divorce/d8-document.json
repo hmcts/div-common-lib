@@ -18,7 +18,7 @@
   "marriageDateDay": 2,
   "marriageDateMonth": 2,
   "marriageDateYear": 2001,
-  "marriageDate": "2001-02-02T00:00:00.000Z",
+  "marriageDate": "2001-02-02",
   "marriageCanDivorce": true,
   "marriageDateIsFuture": false,
   "marriageDateMoreThan100": false,

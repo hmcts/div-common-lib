@@ -183,7 +183,7 @@ public class DateUtilsTest {
     @Test
     public void nonNullDateReturnsFormattedDateString() {
         assertEquals("01 01 2001", DateUtils.format(
-            Date.from(LocalDate.of(2001, 1, 1).atStartOfDay(ZoneId.systemDefault()).toInstant()),
+            LocalDate.of(2001, 1, 1),
             "dd MM yyyy")
         );
     }
