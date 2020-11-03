@@ -217,8 +217,8 @@
   "D8InferredPetitionerGender": "female",
   "D8InferredRespondentGender": "male",
   "D8PetitionerConsent": "YES",
-  "DateRespondentEligibleForDA": "2019-01-11T00:00:00.000Z",
-  "DateCaseNoLongerEligibleForDA": "2020-01-12T00:00:00.000Z",
+  "DateRespondentEligibleForDA": "2019-01-11",
+  "DateCaseNoLongerEligibleForDA": "2020-01-12",
   "RespContactMethodIsDigital": "No",
   "D8DocumentsGenerated": [
     {
