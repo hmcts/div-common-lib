@@ -467,6 +467,9 @@ public class DivorceSession {
     @JsonIgnore
     private List<UploadedFile> serviceApplicationDocuments;
 
+    @ApiModelProperty(value = "Served by process server")
+    private String servedByProcessServer;
+
     @JsonIgnore
     private List<UploadedFile> generalOrders;
 
