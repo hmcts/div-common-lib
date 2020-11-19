@@ -193,4 +193,7 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("ServiceApplicationGranted")
     private String serviceApplicationGranted;
+
+    @JsonProperty("ServedByProcessServer")
+    private String servedByProcessServer;
 }
