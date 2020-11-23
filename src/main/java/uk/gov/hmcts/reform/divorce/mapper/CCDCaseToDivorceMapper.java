@@ -15,6 +15,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.HearingDateTime;
+import uk.gov.hmcts.reform.divorce.model.ccd.ServiceApplication;
 import uk.gov.hmcts.reform.divorce.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.model.usersession.AddressType;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
@@ -184,6 +185,21 @@ public abstract class CCDCaseToDivorceMapper {
             return null;
         }
         return String.valueOf(YES_VALUE.equalsIgnoreCase(value));
+    }
+
+    @AfterMapping
+    protected void mapLastCompletedServiceApplicationToServiceApplicationValues(CoreCaseData caseData,
+                                                  @MappingTarget DivorceSession divorceSession) {
+
+        Optional<List<ServiceApplication>> serviceApplications = Optional.ofNullable(caseData.getServiceApplications());
+        if (!serviceApplications.isPresent()) {
+            return;
+        }
+
+        ServiceApplication latestApplication = serviceApplications.get()
+                .stream().max(ServiceApplication::compareTo).get();
+
+        divorceSession.extractServiceApplicationValuesFrom(latestApplication);
     }
 
     @AfterMapping

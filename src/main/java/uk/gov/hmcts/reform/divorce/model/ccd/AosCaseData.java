@@ -188,12 +188,6 @@ public class AosCaseData extends DnCaseData {
     @JsonProperty("CoRespondentPcqId")
     private String coRespondentPcqId;
 
-    @JsonProperty("ServiceApplicationType")
-    private String serviceApplicationType;
-
-    @JsonProperty("ServiceApplicationGranted")
-    private String serviceApplicationGranted;
-
     @JsonProperty("ServedByProcessServer")
     private String servedByProcessServer;
 }

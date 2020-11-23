@@ -243,7 +243,5 @@
     "respHardshipDescription" : "Some Hardship Description goes here",
     "permittedDecreeNisiReason" : "0",
     "respondentPcqId": "2e23d0fa-6b24-47cb-b402-2a7837821d41",
-    "coRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a",
-    "serviceApplicationType": "deemed",
-    "serviceApplicationGranted": "Yes"
+    "coRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a"
 }
