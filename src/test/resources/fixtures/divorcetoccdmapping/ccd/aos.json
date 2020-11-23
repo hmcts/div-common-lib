@@ -28,7 +28,5 @@
     "respondentSolicitorReference": "1234",
     "D8DerivedRespondentSolicitorAddr": "90 Landor Road\nLondon\nSW9 9PE",
     "RespondentPcqId": "2e23d0fa-6b24-47cb-b402-2a7837821d41",
-    "CoRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a",
-    "ServiceApplicationType": "deemed",
-    "ServiceApplicationGranted": "Yes"
+    "CoRespondentPcqId": "fb4c2b34-7d2a-444e-8667-da59efae8b1a"
 }

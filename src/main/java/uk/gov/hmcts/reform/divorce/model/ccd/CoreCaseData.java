@@ -635,4 +635,7 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("LanguagePreferenceWelsh")
     private String languagePreferenceWelsh;
+
+    @JsonProperty("ServiceApplications")
+    private List<ServiceApplication> serviceApplications;
 }

@@ -1,0 +1,30 @@
+{
+  "ServiceApplications": [
+    {
+      "id": "19482a65-56c1-48c9-b8af-ea8531af44c3",
+      "value": {
+        "Type": "dispensed",
+        "Payment": "feeAccount",
+        "AddedDate": "2020-11-19",
+        "DecisionDate": "2020-11-19",
+        "ReceivedDate": "1999-05-19",
+        "RefusalReason": "",
+        "ApplicationGranted": "No"
+      }
+    },
+    {
+      "id": "19482a65-56c1-48c9-b8af-ea8531af44c4",
+      "value": {
+        "Type": "deemed",
+        "Payment": "feeAccount",
+        "AddedDate": "2020-11-19",
+        "DecisionDate": "2020-11-25",
+        "ReceivedDate": "1999-05-19",
+        "RefusalReason": "",
+        "ApplicationGranted": "Yes"
+      }
+    }
+  ],
+  "serviceApplicationType": "dispensed",
+  "serviceApplicationGranted": "No"
+}

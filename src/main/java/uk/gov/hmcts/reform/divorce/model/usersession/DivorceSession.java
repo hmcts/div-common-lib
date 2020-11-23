@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
 import uk.gov.hmcts.reform.divorce.model.ccd.Connections;
+import uk.gov.hmcts.reform.divorce.model.ccd.ServiceApplication;
 import uk.gov.hmcts.reform.divorce.model.payment.Payment;
 import uk.gov.hmcts.reform.divorce.model.payment.PaymentCollection;
 import uk.gov.hmcts.reform.divorce.model.usersession.corespondent.CoRespondentAnswers;
@@ -655,5 +656,10 @@ public class DivorceSession {
         }
 
         this.d8Documents.add(d8Document);
+    }
+
+    public void extractServiceApplicationValuesFrom(ServiceApplication serviceApplication) {
+        this.serviceApplicationType = serviceApplication.getValue().getType();
+        this.serviceApplicationGranted = serviceApplication.getValue().getApplicationGranted();
     }
 }
