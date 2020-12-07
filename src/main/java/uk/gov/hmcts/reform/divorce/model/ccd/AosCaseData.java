@@ -190,4 +190,7 @@ public class AosCaseData extends DnCaseData {
 
     @JsonProperty("ServedByProcessServer")
     private String servedByProcessServer;
+
+    @JsonProperty("ServedByAlternativeMethod")
+    private String servedByAlternativeMethod;
 }
