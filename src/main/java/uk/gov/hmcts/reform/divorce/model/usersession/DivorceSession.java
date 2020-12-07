@@ -471,6 +471,9 @@ public class DivorceSession {
     @ApiModelProperty(value = "Served by process server")
     private String servedByProcessServer;
 
+    @ApiModelProperty(value = "Served by alternative method")
+    private String servedByAlternativeMethod;
+
     @JsonIgnore
     private List<UploadedFile> generalOrders;
 

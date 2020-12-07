@@ -6,5 +6,6 @@
   "decreeAbsoluteEligibleFromDate": "2020-02-13T00:00:00.000Z",
   "courtName": "London Court Number One",
   "dnOutcomeCase": "Yes",
-  "servedByProcessServer": "No"
+  "servedByProcessServer": "No",
+  "servedByAlternativeMethod": "No"
 }

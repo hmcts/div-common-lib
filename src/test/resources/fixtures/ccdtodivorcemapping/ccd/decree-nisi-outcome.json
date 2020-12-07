@@ -6,5 +6,6 @@
   "DAEligibleFromDate": "2020-02-13",
   "CourtName": "London Court Number One",
   "DnOutcomeCase": "Yes",
-  "ServedByProcessServer": "No"
+  "ServedByProcessServer": "No",
+  "ServedByAlternativeMethod": "No"
 }
