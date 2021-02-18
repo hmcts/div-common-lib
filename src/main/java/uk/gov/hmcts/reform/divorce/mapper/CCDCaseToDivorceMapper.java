@@ -179,6 +179,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "coRespondentPcqId", target = "coRespondentPcqId")
     @Mapping(source = "d8ReasonForDivorceBehaviourDetailsTrans", target = "reasonForDivorceBehaviourDetailsTrans")
     @Mapping(source = "d8ReasonForDivorceBehaviourDetailsTransLang", target = "reasonForDivorceBehaviourDetailsTransLang")
+    @Mapping(source = "newLegalConnectionPolicy", target = "newLegalConnectionPolicy")
     public abstract DivorceSession coreCaseDataToDivorceCaseData(CoreCaseData coreCaseData);
 
     private String translateToBooleanString(final String value) {
