@@ -82,8 +82,6 @@ public class DivorceSession {
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;
-    @ApiModelProperty(value = "Legal connections new policy.")
-    private List<String> jurisdictionConnectionNewPolicy;
     @ApiModelProperty(value = "Legal connections content.")
     private Connections connections;
     @ApiModelProperty(value = "Is petitioner resident?", allowableValues = "Yes, No")

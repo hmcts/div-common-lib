@@ -106,7 +106,6 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "d8ReasonForDivorceDesertionDetailsTrans", target = "reasonForDivorceDesertionDetailsTrans")
     @Mapping(source = "d8ReasonForDivorceDesertionDetailsTransLang", target = "reasonForDivorceDesertionDetailsTransLang")
     @Mapping(source = "d8JurisdictionConnection", target = "jurisdictionConnection")
-    @Mapping(source = "d8JurisdictionConnectionNewPolicy", target = "jurisdictionConnectionNewPolicy")
     @Mapping(source = "d8FinancialOrderFor", target = "financialOrderFor")
     @Mapping(source = "d8PetitionerNameChangedHow", target = "petitionerNameChangedHow")
     @Mapping(source = "d8LegalProceedingsRelated", target = "legalProceedingsRelated")
