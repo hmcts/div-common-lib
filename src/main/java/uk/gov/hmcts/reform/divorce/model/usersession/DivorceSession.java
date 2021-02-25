@@ -245,6 +245,8 @@ public class DivorceSession {
     private String reasonForDivorceAdulteryIsNamed;
     @ApiModelProperty(value = "Claim costs from.", allowableValues = "respondent, co-respondent")
     private List<String> claimsCostsFrom;
+    @ApiModelProperty(value = "Claims cost explain")
+    private String claimsCostExplain;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")
     private String claimsCostsAppliedForFees;
     @ApiModelProperty(/* The spreadsheet does not say what this field means */ allowableValues = "Yes, No")

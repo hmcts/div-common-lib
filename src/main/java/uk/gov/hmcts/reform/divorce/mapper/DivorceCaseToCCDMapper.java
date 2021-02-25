@@ -116,6 +116,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "petitionerNameChangedHow", target = "d8PetitionerNameChangedHow")
     @Mapping(source = "legalProceedingsRelated", target = "d8LegalProceedingsRelated")
     @Mapping(source = "claimsCostsFrom", target = "d8DivorceClaimFrom")
+    @Mapping(source = "claimsCostExplain", target = "d8DivorceCostsClaimExplain")
     @Mapping(source = "marriagePetitionerName", target = "d8MarriagePetitionerName")
     @Mapping(source = "marriageRespondentName", target = "d8MarriageRespondentName")
     @Mapping(source = "reasonForDivorceSeperationDay", target = "d8ReasonForDivorceSeperationDay")
