@@ -82,6 +82,8 @@ public class DivorceSession {
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;
+    @ApiModelProperty(value = "Legal connections new policy.")
+    private List<String> jurisdictionConnectionNewPolicy;
     @ApiModelProperty(value = "Legal connections content.")
     private Connections connections;
     @ApiModelProperty(value = "Is petitioner resident?", allowableValues = "Yes, No")
@@ -661,6 +663,9 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Indicates the reason for failure to serve the bailiff service")
     private String reasonFailureToServe;
+
+    @ApiModelProperty(value = "New legal connection policy", allowableValues = "Yes, No")
+    private String newLegalConnectionPolicy;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
