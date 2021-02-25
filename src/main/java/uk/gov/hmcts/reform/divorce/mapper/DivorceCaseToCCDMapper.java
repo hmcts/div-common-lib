@@ -112,7 +112,6 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceDesertionDetailsTrans", target = "d8ReasonForDivorceDesertionDetailsTrans")
     @Mapping(source = "reasonForDivorceDesertionDetailsTransLang", target = "d8ReasonForDivorceDesertionDetailsTransLang")
     @Mapping(source = "jurisdictionConnection", target = "d8JurisdictionConnection")
-    @Mapping(source = "jurisdictionConnectionNewPolicy", target = "d8JurisdictionConnectionNewPolicy")
     @Mapping(source = "financialOrderFor", target = "d8FinancialOrderFor")
     @Mapping(source = "petitionerNameChangedHow", target = "d8PetitionerNameChangedHow")
     @Mapping(source = "legalProceedingsRelated", target = "d8LegalProceedingsRelated")
@@ -157,7 +156,6 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "respondentPcqId", target = "respondentPcqId")
     @Mapping(source = "reasonForDivorceBehaviourDetailsTrans", target = "d8ReasonForDivorceBehaviourDetailsTrans")
     @Mapping(source = "reasonForDivorceBehaviourDetailsTransLang", target = "d8ReasonForDivorceBehaviourDetailsTransLang")
-    @Mapping(source = "newLegalConnectionPolicy", target = "newLegalConnectionPolicy")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
