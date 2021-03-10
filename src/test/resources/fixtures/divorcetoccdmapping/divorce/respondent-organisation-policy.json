@@ -1,0 +1,13 @@
+{
+  "respondentSolicitorName": "Solicitor Name",
+  "respondentSolicitorReference": "sol-123",
+  "respondentSolicitorEmail": "sol@email.com",
+  "respondentSolicitorCompany": "sol company ltd.",
+  "respondentSolicitorAddress": {
+    "address": [
+      "10 Solicitor Road",
+      "Solicitorshire"
+    ]
+  },
+  "respondentSolicitorReferenceDataId": "123-refdata"
+}

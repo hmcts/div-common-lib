@@ -638,4 +638,8 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("ServiceApplications")
     private List<ServiceApplication> serviceApplications;
+
+    @JsonProperty("RespondentOrganisationPolicy")
+    private OrganisationPolicy respondentOrganisationPolicy;
+
 }
