@@ -29,7 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoNeverUpperCase;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoUpperCase;
-import static uk.gov.hmcts.reform.divorce.model.ccd.roles.CaseRoles.RESP_SOLICITOR;
+import static uk.gov.hmcts.reform.divorce.model.ccd.roles.CaseRoles.RESPONDENT_SOLICITOR;
 
 @Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -739,7 +739,7 @@ public abstract class DivorceCaseToCCDMapper {
                 respondentSolicitorReferenceDataId,
                 divorceSession.getRespondentSolicitorCompany(),
                 divorceSession.getRespondentSolicitorReference(),
-                RESP_SOLICITOR
+                RESPONDENT_SOLICITOR
             ));
         }
     }
