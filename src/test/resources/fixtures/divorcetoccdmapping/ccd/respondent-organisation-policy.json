@@ -1,0 +1,19 @@
+{
+  "D8RespondentSolicitorName": "Solicitor Name",
+  "respondentSolicitorReference": "sol-123",
+  "D8RespondentSolicitorEmail": "sol@email.com",
+  "D8RespondentSolicitorCompany": "sol company ltd.",
+  "D8DerivedRespondentSolicitorAddr": "10 Solicitor Road\nSolicitorshire",
+  "D8DerivedRespondentSolicitorDetails": "Solicitor Name\nsol company ltd.\n10 Solicitor Road\nSolicitorshire",
+  "RespondentOrganisationPolicy": {
+    "Organisation": {
+      "OrganisationID": "123-refdata",
+      "OrganisationName": "sol company ltd."
+    },
+    "OrgPolicyReference": "sol-123",
+    "PreviousOrganisations": [],
+    "OrgPolicyCaseAssignedRole": "[RESPSOLICITOR]"
+  },
+  "D8Cohort": "onlineSubmissionPrivateBeta",
+  "RespondentContactDetailsConfidential": "share"
+}

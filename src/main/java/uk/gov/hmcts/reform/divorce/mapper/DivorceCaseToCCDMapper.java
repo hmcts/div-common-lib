@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.divorce.mapper.strategy.payment.PaymentContext;
 import uk.gov.hmcts.reform.divorce.mapper.strategy.reasonfordivorce.ReasonForDivorceContext;
 import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.OrganisationPolicy;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.service.InferredGenderService;
 import uk.gov.hmcts.reform.divorce.service.SeparationDateService;
@@ -28,6 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoNeverUpperCase;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoUpperCase;
+import static uk.gov.hmcts.reform.divorce.model.ccd.roles.UserRoles.RESP_SOLICITOR;
 
 @Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -591,10 +593,10 @@ public abstract class DivorceCaseToCCDMapper {
             String solicitorAddress = join(LINE_SEPARATOR,
                 divorceSession.getRespondentSolicitorAddress().getAddressField());
 
-            String solictorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),
+            String solicitorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),
                 divorceSession.getRespondentSolicitorCompany()));
 
-            result.setD8DerivedRespondentSolicitorDetails(join(LINE_SEPARATOR, solictorDetails, solicitorAddress));
+            result.setD8DerivedRespondentSolicitorDetails(join(LINE_SEPARATOR, solicitorDetails, solicitorAddress));
         }
     }
 
@@ -726,6 +728,18 @@ public abstract class DivorceCaseToCCDMapper {
                                               @MappingTarget CoreCaseData result) {
         result.setLanguagePreferenceWelsh(
             toYesNoUpperCase(divorceSession.getLanguagePreferenceWelsh()));
+    }
+
+    @AfterMapping
+    protected void mapRespondentOrganisationPolicy(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        if (divorceSession.getRespondentSolicitorReferenceDataId() != null) {
+            result.setRespondentOrganisationPolicy(new OrganisationPolicy(
+                divorceSession.getRespondentSolicitorReferenceDataId(),
+                divorceSession.getRespondentSolicitorCompany(),
+                divorceSession.getRespondentSolicitorReference(),
+                RESP_SOLICITOR
+            ));
+        }
     }
 
     private CaseLink translateStringToCaseLink(final String value) {
