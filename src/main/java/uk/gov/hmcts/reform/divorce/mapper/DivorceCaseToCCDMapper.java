@@ -732,9 +732,11 @@ public abstract class DivorceCaseToCCDMapper {
 
     @AfterMapping
     protected void mapRespondentOrganisationPolicy(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
-        if (divorceSession.getRespondentSolicitorReferenceDataId() != null) {
+        String respondentSolicitorReferenceDataId = divorceSession.getRespondentSolicitorReferenceDataId();
+
+        if (StringUtils.isNotBlank(respondentSolicitorReferenceDataId)) {
             result.setRespondentOrganisationPolicy(new OrganisationPolicy(
-                divorceSession.getRespondentSolicitorReferenceDataId(),
+                respondentSolicitorReferenceDataId,
                 divorceSession.getRespondentSolicitorCompany(),
                 divorceSession.getRespondentSolicitorReference(),
                 RESP_SOLICITOR
