@@ -642,4 +642,10 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("RespondentOrganisationPolicy")
     private OrganisationPolicy respondentOrganisationPolicy;
 
+    @JsonProperty("SuccessfulServedByBailiff")
+    private String successfulServedByBailiff;
+
+    @JsonProperty("ReasonFailureToServe")
+    private String reasonFailureToServe;
+
 }
