@@ -656,6 +656,12 @@ public class DivorceSession {
     @ApiModelProperty(value = "Is the language preference Welsh?", allowableValues = "Yes, No")
     private String languagePreferenceWelsh;
 
+    @ApiModelProperty(value = "Indicates if the bailiff service was successful")
+    private String successfulServedByBailiff;
+
+    @ApiModelProperty(value = "Indicates the reason for failure to serve the bailiff service")
+    private String reasonFailureToServe;
+
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {
             d8Documents.forEach(doc -> doc.setFileType("petition"));
