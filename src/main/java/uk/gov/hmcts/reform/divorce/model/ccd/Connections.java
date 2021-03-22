@@ -28,4 +28,10 @@ public class Connections {
 
     @JsonProperty("G")
     private String connectionG;
+
+    @JsonProperty("H")
+    private String connectionH;
+
+    @JsonProperty("I")
+    private String connectionI;
 }
