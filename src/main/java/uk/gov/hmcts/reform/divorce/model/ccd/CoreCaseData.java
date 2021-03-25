@@ -294,6 +294,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("D8JurisdictionConnection")
     private List<String> d8JurisdictionConnection;
 
+    @JsonProperty("D8JurisdictionConnectionNewPolicy")
+    private List<String> d8JurisdictionConnectionNewPolicy;
+
     @JsonProperty("D8JurisdictionLastTwelveMonths")
     private String d8JurisdictionLastTwelveMonths;
 
@@ -635,6 +638,9 @@ public class CoreCaseData extends AosCaseData {
 
     @JsonProperty("LanguagePreferenceWelsh")
     private String languagePreferenceWelsh;
+
+    @JsonProperty("NewLegalConnectionPolicy")
+    private String newLegalConnectionPolicy;
 
     @JsonProperty("ServiceApplications")
     private List<ServiceApplication> serviceApplications;
