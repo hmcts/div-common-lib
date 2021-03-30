@@ -82,6 +82,8 @@ public class DivorceSession {
     private List<String> jurisdictionPath;
     @ApiModelProperty(value = "Legal connections.")
     private List<String> jurisdictionConnection;
+    @ApiModelProperty(value = "Legal connections new policy.")
+    private List<String> jurisdictionConnectionNewPolicy;
     @ApiModelProperty(value = "Legal connections content.")
     private Connections connections;
     @ApiModelProperty(value = "Is petitioner resident?", allowableValues = "Yes, No")
@@ -326,18 +328,28 @@ public class DivorceSession {
     private String sessionKey;
     @ApiModelProperty(value = "Regional divorce unit.")
     private String courts;
+
     @ApiModelProperty(value = "Name of solicitor used by respondent.")
     private String respondentSolicitorName;
+
     @ApiModelProperty(value = "Company of solicitor used by respondent.")
     private String respondentSolicitorCompany;
+
     @ApiModelProperty(value = "Email of solicitor used by respondent.")
     private String respondentSolicitorEmail;
+
     @ApiModelProperty(value = "Phone number of solicitor used by respondent.")
     private String respondentSolicitorPhoneNumber;
+
     @ApiModelProperty(value = "Address of solicitor used by respondent.")
     private Address respondentSolicitorAddress;
+
     @ApiModelProperty(value = "Respondent's Solicitor reference number.")
     private String respondentSolicitorReference;
+
+    @ApiModelProperty(value = "Reference data id for the respondent solicitor organisation")
+    private String respondentSolicitorReferenceDataId;
+
     @ApiModelProperty(value = "Agree to statement of truth?", allowableValues = "Yes, No")
     private String confirmPrayer;
     @ApiModelProperty(value = "Payment details.")
@@ -647,6 +659,15 @@ public class DivorceSession {
 
     @ApiModelProperty(value = "Is the language preference Welsh?", allowableValues = "Yes, No")
     private String languagePreferenceWelsh;
+
+    @ApiModelProperty(value = "Indicates if the bailiff service was successful")
+    private String successfulServedByBailiff;
+
+    @ApiModelProperty(value = "Indicates the reason for failure to serve the bailiff service")
+    private String reasonFailureToServe;
+
+    @ApiModelProperty(value = "New legal connection policy", allowableValues = "Yes, No")
+    private String newLegalConnectionPolicy;
 
     public void setD8Documents(List<UploadedFile> d8Documents) {
         if (CollectionUtils.isNotEmpty(d8Documents)) {

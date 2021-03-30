@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.divorce.mapper.strategy.payment.PaymentContext;
 import uk.gov.hmcts.reform.divorce.mapper.strategy.reasonfordivorce.ReasonForDivorceContext;
 import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.OrganisationPolicy;
 import uk.gov.hmcts.reform.divorce.model.usersession.DivorceSession;
 import uk.gov.hmcts.reform.divorce.service.InferredGenderService;
 import uk.gov.hmcts.reform.divorce.service.SeparationDateService;
@@ -28,6 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.SIMPLE_DATE_FORMAT;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoNeverUpperCase;
 import static uk.gov.hmcts.reform.divorce.mapper.MappingCommons.toYesNoUpperCase;
+import static uk.gov.hmcts.reform.divorce.model.ccd.roles.CaseRoles.RESPONDENT_SOLICITOR;
 
 @Mapper(componentModel = "spring", uses = {DocumentCollectionCCDFormatMapper.class},
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
@@ -112,6 +114,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "reasonForDivorceDesertionDetailsTrans", target = "d8ReasonForDivorceDesertionDetailsTrans")
     @Mapping(source = "reasonForDivorceDesertionDetailsTransLang", target = "d8ReasonForDivorceDesertionDetailsTransLang")
     @Mapping(source = "jurisdictionConnection", target = "d8JurisdictionConnection")
+    @Mapping(source = "jurisdictionConnectionNewPolicy", target = "d8JurisdictionConnectionNewPolicy")
     @Mapping(source = "financialOrderFor", target = "d8FinancialOrderFor")
     @Mapping(source = "petitionerNameChangedHow", target = "d8PetitionerNameChangedHow")
     @Mapping(source = "legalProceedingsRelated", target = "d8LegalProceedingsRelated")
@@ -157,6 +160,7 @@ public abstract class DivorceCaseToCCDMapper {
     @Mapping(source = "respondentPcqId", target = "respondentPcqId")
     @Mapping(source = "reasonForDivorceBehaviourDetailsTrans", target = "d8ReasonForDivorceBehaviourDetailsTrans")
     @Mapping(source = "reasonForDivorceBehaviourDetailsTransLang", target = "d8ReasonForDivorceBehaviourDetailsTransLang")
+    @Mapping(source = "newLegalConnectionPolicy", target = "newLegalConnectionPolicy")
     public abstract CoreCaseData divorceCaseDataToCourtCaseData(DivorceSession divorceSession);
 
     @BeforeMapping
@@ -592,10 +596,10 @@ public abstract class DivorceCaseToCCDMapper {
             String solicitorAddress = join(LINE_SEPARATOR,
                 divorceSession.getRespondentSolicitorAddress().getAddressField());
 
-            String solictorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),
+            String solicitorDetails = join(LINE_SEPARATOR, Arrays.asList(divorceSession.getRespondentSolicitorName(),
                 divorceSession.getRespondentSolicitorCompany()));
 
-            result.setD8DerivedRespondentSolicitorDetails(join(LINE_SEPARATOR, solictorDetails, solicitorAddress));
+            result.setD8DerivedRespondentSolicitorDetails(join(LINE_SEPARATOR, solicitorDetails, solicitorAddress));
         }
     }
 
@@ -727,6 +731,20 @@ public abstract class DivorceCaseToCCDMapper {
                                               @MappingTarget CoreCaseData result) {
         result.setLanguagePreferenceWelsh(
             toYesNoUpperCase(divorceSession.getLanguagePreferenceWelsh()));
+    }
+
+    @AfterMapping
+    protected void mapRespondentOrganisationPolicy(DivorceSession divorceSession, @MappingTarget CoreCaseData result) {
+        String respondentSolicitorReferenceDataId = divorceSession.getRespondentSolicitorReferenceDataId();
+
+        if (StringUtils.isNotBlank(respondentSolicitorReferenceDataId)) {
+            result.setRespondentOrganisationPolicy(new OrganisationPolicy(
+                respondentSolicitorReferenceDataId,
+                divorceSession.getRespondentSolicitorCompany(),
+                divorceSession.getRespondentSolicitorReference(),
+                RESPONDENT_SOLICITOR
+            ));
+        }
     }
 
     private CaseLink translateStringToCaseLink(final String value) {
