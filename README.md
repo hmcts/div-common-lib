@@ -30,6 +30,11 @@ To run all checks (including unit tests) please execute the following command:
     ./gradlew check
 ```
 
+## Releasing a version
+
+To publish a version of artefact, just create a release in GitHub. GitHub Actions will publish a version matching the version the gradle build file.
+Tip: use Gradle Composite Build locally to test how these changes affect the modules that use it. Your life will be easier.
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
