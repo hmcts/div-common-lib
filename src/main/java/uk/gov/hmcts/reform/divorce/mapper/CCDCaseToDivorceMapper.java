@@ -15,6 +15,8 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CaseLink;
 import uk.gov.hmcts.reform.divorce.model.ccd.CollectionMember;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.HearingDateTime;
+import uk.gov.hmcts.reform.divorce.model.ccd.Organisation;
+import uk.gov.hmcts.reform.divorce.model.ccd.OrganisationPolicy;
 import uk.gov.hmcts.reform.divorce.model.ccd.ServiceApplication;
 import uk.gov.hmcts.reform.divorce.model.usersession.Address;
 import uk.gov.hmcts.reform.divorce.model.usersession.AddressType;
@@ -360,6 +362,20 @@ public abstract class CCDCaseToDivorceMapper {
                                                             @MappingTarget DivorceSession divorceSession) {
         divorceSession.setRespondentNameAsOnMarriageCertificate(
             toYesNoPascalCase(caseData.getD8RespondentNameAsOnMarriageCertificate()));
+    }
+
+    @AfterMapping
+    protected void mapRespondentSolicitorReferenceDataId(CoreCaseData caseData,
+                                                            @MappingTarget DivorceSession divorceSession) {
+        OrganisationPolicy respondentOrganisationPolicy = caseData.getRespondentOrganisationPolicy();
+
+        if (respondentOrganisationPolicy != null) {
+            Organisation organisation = respondentOrganisationPolicy.getOrganisation();
+
+            if (organisation != null && organisation.getOrganisationId() != null) {
+                divorceSession.setRespondentSolicitorReferenceDataId(organisation.getOrganisationId());
+            }
+        }
     }
 
     @AfterMapping
