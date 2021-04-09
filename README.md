@@ -30,6 +30,12 @@ To run all checks (including unit tests) please execute the following command:
     ./gradlew check
 ```
 
+## Where it's referenced
+
+Divorce projects using `div-common-lib`:
+- div-cos: https://github.com/hmcts/div-case-orchestration-service
+- div-cfs: https://github.com/hmcts/div-case-data-formatter
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
