@@ -1,0 +1,11 @@
+{
+  "RespondentOrganisationPolicy": {
+    "Organisation": {
+      "OrganisationID": "123-refdata",
+      "OrganisationName": "sol company ltd."
+    },
+    "OrgPolicyReference": "sol-123",
+    "PreviousOrganisations": [],
+    "OrgPolicyCaseAssignedRole": "[RESPSOLICITOR]"
+  }
+}
