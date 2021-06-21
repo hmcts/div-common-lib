@@ -16,7 +16,9 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
