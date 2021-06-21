@@ -28,6 +28,7 @@ public class ValidationServiceTest {
 
     @Before
     public void setup() {
+        // test PR build
         assertNotNull(validationService);
 
         // Populate with valid data
