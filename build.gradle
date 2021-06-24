@@ -44,6 +44,7 @@ compileTestJava {
 
 repositories {
     jcenter()
+    mavenCentral()
     mavenLocal()
 }
 
