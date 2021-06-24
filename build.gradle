@@ -1,7 +1,6 @@
 plugins {
     id 'checkstyle'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'java-library'
     id 'maven'
@@ -45,6 +44,7 @@ compileTestJava {
 
 repositories {
     jcenter()
+    mavenLocal()
 }
 
 jar {
@@ -108,29 +108,6 @@ publishing {
                 root.appendNode('url', gitRepo)
                 root.children().last() + pomConfig
             }
-        }
-    }
-}
-
-bintray {
-    //Run command with -PshouldPublish=false for checking whether version already exists
-    boolean shouldPublish = "false" != findProperty('shouldPublish')
-    publish = shouldPublish
-    if (!shouldPublish) {
-        println 'Will not publish artifact. Just check.'
-    }
-
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['Main']
-    pkg {
-        repo = 'hmcts-maven'
-        name = 'div-common-lib'
-        userOrg = 'hmcts'
-        licenses = ['MIT']
-        vcsUrl = gitRepo
-        version {
-            name = project.version
         }
     }
 }
