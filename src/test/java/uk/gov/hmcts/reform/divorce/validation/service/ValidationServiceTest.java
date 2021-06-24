@@ -63,7 +63,7 @@ public class ValidationServiceTest {
         ValidationResponse response = validationService.validate(coreCaseData);
         assertEquals(FAILED.getValue(), response.getValidationStatus());
         // Previous versions would have stopped when 1 rule failed
-        // Now get multiple reasons for failure so can no longer check error count=1
+        // Now get multiple reasons for failure so can no longer check error count = 1
         assertTrue(response.getErrors().stream().anyMatch(e -> e.contains(D8_SCREEN_HAS_MARRIAGE_BROKEN)));
     }
 
