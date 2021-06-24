@@ -23,15 +23,3 @@ jobs:
           java-version: 11
       - name: Build
         run: ./gradlew check
-      - name: Check artifact can be released
-        if: github.event_name == 'pull_request'
-        env:
-          BINTRAY_USER: jenkins-reform-hmcts
-          BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
-        run: ./gradlew bintrayUpload -PshouldPublish=false
-      - name: Release
-        if: github.event_name != 'pull_request'
-        env:
-          BINTRAY_USER: jenkins-reform-hmcts
-          BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
-        run: ./gradlew bintrayUpload

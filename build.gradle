@@ -1,7 +1,6 @@
 plugins {
     id 'checkstyle'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
-    id 'com.jfrog.bintray' version '1.8.4'
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'java-library'
     id 'maven'
@@ -10,7 +9,7 @@ plugins {
 }
 
 group 'uk.gov.hmcts.reform'
-version '1.2.16'
+version '1.2.17'
 
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -45,6 +44,7 @@ compileTestJava {
 
 repositories {
     jcenter()
+    mavenLocal()
 }
 
 jar {
@@ -112,29 +112,6 @@ publishing {
     }
 }
 
-bintray {
-    //Run command with -PshouldPublish=false for checking whether version already exists
-    boolean shouldPublish = "false" != findProperty('shouldPublish')
-    publish = shouldPublish
-    if (!shouldPublish) {
-        println 'Will not publish artifact. Just check.'
-    }
-
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['Main']
-    pkg {
-        repo = 'hmcts-maven'
-        name = 'div-common-lib'
-        userOrg = 'hmcts'
-        licenses = ['MIT']
-        vcsUrl = gitRepo
-        version {
-            name = project.version
-        }
-    }
-}
-
 ext {
     lombokVersion = '1.18.8'
     springCloudVersion = 'Greenwich.SR2'
@@ -177,7 +154,7 @@ dependencies {
     testCompile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
     testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: jsonPathAssert
 
-    compile group: 'com.deliveredtechnologies', name: 'rulebook-core', version: '0.9.1'
+    compile group: 'com.deliveredtechnologies', name: 'rulebook-core', version: '0.12'
     compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
     compile(group: 'io.springfox', name: 'springfox-swagger2', version: springfoxSwagger)
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxSwagger
