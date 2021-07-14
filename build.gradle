@@ -112,28 +112,6 @@ publishing {
     }
 }
 
-bintray {
-    //Run command with -PshouldPublish=false for checking whether version already exists
-    boolean shouldPublish = "false" != findProperty('shouldPublish')
-    publish = shouldPublish
-    if (!shouldPublish) {
-        println 'Will not publish artifact. Just check.'
-    }
-
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['Main']
-    pkg {
-        repo = 'hmcts-maven'
-        name = 'div-common-lib'
-        userOrg = 'hmcts'
-        licenses = ['MIT']
-        vcsUrl = gitRepo
-        version {
-            name = project.version
-        }
-    }
-}
 
 ext {
     lombokVersion = '1.18.8'
