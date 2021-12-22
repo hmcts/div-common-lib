@@ -16,7 +16,7 @@ public class D8ReasonForDivorceSeperationDate extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if((Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("")
+        if ((Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("")
                 .equalsIgnoreCase(REASON_SEPARATION_2_YEARS)
                 || Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("")
                 .equalsIgnoreCase(REASON_SEPARATION_5_YEARS))

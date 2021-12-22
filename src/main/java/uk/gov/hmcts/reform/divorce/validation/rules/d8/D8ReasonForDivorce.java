@@ -21,7 +21,7 @@ public class D8ReasonForDivorce extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if(Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).isEmpty()
+        if (Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).isEmpty()
                 || getAllowedReasonsForDivorce(coreCaseData.getD8MarriageDate()).stream()
                 .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()))) {
             result.add(String.join(

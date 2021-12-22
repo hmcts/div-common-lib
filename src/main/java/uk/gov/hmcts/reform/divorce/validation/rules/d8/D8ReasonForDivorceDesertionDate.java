@@ -14,7 +14,7 @@ public class D8ReasonForDivorceDesertionDate extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if(Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("").equalsIgnoreCase(REASON_DESERTION)
+        if (Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("").equalsIgnoreCase(REASON_DESERTION)
                 && Optional.ofNullable(coreCaseData.getD8ReasonForDivorceDesertionDate()).isEmpty()) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter

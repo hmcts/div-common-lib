@@ -28,6 +28,7 @@ public class ValidationServiceImpl implements ValidationService {
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
             return validationResponse;
         }
+        
         ruleCompiler = new RuleCompiler();
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 

@@ -13,7 +13,7 @@ public class D8RespondentLastName extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if(Optional.ofNullable(coreCaseData.getD8RespondentLastName()).isEmpty()) {
+        if (Optional.ofNullable(coreCaseData.getD8RespondentLastName()).isEmpty()) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
                     ERROR_MESSAGE,

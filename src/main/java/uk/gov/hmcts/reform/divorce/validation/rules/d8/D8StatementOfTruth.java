@@ -15,7 +15,7 @@ public class D8StatementOfTruth extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if(Optional.ofNullable(coreCaseData.getD8StatementOfTruth()).isEmpty()
+        if (Optional.ofNullable(coreCaseData.getD8StatementOfTruth()).isEmpty()
                 || !coreCaseData.getD8StatementOfTruth().equalsIgnoreCase("YES")) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
