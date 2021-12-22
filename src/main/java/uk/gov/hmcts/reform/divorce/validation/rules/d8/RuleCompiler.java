@@ -10,6 +10,16 @@ public class RuleCompiler {
     public ArrayList<Rule> rulesList = new ArrayList<>();
 
     public void setUpRules() {
+        rulesList.add(new D8PetitionerFirstName()); //8
+        rulesList.add(new D8PetitionerLastName()); //9
+        rulesList.add(new D8RespondentFirstName()); //13
+        rulesList.add(new D8RespondentLastName()); //14?
+        rulesList.add(new D8ReasonForDivorce()); //16
+        rulesList.add(new D8ReasonForDivorceBehaviourDetails()); //17
+        rulesList.add(new D8ReasonForDivorceDesertionDate()); //18
+        rulesList.add(new D8ReasonForDivorceDesertionDetails()); //20
+        rulesList.add(new D8ReasonForDivorceSeperationDate()); //21
+        rulesList.add(new D8ReasonForDivorceAdulteryDetails()); //22
         rulesList.add(new D8DivorceCostsClaim());
     }
 

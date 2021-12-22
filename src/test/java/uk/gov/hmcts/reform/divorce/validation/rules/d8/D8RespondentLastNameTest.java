@@ -7,46 +7,45 @@ import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 public class D8RespondentLastNameTest {
 
     private D8RespondentLastName rule;
     private CoreCaseData coreCaseData;
+    private List<String> result;
 
     @Before
     public void setup() {
         rule = new D8RespondentLastName();
         coreCaseData = new CoreCaseData();
+        result = new ArrayList<>();
     }
 
     @Test
     public void whenShouldReturnTrueWhenD8RespondentLastNameIsNull() {
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
     public void whenShouldReturnFalseWhenD8RespondentLastNameIsNotNull() {
         coreCaseData.setD8RespondentLastName("Yes");
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
     public void thenShouldReturnErrorMessageWithNull() {
-        rule.setCoreCaseData(coreCaseData);
+        result = rule.execute(coreCaseData, result);
 
-        rule.setResult(new ArrayList<>());
-        rule.then();
-
-        assertEquals("D8RespondentLastName can not be null or empty. Actual data is: null", rule.getResult().get(0));
+        assertEquals("D8RespondentLastName can not be null or empty. Actual data is: null", result.get(0));
     }
 }

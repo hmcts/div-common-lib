@@ -7,68 +7,64 @@ import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 public class D8StatementOfTruthTest {
 
     private D8StatementOfTruth rule;
     private CoreCaseData coreCaseData;
+    private List<String> result;
 
     @Before
     public void setup() {
         rule = new D8StatementOfTruth();
         coreCaseData = new CoreCaseData();
+        result = new ArrayList<>();
     }
 
     @Test
     public void whenShouldReturnTrueWhenD8StatementOfTruthIsNull() {
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
     public void whenShouldReturnTrueWhenD8StatementOfTruthIsNotYes() {
         coreCaseData.setD8StatementOfTruth("No");
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
     public void whenShouldReturnFalseWhenD8StatementOfTruthIsNotNull() {
         coreCaseData.setD8StatementOfTruth("Yes");
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
     public void thenShouldReturnErrorMessageWithNull() {
-        rule.setCoreCaseData(coreCaseData);
+        result = rule.execute(coreCaseData, result);
 
-        rule.setResult(new ArrayList<>());
-        rule.then();
-
-        assertEquals("D8StatementOfTruth must be 'YES'. Actual data is: null", rule.getResult().get(0));
+        assertEquals("D8StatementOfTruth must be 'YES'. Actual data is: null", result.get(0));
     }
 
     @Test
     public void thenShouldReturnErrorMessageWithNo() {
         coreCaseData.setD8StatementOfTruth("No");
 
-        rule.setCoreCaseData(coreCaseData);
+        result = rule.execute(coreCaseData, result);
 
-        rule.setResult(new ArrayList<>());
-        rule.then();
-
-        assertEquals("D8StatementOfTruth must be 'YES'. Actual data is: No", rule.getResult().get(0));
+        assertEquals("D8StatementOfTruth must be 'YES'. Actual data is: No", result.get(0));
     }
 }

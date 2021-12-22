@@ -10,8 +10,11 @@ import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 
@@ -19,19 +22,20 @@ public class D8ReasonForDivorceTest {
 
     private D8ReasonForDivorce rule;
     private CoreCaseData coreCaseData;
+    private List<String> result;
 
     @Before
     public void setup() {
         rule = new D8ReasonForDivorce();
         coreCaseData = new CoreCaseData();
+        result = new ArrayList<>();
     }
 
     @Test
     public void whenShouldReturnTrueWhenD8ReasonForDivorceIsNull() {
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
@@ -39,10 +43,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
@@ -50,10 +53,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("desertion");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
@@ -61,10 +63,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
@@ -72,20 +73,18 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
     public void whenShouldReturnTrueWhenD8ReasonForDivorceIsInvalid() {
         coreCaseData.setD8ReasonForDivorce("Yes");
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
@@ -93,10 +92,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("adultery");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
@@ -104,10 +102,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
@@ -115,10 +112,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
@@ -126,10 +122,9 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("desertion");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
@@ -137,33 +132,26 @@ public class D8ReasonForDivorceTest {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 6, ChronoUnit.DAYS)));
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
 
     @Test
     public void thenShouldReturnErrorMessageWithNullWhenD8ReasonForDivorceIsNotSet() {
-        rule.setCoreCaseData(coreCaseData);
+        result = rule.execute(coreCaseData, result);
 
-        rule.setResult(new ArrayList<>());
-        rule.then();
-
-        assertEquals("D8ReasonForDivorce can not be null or empty. Actual data is: null", rule.getResult().get(0));
+        assertEquals("D8ReasonForDivorce can not be null or empty. Actual data is: null", result.get(0));
     }
 
     @Test
     public void thenShouldReturnErrorMessageWithInvalidWhenD8ReasonForDivorceIsInvalid() {
         coreCaseData.setD8ReasonForDivorce("Yes");
 
-        rule.setCoreCaseData(coreCaseData);
-
-        rule.setResult(new ArrayList<>());
-        rule.then();
+        result = rule.execute(coreCaseData, result);
 
         assertEquals("D8ReasonForDivorce is invalid for the current date of marriage. Actual data is: Yes",
-            rule.getResult().get(0));
+            result.get(0));
     }
 }
