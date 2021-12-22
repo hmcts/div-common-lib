@@ -139,6 +139,7 @@ dependencies {
     api group: 'io.github.openfeign', name: 'feign-jackson', version: feignVersion
     api group: 'io.github.openfeign', name: 'feign-httpclient', version: feignVersion
     api group: 'io.github.openfeign.form', name: 'feign-form', version: feignFormVersion
+    implementation 'org.projectlombok:lombok:1.18.18'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
