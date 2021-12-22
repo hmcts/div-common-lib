@@ -2,11 +2,8 @@ package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,29 +25,24 @@ public class D8DivorceCostsClaimTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8DivorceCostsClaimIsNull() {
+    public void shouldReturnNonEmptyResultWhenD8DivorceCostsClaimIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
-//    @Test
-//    public void whenShouldReturnFalseWhenD8DivorceCostsClaimIsNotNull() {
-//        coreCaseData.setD8DivorceCostsClaim("Yes");
-//
-//        rule.setCoreCaseData(coreCaseData);
-//        boolean result = rule.when();
-//
-//        assertEquals(false, result);
-//    }
-//
-//    @Test
-//    public void thenShouldReturnErrorMessageWithNull() {
-//        rule.setCoreCaseData(coreCaseData);
-//
-//        rule.setResult(new ArrayList<>());
-//        rule.then();
-//
-//        assertEquals("D8DivorceCostsClaim can not be null or empty. Actual data is: null", rule.getResult().get(0));
-//    }
+    @Test
+    public void whenShouldReturnFalseWhenD8DivorceCostsClaimIsNotNull() {
+        coreCaseData.setD8DivorceCostsClaim("Yes");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(true));
+    }
+
+    @Test
+    public void shouldReturnResultWithErrorMessageWhenD8DivorceCostsClaimIsNull() {
+        result = rule.execute(coreCaseData, result);
+
+        assertEquals("D8DivorceCostsClaim can not be null or empty. Actual data is: null", result.get(0));
+    }
 }
