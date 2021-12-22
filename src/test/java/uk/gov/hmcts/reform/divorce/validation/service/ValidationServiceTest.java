@@ -10,8 +10,7 @@ import uk.gov.hmcts.reform.divorce.config.MappingConfig;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
@@ -40,8 +39,8 @@ public class ValidationServiceTest {
     }
 
     @Test
-    public void givenCaseId_whenValidationIsCalledWithValidData_thenValidationWillSucceed() {
-        assertEquals(SUCCESS.getValue(), validationService.validate(coreCaseData).getValidationStatus());
+    public void givenCaseId_whenValidationIsCalledWithValidButIncompleteData_thenValidationWillFail() {
+        assertEquals(FAILED.getValue(), validationService.validate(coreCaseData).getValidationStatus());
     }
 
     @Test
@@ -49,7 +48,8 @@ public class ValidationServiceTest {
         coreCaseData.setD8ScreenHasMarriageBroken(null);
         ValidationResponse response = validationService.validate(coreCaseData);
         assertEquals(FAILED.getValue(), response.getValidationStatus());
-        assertEquals(1, response.getErrors().size());
+        assertNotEquals(0, response.getErrors().size());
+        //assertEquals(1, response.getErrors().size());
     }
 
     @Test
