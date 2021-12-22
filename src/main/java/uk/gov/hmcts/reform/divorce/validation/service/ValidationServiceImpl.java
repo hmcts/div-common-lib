@@ -1,52 +1,35 @@
 package uk.gov.hmcts.reform.divorce.validation.service;
 
-import com.deliveredtechnologies.rulebook.FactMap;
-import com.deliveredtechnologies.rulebook.NameValueReferableMap;
-import com.deliveredtechnologies.rulebook.Result;
-import com.deliveredtechnologies.rulebook.model.RuleBook;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.RuleCompiler;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Slf4j
 public class ValidationServiceImpl implements ValidationService {
 
-    @Autowired
-    @Qualifier("D8RuleBook")
-    private RuleBook<List<String>> d8RuleBook;
+    private RuleCompiler ruleCompiler;
 
     @Override
     public ValidationResponse validate(CoreCaseData coreCaseData) {
         log.info("Validating CoreCaseData");
 
-        NameValueReferableMap<CoreCaseData> facts = new FactMap<>();
-
-        facts.setValue("coreCaseData", coreCaseData);
-        d8RuleBook.setDefaultResult(new ArrayList<>());
-        d8RuleBook.run(facts);
-
         ValidationResponse validationResponse = ValidationResponse.builder()
             .validationStatus(ValidationStatus.SUCCESS.getValue())
             .build();
 
-        d8RuleBook.getResult().map(Result::getValue)
-            .ifPresent(result -> errorResponse(validationResponse, result));
+        ruleCompiler = new RuleCompiler();
+        List<String> result = ruleCompiler.executeRules(coreCaseData);
 
-        return validationResponse;
-    }
-
-    private void errorResponse(ValidationResponse validationResponse, List<String> result) {
         if (!result.isEmpty()) {
             validationResponse.setErrors(result);
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
         }
-    }
 
+        return validationResponse;
+    }
 }
