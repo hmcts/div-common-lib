@@ -35,7 +35,7 @@ public class RuleCompiler {
 
     public List<String> executeRules(CoreCaseData coreCaseData) {
         ArrayList<String> result = new ArrayList<>();
-        rulesList.forEach(rule -> rule.execute(coreCaseData, result) );
+        rulesList.forEach(rule -> rule.execute(coreCaseData, result));
         return result;
     }
 }

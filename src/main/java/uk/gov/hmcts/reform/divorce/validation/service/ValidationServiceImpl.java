@@ -6,7 +6,6 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.RuleCompiler;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,11 +23,11 @@ public class ValidationServiceImpl implements ValidationService {
             .validationStatus(ValidationStatus.SUCCESS.getValue())
             .build();
 
-        if(Optional.ofNullable(coreCaseData).isEmpty()) {
+        if (Optional.ofNullable(coreCaseData).isEmpty()) {
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
             return validationResponse;
         }
-        
+
         ruleCompiler = new RuleCompiler();
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 

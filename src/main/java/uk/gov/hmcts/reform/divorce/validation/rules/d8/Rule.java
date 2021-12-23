@@ -4,7 +4,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.List;
 
-abstract public class Rule {
+abstract class Rule {
 
-    abstract public List<String> execute(CoreCaseData coreCaseData, List<String> result);
+    abstract List<String> execute(CoreCaseData coreCaseData, List<String> result);
 }
