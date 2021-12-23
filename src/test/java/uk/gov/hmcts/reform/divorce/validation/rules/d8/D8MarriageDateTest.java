@@ -53,7 +53,7 @@ public class D8MarriageDateTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8MarriageDateIsInTheFuture() {
+    public void shouldReturnResultWhenD8MarriageDateIsInTheFuture() {
         String d8MarriageDate = DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
         result = rule.execute(coreCaseData, result);
@@ -62,7 +62,7 @@ public class D8MarriageDateTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8MarriageDateIsValid() {
+    public void shouldReturnEmptyResultWhenD8MarriageDateIsValid() {
         String d8MarriageDate = DateUtils.formatDate(Instant.now().minus(365 * 2, ChronoUnit.DAYS));
         coreCaseData.setD8MarriageDate(d8MarriageDate);
         result = rule.execute(coreCaseData, result);
@@ -71,7 +71,7 @@ public class D8MarriageDateTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8MarriageDate can not be null or empty. Actual data is: null", result.get(0));

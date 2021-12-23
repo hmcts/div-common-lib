@@ -25,14 +25,14 @@ public class D8JurisdictionConnectionTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8JurisdictionConnectionIsNull() {
+    public void shouldReturnResultWhenD8JurisdictionConnectionIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8JurisdictionConnectionIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8JurisdictionConnectionIsNotNull() {
         List<String> d8JurisdictionConnection = new ArrayList<>();
         coreCaseData.setD8JurisdictionConnection(d8JurisdictionConnection);
         result = rule.execute(coreCaseData, result);
@@ -41,7 +41,7 @@ public class D8JurisdictionConnectionTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8JurisdictionConnection can not be null or empty. Actual data is: null", result.get(0));

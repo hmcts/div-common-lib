@@ -29,14 +29,14 @@ public class D8PetitionerLastNameTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8PetitionerLastNameIsNull() {
+    public void shouldReturnTrueWhenD8PetitionerLastNameIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8PetitionerLastNameIsNotNull() {
+    public void shouldReturnFalseWhenD8PetitionerLastNameIsNotNull() {
         coreCaseData.setD8PetitionerLastName("Yes");
 
         result = rule.execute(coreCaseData, result);
@@ -45,7 +45,7 @@ public class D8PetitionerLastNameTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
 

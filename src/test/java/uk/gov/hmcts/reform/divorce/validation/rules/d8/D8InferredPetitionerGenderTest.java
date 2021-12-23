@@ -26,14 +26,14 @@ public class D8InferredPetitionerGenderTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8InferredPetitionerGenderIsNull() {
+    public void shouldReturnResultWhenD8InferredPetitionerGenderIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8InferredPetitionerGenderIsNotNull() {
+    public void shouldReturnNoResultWhenD8InferredPetitionerGenderIsNotNull() {
         coreCaseData.setD8InferredPetitionerGender(Gender.MALE);
         result = rule.execute(coreCaseData, result);
 
@@ -41,7 +41,7 @@ public class D8InferredPetitionerGenderTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWhenD8InferredPetitionerGenderIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8InferredPetitionerGender can not be null or empty. Actual data is: null", result.get(0));

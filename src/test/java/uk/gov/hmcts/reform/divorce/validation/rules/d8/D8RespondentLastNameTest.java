@@ -27,14 +27,14 @@ public class D8RespondentLastNameTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8RespondentLastNameIsNull() {
+    public void shouldReturnResultWhenD8RespondentLastNameIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8RespondentLastNameIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8RespondentLastNameIsNotNull() {
         coreCaseData.setD8RespondentLastName("Yes");
 
         result = rule.execute(coreCaseData, result);
@@ -43,7 +43,7 @@ public class D8RespondentLastNameTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8RespondentLastName can not be null or empty. Actual data is: null", result.get(0));

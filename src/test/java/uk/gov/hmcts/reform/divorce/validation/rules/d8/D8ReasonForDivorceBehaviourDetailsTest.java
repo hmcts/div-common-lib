@@ -28,7 +28,7 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsBehaviourAndD8ReasonForDivorceBehaviourDetailsIsNull() {
+    public void shouldReturnResultWhenFactIsBehaviourAndD8ReasonForDivorceBehaviourDetailsIsNull() {
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
         result = rule.execute(coreCaseData, result);
 
@@ -36,14 +36,14 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsNotBehaviourAndD8ReasonForDivorceBehaviourDetailsIsNull() {
+    public void shouldReturnEmptyResultWhenFactIsNotBehaviourAndD8ReasonForDivorceBehaviourDetailsIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(true));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8ReasonForDivorceBehaviourDetailsIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8ReasonForDivorceBehaviourDetailsIsNotNull() {
         coreCaseData.setD8ReasonForDivorceBehaviourDetails("Yes");
 
         result = rule.execute(coreCaseData, result);
@@ -52,7 +52,7 @@ public class D8ReasonForDivorceBehaviourDetailsTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
         result = rule.execute(coreCaseData, result);
 

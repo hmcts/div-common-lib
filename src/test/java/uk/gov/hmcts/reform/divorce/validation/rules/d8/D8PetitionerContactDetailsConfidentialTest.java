@@ -25,14 +25,14 @@ public class D8PetitionerContactDetailsConfidentialTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8PetitionerContactDetailsConfidentialIsNull() {
+    public void shouldReturnResultWhenD8PetitionerContactDetailsConfidentialIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8PetitionerContactDetailsConfidentialIsNotNull() {
+    public void shouldReturnFalseWhenD8PetitionerContactDetailsConfidentialIsNotNull() {
         coreCaseData.setD8PetitionerContactDetailsConfidential("Yes");
         result = rule.execute(coreCaseData, result);
 

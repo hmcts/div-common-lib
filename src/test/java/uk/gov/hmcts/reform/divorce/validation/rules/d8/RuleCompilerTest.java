@@ -105,7 +105,7 @@ public class RuleCompilerTest {
         coreCaseData.setD8PetitionerFirstName("lsado");
         coreCaseData.setD8PetitionerLastName(null);
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS)));
-        coreCaseData.setD8LegalProceedings(null); //incorrect
+        coreCaseData.setD8LegalProceedings(null);
         coreCaseData.setD8MarriagePetitionerName("asdjaisdjia awodewiapoed");
         coreCaseData.setD8MarriageRespondentName("sdjasjd dawid");
         coreCaseData.setD8JurisdictionConnection(new ArrayList<>());

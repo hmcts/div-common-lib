@@ -25,14 +25,14 @@ public class D8LegalProceedingsTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8LegalProceedingsIsNull() {
+    public void shouldReturnResultWhenD8LegalProceedingsIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8LegalProceedingsIsNotNull() {
+    public void shouldReturnFalseWhenD8LegalProceedingsIsNotNull() {
         coreCaseData.setD8LegalProceedings("Yes");
         result = rule.execute(coreCaseData, result);
 
@@ -40,7 +40,7 @@ public class D8LegalProceedingsTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8LegalProceedings can not be null or empty. Actual data is: null", result.get(0));

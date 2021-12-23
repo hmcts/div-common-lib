@@ -32,7 +32,7 @@ public class D8DivorceCostsClaimTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8DivorceCostsClaimIsNotNull() {
+    public void resultShouldBeEmptyWhenD8DivorceCostsClaimIsNotNull() {
         coreCaseData.setD8DivorceCostsClaim("Yes");
         result = rule.execute(coreCaseData, result);
 
@@ -40,7 +40,7 @@ public class D8DivorceCostsClaimTest {
     }
 
     @Test
-    public void shouldReturnResultWithErrorMessageWhenD8DivorceCostsClaimIsNull() {
+    public void shouldReturnCorrectErrorMessageWhenD8DivorceCostsClaimIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8DivorceCostsClaim can not be null or empty. Actual data is: null", result.get(0));

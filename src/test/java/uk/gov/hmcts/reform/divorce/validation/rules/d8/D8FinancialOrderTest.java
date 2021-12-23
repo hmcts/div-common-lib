@@ -27,14 +27,14 @@ public class D8FinancialOrderTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8FinancialOrderIsNull() {
+    public void shouldReturnAResultWhenD8FinancialOrderIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8FinancialOrderIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8FinancialOrderIsNotNull() {
         coreCaseData.setD8FinancialOrder("Yes");
         result = rule.execute(coreCaseData, result);
 
@@ -42,7 +42,7 @@ public class D8FinancialOrderTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWhenD8FinancialOrderIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8FinancialOrder can not be null or empty. Actual data is: null", result.get(0));

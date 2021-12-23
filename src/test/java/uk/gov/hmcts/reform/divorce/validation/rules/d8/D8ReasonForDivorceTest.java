@@ -88,7 +88,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsAdulteryAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
+    public void shouldReturnEmptyResultWhenFactIsAdulteryAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("adultery");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
@@ -98,7 +98,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsBehaviourAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
+    public void shouldReturnEmptyResultWhenFactIsBehaviourAndMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
@@ -108,7 +108,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsSeparation2YearsAndMarriageDateIsMoreThanTwoYearsAgo() {
+    public void shouldReturnEmptyResultWhenFactIsSeparation2YearsAndMarriageDateIsMoreThanTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
@@ -118,7 +118,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsDesertionAndMarriageDateIsMoreThanTwoYearsAgo() {
+    public void shouldReturnEmptyResultWhenFactIsDesertionAndMarriageDateIsMoreThanTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("desertion");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
@@ -128,7 +128,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsSeparation5YearsAndMarriageDateIsMoreThan5YearsAgo() {
+    public void shouldReturnEmptyResultWhenFactIsSeparation5YearsAndMarriageDateIsMoreThan5YearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 6, ChronoUnit.DAYS)));
 
@@ -139,14 +139,14 @@ public class D8ReasonForDivorceTest {
 
 
     @Test
-    public void thenShouldReturnErrorMessageWithNullWhenD8ReasonForDivorceIsNotSet() {
+    public void shouldReturnCorrectErrorMessageWithNullWhenD8ReasonForDivorceIsNotSet() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8ReasonForDivorce can not be null or empty. Actual data is: null", result.get(0));
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithInvalidWhenD8ReasonForDivorceIsInvalid() {
+    public void shouldReturnCorrectErrorMessageWhenD8ReasonForDivorceIsInvalidArgument() {
         coreCaseData.setD8ReasonForDivorce("Yes");
 
         result = rule.execute(coreCaseData, result);

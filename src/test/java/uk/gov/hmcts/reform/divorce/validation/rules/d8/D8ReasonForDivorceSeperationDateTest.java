@@ -28,7 +28,7 @@ public class D8ReasonForDivorceSeperationDateTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsSeperation2YearsAndD8ReasonForDivorceSeperationDateIsNull() {
+    public void shouldReturnResultWhenFactIsSeperation2YearsAndD8ReasonForDivorceSeperationDateIsNull() {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
         result = rule.execute(coreCaseData, result);
 
@@ -36,14 +36,14 @@ public class D8ReasonForDivorceSeperationDateTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsNotSeperationAndD8ReasonForDivorceSeperationDateIsNull() {
+    public void shouldReturnEmptyResultWhenFactIsNotSeperationAndD8ReasonForDivorceSeperationDateIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(true));
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsSeperation5YearsAndD8ReasonForDivorceSeperationDateIsNull() {
+    public void shouldReturnResultWhenFactIsSeperation5YearsAndD8ReasonForDivorceSeperationDateIsNull() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         result = rule.execute(coreCaseData, result);
 
@@ -51,7 +51,7 @@ public class D8ReasonForDivorceSeperationDateTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8ReasonForDivorceSeperationDateIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8ReasonForDivorceSeperationDateIsNotNull() {
         coreCaseData.setD8ReasonForDivorceSeperationDate("dateString");
 
         result = rule.execute(coreCaseData, result);
@@ -60,11 +60,7 @@ public class D8ReasonForDivorceSeperationDateTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
-//        rule.setCoreCaseData(coreCaseData);
-//
-//        rule.setResult(new ArrayList<>());
-//        rule.then();
+    public void shouldReturnCorrectErrorMessageWithNull() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         result = rule.execute(coreCaseData, result);
 

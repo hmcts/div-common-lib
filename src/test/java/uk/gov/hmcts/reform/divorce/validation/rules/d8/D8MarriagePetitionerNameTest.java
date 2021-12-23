@@ -25,14 +25,14 @@ public class D8MarriagePetitionerNameTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8MarriagePetitionerNameIsNull() {
+    public void shouldReturnResultWhenD8MarriagePetitionerNameIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8MarriagePetitionerNameIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8MarriagePetitionerNameIsNotNull() {
         coreCaseData.setD8MarriagePetitionerName("Yes");
         result = rule.execute(coreCaseData, result);
 
@@ -40,7 +40,7 @@ public class D8MarriagePetitionerNameTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         result = rule.execute(coreCaseData, result);
 
         assertEquals("D8MarriagePetitionerName can not be null or empty. Actual data is: null", result.get(0));

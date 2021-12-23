@@ -28,7 +28,7 @@ public class D8ReasonForDivorceDesertionDetailsTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsDesertionAndD8ReasonForDivorceDesertionDetailsIsNull() {
+    public void shouldReturnResultWhenFactIsDesertionAndD8ReasonForDivorceDesertionDetailsIsNull() {
         coreCaseData.setD8ReasonForDivorce("desertion");
         result = rule.execute(coreCaseData, result);
 
@@ -36,14 +36,14 @@ public class D8ReasonForDivorceDesertionDetailsTest {
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsNotDesertionAndD8ReasonForDivorceDesertionDetailsIsNull() {
+    public void shouldReturnEmptyResultWhenFactIsNotDesertionAndD8ReasonForDivorceDesertionDetailsIsNull() {
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(true));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8ReasonForDivorceDesertionDetailsIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8ReasonForDivorceDesertionDetailsIsNotNull() {
         coreCaseData.setD8ReasonForDivorceDesertionDetails("Yes");
 
         result = rule.execute(coreCaseData, result);
@@ -52,7 +52,7 @@ public class D8ReasonForDivorceDesertionDetailsTest {
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         coreCaseData.setD8ReasonForDivorce("desertion");
         result = rule.execute(coreCaseData, result);
 
