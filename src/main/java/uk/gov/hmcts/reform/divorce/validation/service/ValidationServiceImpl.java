@@ -24,6 +24,7 @@ public class ValidationServiceImpl implements ValidationService {
             .build();
 
         if (Optional.ofNullable(coreCaseData).isEmpty()) {
+            log.info("CoreCaseData is empty");
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
             return validationResponse;
         }
@@ -32,6 +33,7 @@ public class ValidationServiceImpl implements ValidationService {
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 
         if (!result.isEmpty()) {
+            log.info("There were invalid fields in CoreCaseData, adding errors to validationResponse");
             validationResponse.setErrors(result);
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
         }
