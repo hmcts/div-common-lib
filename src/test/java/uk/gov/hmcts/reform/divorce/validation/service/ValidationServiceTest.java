@@ -10,9 +10,10 @@ import uk.gov.hmcts.reform.divorce.config.MappingConfig;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
-import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {

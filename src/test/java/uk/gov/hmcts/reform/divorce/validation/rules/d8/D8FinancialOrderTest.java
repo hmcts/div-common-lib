@@ -2,8 +2,6 @@ package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.ArrayList;

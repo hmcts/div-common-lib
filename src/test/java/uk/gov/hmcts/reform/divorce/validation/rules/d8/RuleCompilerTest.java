@@ -15,14 +15,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class RuleCompilerTest {
 
-    private final int NUM_MANDATORY_FIELDS = 16;
-    private final int NUM_INVALID_DUMMY_FIELDS = 6;
+    private final int mandatoryFields = 16;
+    private final int invalidDummyFields = 6;
 
     List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
@@ -54,7 +53,7 @@ public class RuleCompilerTest {
         coreCaseData = generateDummyCaseData();
         result = ruleCompiler.executeRules(coreCaseData);
 
-        assertThat(result.size(), is(NUM_INVALID_DUMMY_FIELDS));
+        assertThat(result.size(), is(invalidDummyFields));
         assertThat(result.get(0), containsString("D8MarriageDate can not be in the future. Actual data is:"));
         assertThat(result.get(1), is("D8PetitionerLastName can not be null or empty. Actual data is: null"));
         assertThat(result.get(2), is("D8PetitionerContactDetailsConfidential can not be null or empty. Actual data is: null"));
@@ -67,7 +66,7 @@ public class RuleCompilerTest {
     public void shouldReturnListWithMandatoryFieldErrorsWhenCoreCaseDataIsEmpty() {
         result = ruleCompiler.executeRules(coreCaseData);
 
-        assertThat(result.size(), is(NUM_MANDATORY_FIELDS));
+        assertThat(result.size(), is(mandatoryFields));
     }
 
     public List<Rule> constructCorrectOrderRules() {
