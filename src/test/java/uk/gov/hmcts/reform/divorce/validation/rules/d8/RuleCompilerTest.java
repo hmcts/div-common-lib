@@ -53,7 +53,6 @@ public class RuleCompilerTest {
         coreCaseData = generateDummyCaseData();
         result = ruleCompiler.executeRules(coreCaseData);
 
-        result.forEach(System.out::println);
         assertThat(result.size(), is(invalidDummyFields));
         assertThat(result.get(0), containsString("D8MarriageDate can not be in the future. Actual data is:"));
         assertThat(result.get(1), is("D8PetitionerLastName can not be null or empty. Actual data is: null"));
