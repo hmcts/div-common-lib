@@ -32,6 +32,14 @@ public class D8FinancialOrderTest {
     }
 
     @Test
+    public void shouldReturnResultWhenD8FinancialOrderIsEmpty() {
+        coreCaseData.setD8FinancialOrder("");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnEmptyResultWhenD8FinancialOrderIsNotNull() {
         coreCaseData.setD8FinancialOrder("Yes");
         result = rule.execute(coreCaseData, result);

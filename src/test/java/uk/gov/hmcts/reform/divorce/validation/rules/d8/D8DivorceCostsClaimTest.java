@@ -25,7 +25,15 @@ public class D8DivorceCostsClaimTest {
     }
 
     @Test
-    public void shouldReturnNonEmptyResultWhenD8DivorceCostsClaimIsNull() {
+    public void shouldReturnResultWhenD8DivorceCostsClaimIsNull() {
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
+    public void shouldReturnResultWhenD8DivorceCostsClaimIsEmpty() {
+        coreCaseData.setD8DivorceCostsClaim("");
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));

@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
+import org.apache.commons.lang3.StringUtils;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class D8ReasonForDivorceDesertionDate extends Rule {
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
         if (Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("").equalsIgnoreCase(REASON_DESERTION)
-                && Optional.ofNullable(coreCaseData.getD8ReasonForDivorceDesertionDate()).isEmpty()) {
+                && StringUtils.isBlank(coreCaseData.getD8ReasonForDivorceDesertionDate())) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
                     ERROR_MESSAGE,

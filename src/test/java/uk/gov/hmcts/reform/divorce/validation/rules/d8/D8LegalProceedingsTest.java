@@ -32,6 +32,14 @@ public class D8LegalProceedingsTest {
     }
 
     @Test
+    public void shouldReturnResultWhenD8LegalProceedingsIsEmpty() {
+        coreCaseData.setD8LegalProceedings(" ");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnFalseWhenD8LegalProceedingsIsNotNull() {
         coreCaseData.setD8LegalProceedings("Yes");
         result = rule.execute(coreCaseData, result);

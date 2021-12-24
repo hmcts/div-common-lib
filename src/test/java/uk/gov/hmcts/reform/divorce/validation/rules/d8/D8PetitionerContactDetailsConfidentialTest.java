@@ -32,6 +32,13 @@ public class D8PetitionerContactDetailsConfidentialTest {
     }
 
     @Test
+    public void shouldReturnResultWhenD8PetitionerContactDetailsConfidentialIsEmpty() {
+        coreCaseData.setD8PetitionerContactDetailsConfidential("");
+        result = rule.execute(coreCaseData, result);
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnFalseWhenD8PetitionerContactDetailsConfidentialIsNotNull() {
         coreCaseData.setD8PetitionerContactDetailsConfidential("Yes");
         result = rule.execute(coreCaseData, result);

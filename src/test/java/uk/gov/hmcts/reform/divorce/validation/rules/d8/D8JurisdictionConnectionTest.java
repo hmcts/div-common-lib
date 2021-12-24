@@ -32,9 +32,20 @@ public class D8JurisdictionConnectionTest {
     }
 
     @Test
-    public void shouldReturnEmptyResultWhenD8JurisdictionConnectionIsNotNull() {
+    public void shouldReturnResultWhenD8JurisdictionConnectionIsEmpty() {
         List<String> d8JurisdictionConnection = new ArrayList<>();
         coreCaseData.setD8JurisdictionConnection(d8JurisdictionConnection);
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
+    public void shouldReturnEmptyResultWhenD8JurisdictionConnectionIsNotEmpty() {
+        List<String> d8JurisdictionConnection = new ArrayList<>();
+        d8JurisdictionConnection.add("test");
+        coreCaseData.setD8JurisdictionConnection(d8JurisdictionConnection);
+
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(true));

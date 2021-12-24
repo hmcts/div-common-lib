@@ -36,6 +36,15 @@ public class D8ReasonForDivorceAdulteryDetailsTest {
     }
 
     @Test
+    public void shouldReturnResultWhenFactIsAdulteryAndWhenD8ReasonForDivorceAdulteryDetailsIsEmpty() {
+        coreCaseData.setD8ReasonForDivorce("adultery");
+        coreCaseData.setD8ReasonForDivorceAdulteryDetails("");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnEmptyResultWhenFactIsNotAdulteryAndWhenD8ReasonForDivorceAdulteryDetailsIsNull() {
         result = rule.execute(coreCaseData, result);
 

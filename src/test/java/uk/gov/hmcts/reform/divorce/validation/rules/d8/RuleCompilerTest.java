@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 public class RuleCompilerTest {
 
     private final int mandatoryFields = 16;
-    private final int invalidDummyFields = 6;
+    private final int invalidDummyFields = 7;
 
     List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
@@ -53,6 +53,7 @@ public class RuleCompilerTest {
         coreCaseData = generateDummyCaseData();
         result = ruleCompiler.executeRules(coreCaseData);
 
+        result.forEach(System.out::println);
         assertThat(result.size(), is(invalidDummyFields));
         assertThat(result.get(0), containsString("D8MarriageDate can not be in the future. Actual data is:"));
         assertThat(result.get(1), is("D8PetitionerLastName can not be null or empty. Actual data is: null"));
@@ -60,6 +61,7 @@ public class RuleCompilerTest {
         assertThat(result.get(3), is("D8LegalProceedings can not be null or empty. Actual data is: null"));
         assertThat(result.get(4), is("D8ReasonForDivorce can not be null or empty. Actual data is: null"));
         assertThat(result.get(5), is("D8DivorceCostsClaim can not be null or empty. Actual data is: null"));
+        assertThat(result.get(6), is("D8JurisdictionConnection can not be null or empty. Actual data is: []"));
     }
 
     @Test

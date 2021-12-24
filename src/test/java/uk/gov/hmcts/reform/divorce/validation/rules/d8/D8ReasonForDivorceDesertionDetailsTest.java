@@ -36,6 +36,15 @@ public class D8ReasonForDivorceDesertionDetailsTest {
     }
 
     @Test
+    public void shouldReturnResultWhenFactIsDesertionAndD8ReasonForDivorceDesertionDetailsIsEmpty() {
+        coreCaseData.setD8ReasonForDivorce("desertion");
+        coreCaseData.setD8ReasonForDivorceDesertionDetails("");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnEmptyResultWhenFactIsNotDesertionAndD8ReasonForDivorceDesertionDetailsIsNull() {
         result = rule.execute(coreCaseData, result);
 

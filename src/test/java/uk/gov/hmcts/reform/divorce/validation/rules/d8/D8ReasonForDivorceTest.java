@@ -39,7 +39,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsSeparation2YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
+    public void shouldReturnResultWhenFactIsSeparation2YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-2-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
@@ -49,7 +49,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsDesertionButMarriageDateIsBetweenOneAndTwoYearsAgo() {
+    public void shouldReturnResultWhenFactIsDesertionButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("desertion");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
@@ -59,7 +59,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsSeparation5YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
+    public void shouldReturnResultWhenFactIsSeparation5YearsButMarriageDateIsBetweenOneAndTwoYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(500, ChronoUnit.DAYS)));
 
@@ -69,7 +69,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsSeparation5YearsButMarriageDateIsBetweenTwoAndFiveYearsAgo() {
+    public void shouldReturnResultWhenFactIsSeparation5YearsButMarriageDateIsBetweenTwoAndFiveYearsAgo() {
         coreCaseData.setD8ReasonForDivorce("separation-5-years");
         coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 3, ChronoUnit.DAYS)));
 
@@ -79,7 +79,7 @@ public class D8ReasonForDivorceTest {
     }
 
     @Test
-    public void whenShouldReturnTrueWhenD8ReasonForDivorceIsInvalid() {
+    public void shouldReturnResultWhenD8ReasonForDivorceIsInvalid() {
         coreCaseData.setD8ReasonForDivorce("Yes");
 
         result = rule.execute(coreCaseData, result);

@@ -13,7 +13,7 @@ public class D8JurisdictionConnection extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if (Optional.ofNullable(coreCaseData.getD8JurisdictionConnection()).isEmpty()) {
+        if (isBlank(coreCaseData.getD8JurisdictionConnection())) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
                     ERROR_MESSAGE,
@@ -22,5 +22,13 @@ public class D8JurisdictionConnection extends Rule {
         }
 
         return result;
+    }
+
+    private boolean isBlank(List<String> d8JurisdictionConnection) {
+        if (Optional.ofNullable(d8JurisdictionConnection).isEmpty()) {
+            return true;
+        }
+
+        return d8JurisdictionConnection.isEmpty();
     }
 }

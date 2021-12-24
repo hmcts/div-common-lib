@@ -1,6 +1,7 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ public class D8InferredPetitionerGender extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if (Optional.ofNullable(coreCaseData.getD8InferredPetitionerGender()).isEmpty()) {
+        if (isBlank(coreCaseData.getD8InferredPetitionerGender())) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
                     ERROR_MESSAGE,
@@ -22,5 +23,13 @@ public class D8InferredPetitionerGender extends Rule {
         }
 
         return result;
+    }
+
+    private boolean isBlank(Gender d8InferredPetitionerGender) {
+        if (Optional.ofNullable(d8InferredPetitionerGender).isEmpty()) {
+            return true;
+        }
+
+        return d8InferredPetitionerGender.getValue().isEmpty();
     }
 }

@@ -33,7 +33,7 @@ public class D8InferredRespondentGenderTest {
     }
 
     @Test
-    public void shouldReturnEmptyResultWhenD8InferredRespondentGenderIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8InferredRespondentGenderIsNotEmpty() {
         coreCaseData.setD8InferredRespondentGender(Gender.FEMALE);
         result = rule.execute(coreCaseData, result);
 

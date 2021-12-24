@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class D8MarriagePetitionerNameTest {
 
@@ -26,6 +25,14 @@ public class D8MarriagePetitionerNameTest {
 
     @Test
     public void shouldReturnResultWhenD8MarriagePetitionerNameIsNull() {
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
+    public void shouldReturnResultWhenD8MarriagePetitionerNameIsEmpty() {
+        coreCaseData.setD8MarriagePetitionerName("");
         result = rule.execute(coreCaseData, result);
 
         assertThat(result.isEmpty(), is(false));

@@ -36,6 +36,14 @@ public class D8PetitionerLastNameTest {
     }
 
     @Test
+    public void shouldReturnTrueWhenD8PetitionerLastNameIsEmpty() {
+        coreCaseData.setD8PetitionerLastName("");
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
     public void shouldReturnFalseWhenD8PetitionerLastNameIsNotNull() {
         coreCaseData.setD8PetitionerLastName("Yes");
 

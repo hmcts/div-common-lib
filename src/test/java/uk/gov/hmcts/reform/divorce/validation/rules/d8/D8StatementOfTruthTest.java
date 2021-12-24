@@ -35,8 +35,17 @@ public class D8StatementOfTruthTest {
     }
 
     @Test
-    public void shouldReturnEmptyResultWhenD8StatementOfTruthIsNotYes() {
+    public void shouldReturnResultWhenD8StatementOfTruthIsNo() {
         coreCaseData.setD8StatementOfTruth("No");
+
+        result = rule.execute(coreCaseData, result);
+
+        assertThat(result.isEmpty(), is(false));
+    }
+
+    @Test
+    public void shouldReturnResultWhenD8StatementOfTruthIsEmpty() {
+        coreCaseData.setD8StatementOfTruth("");
 
         result = rule.execute(coreCaseData, result);
 

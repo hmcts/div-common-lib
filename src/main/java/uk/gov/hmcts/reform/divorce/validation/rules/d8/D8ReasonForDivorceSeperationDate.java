@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
+import org.apache.commons.lang3.StringUtils;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class D8ReasonForDivorceSeperationDate extends Rule {
                 .equalsIgnoreCase(REASON_SEPARATION_2_YEARS)
                 || Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).orElse("")
                 .equalsIgnoreCase(REASON_SEPARATION_5_YEARS))
-                && Optional.ofNullable(coreCaseData.getD8ReasonForDivorceSeperationDate()).isEmpty()) {
+                && StringUtils.isBlank(coreCaseData.getD8ReasonForDivorceSeperationDate())) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
                     ERROR_MESSAGE,

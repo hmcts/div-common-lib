@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
+import org.apache.commons.lang3.StringUtils;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 
@@ -20,7 +21,7 @@ public class D8ReasonForDivorce extends Rule {
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if (Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).isEmpty()
+        if (StringUtils.isBlank(coreCaseData.getD8ReasonForDivorce())
                 || getAllowedReasonsForDivorce(coreCaseData.getD8MarriageDate()).stream()
                 .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()))) {
             result.add(String.join(
