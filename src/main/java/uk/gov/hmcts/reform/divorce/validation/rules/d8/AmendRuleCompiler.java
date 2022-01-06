@@ -6,5 +6,9 @@ public class AmendRuleCompiler extends BaseRuleCompiler {
         super();
         rulesList.remove(new D8DivorceCostsClaim());
         rulesList.remove(new D8StatementOfTruth());
+        rulesList.remove(new D8ReasonForDivorceBehaviourDetails());
+        rulesList.remove(new D8ReasonForDivorceDesertionDetails());
+        rulesList.remove(new D8ReasonForDivorceSeperationDate());
+        rulesList.remove(new D8ReasonForDivorceAdulteryDetails());
     }
 }
