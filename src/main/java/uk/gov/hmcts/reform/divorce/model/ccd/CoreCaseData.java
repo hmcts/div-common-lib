@@ -657,4 +657,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("ReasonFailureToServe")
     private String reasonFailureToServe;
 
+    @JsonProperty("RefusalRejectionReason")
+    private List<String> refusalRejectionReason;
+
 }

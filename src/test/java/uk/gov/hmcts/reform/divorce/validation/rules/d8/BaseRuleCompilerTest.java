@@ -18,20 +18,20 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class RuleCompilerTest {
+public class BaseRuleCompilerTest {
 
     private final int mandatoryFields = 16;
     private final int invalidDummyFields = 7;
 
     List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
-    RuleCompiler ruleCompiler;
+    BaseRuleCompiler baseRuleCompiler;
     List<String> result;
 
 
     @Before
     public void setup() {
-        ruleCompiler = new RuleCompiler("testplaceholder");
+        baseRuleCompiler = new BaseRuleCompiler();
         correctOrderRules = constructCorrectOrderRules();
         coreCaseData = new CoreCaseData();
         result = new ArrayList<>();
@@ -39,10 +39,10 @@ public class RuleCompilerTest {
 
     @Test
     public void rulesShouldBeAddedInCorrectOrder() {
-        RuleCompiler ruleCompiler = new RuleCompiler("testplaceholder");
+        BaseRuleCompiler baseRuleCompiler = new BaseRuleCompiler();
 
         AtomicInteger i = new AtomicInteger();
-        ruleCompiler.rulesList.forEach(rule -> {
+        baseRuleCompiler.rulesList.forEach(rule -> {
             assertEquals(rule.getClass(), correctOrderRules.get(i.get()).getClass());
             i.getAndIncrement();
         });
@@ -51,7 +51,7 @@ public class RuleCompilerTest {
     @Test
     public void shouldGenerateCorrectErrorListWithGivenCoreCaseData() {
         coreCaseData = generateDummyCaseData();
-        result = ruleCompiler.executeRules(coreCaseData);
+        result = baseRuleCompiler.executeRules(coreCaseData);
 
         assertThat(result.size(), is(invalidDummyFields));
         assertThat(result.get(0), containsString("D8MarriageDate can not be in the future. Actual data is:"));
@@ -65,7 +65,7 @@ public class RuleCompilerTest {
 
     @Test
     public void shouldReturnListWithMandatoryFieldErrorsWhenCoreCaseDataIsEmpty() {
-        result = ruleCompiler.executeRules(coreCaseData);
+        result = baseRuleCompiler.executeRules(coreCaseData);
 
         assertThat(result.size(), is(mandatoryFields));
     }

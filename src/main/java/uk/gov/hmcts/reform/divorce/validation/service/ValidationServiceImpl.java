@@ -4,7 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
-import uk.gov.hmcts.reform.divorce.validation.rules.d8.RuleCompiler;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.RuleCompilerService;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.RuleCompilerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Slf4j
 public class ValidationServiceImpl implements ValidationService {
 
-    private RuleCompiler ruleCompiler;
+    private RuleCompilerService ruleCompiler;
 
     @Override
     public ValidationResponse validate(CoreCaseData coreCaseData, String caseEventId) {
@@ -29,7 +30,7 @@ public class ValidationServiceImpl implements ValidationService {
             return validationResponse;
         }
 
-        ruleCompiler = new RuleCompiler(caseEventId);
+        ruleCompiler = RuleCompilerFactory.getRuleCompiler(coreCaseData, caseEventId);
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 
         if (!result.isEmpty()) {

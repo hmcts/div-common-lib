@@ -5,11 +5,11 @@ import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuleCompiler {
+public class BaseRuleCompiler implements RuleCompilerService {
 
-    public ArrayList<Rule> rulesList = new ArrayList<>();
+    protected ArrayList<Rule> rulesList = new ArrayList<>();
 
-    public RuleCompiler(String caseEventId) {
+    public BaseRuleCompiler() {
         rulesList.add(new D8InferredPetitionerGender()); //2
         rulesList.add(new D8InferredRespondentGender()); //3
         rulesList.add(new D8MarriageDate()); //4
