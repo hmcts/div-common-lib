@@ -16,7 +16,7 @@ public class ValidationServiceImpl implements ValidationService {
     private RuleCompiler ruleCompiler;
 
     @Override
-    public ValidationResponse validate(CoreCaseData coreCaseData) {
+    public ValidationResponse validate(CoreCaseData coreCaseData, String caseEventId) {
         log.info("Validating CoreCaseData");
 
         ValidationResponse validationResponse = ValidationResponse.builder()
@@ -29,7 +29,7 @@ public class ValidationServiceImpl implements ValidationService {
             return validationResponse;
         }
 
-        ruleCompiler = new RuleCompiler();
+        ruleCompiler = new RuleCompiler(caseEventId);
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 
         if (!result.isEmpty()) {

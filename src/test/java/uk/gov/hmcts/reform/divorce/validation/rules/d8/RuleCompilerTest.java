@@ -31,7 +31,7 @@ public class RuleCompilerTest {
 
     @Before
     public void setup() {
-        ruleCompiler = new RuleCompiler();
+        ruleCompiler = new RuleCompiler("testplaceholder");
         correctOrderRules = constructCorrectOrderRules();
         coreCaseData = new CoreCaseData();
         result = new ArrayList<>();
@@ -39,7 +39,7 @@ public class RuleCompilerTest {
 
     @Test
     public void rulesShouldBeAddedInCorrectOrder() {
-        RuleCompiler ruleCompiler = new RuleCompiler();
+        RuleCompiler ruleCompiler = new RuleCompiler("testplaceholder");
 
         AtomicInteger i = new AtomicInteger();
         ruleCompiler.rulesList.forEach(rule -> {

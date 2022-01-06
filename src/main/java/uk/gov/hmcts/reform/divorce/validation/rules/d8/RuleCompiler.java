@@ -9,7 +9,7 @@ public class RuleCompiler {
 
     public ArrayList<Rule> rulesList = new ArrayList<>();
 
-    public RuleCompiler() {
+    public RuleCompiler(String caseEventId) {
         rulesList.add(new D8InferredPetitionerGender()); //2
         rulesList.add(new D8InferredRespondentGender()); //3
         rulesList.add(new D8MarriageDate()); //4

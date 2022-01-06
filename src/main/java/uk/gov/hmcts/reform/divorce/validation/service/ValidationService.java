@@ -5,5 +5,5 @@ import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
 
 public interface ValidationService {
 
-    ValidationResponse validate(CoreCaseData coreCaseData);
+    ValidationResponse validate(CoreCaseData coreCaseData, String caseEventId);
 }

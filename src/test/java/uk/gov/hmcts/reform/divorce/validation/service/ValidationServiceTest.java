@@ -36,18 +36,18 @@ public class ValidationServiceTest {
 
     @Test
     public void givenCaseId_whenValidationIsCalledWithNoData_thenValidationWillFail() {
-        assertEquals(FAILED.getValue(), validationService.validate(new CoreCaseData()).getValidationStatus());
+        assertEquals(FAILED.getValue(), validationService.validate(new CoreCaseData(), "testplaceholder").getValidationStatus());
     }
 
     @Test
     public void givenCaseId_whenValidationIsCalledWithValidButIncompleteData_thenValidationWillFail() {
-        assertEquals(FAILED.getValue(), validationService.validate(coreCaseData).getValidationStatus());
+        assertEquals(FAILED.getValue(), validationService.validate(coreCaseData, "testplaceholder").getValidationStatus());
     }
 
     @Test
     public void givenCaseId_whenValidationIsCalledWithInvalidData_thenValidationWillFail() {
         coreCaseData.setD8ScreenHasMarriageBroken(null);
-        ValidationResponse response = validationService.validate(coreCaseData);
+        ValidationResponse response = validationService.validate(coreCaseData, "testplaceholder");
         assertEquals(FAILED.getValue(), response.getValidationStatus());
         assertNotEquals(0, response.getErrors().size());
         //assertEquals(1, response.getErrors().size());
@@ -55,7 +55,7 @@ public class ValidationServiceTest {
 
     @Test
     public void givenNull_whenValidationIsCalledWithValidData_thenValidationWillFail() {
-        assertEquals(FAILED.getValue(), validationService.validate(null).getValidationStatus());
+        assertEquals(FAILED.getValue(), validationService.validate(null, "testplaceholder").getValidationStatus());
     }
 
 }
