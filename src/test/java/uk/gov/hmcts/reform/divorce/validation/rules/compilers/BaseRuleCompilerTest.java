@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.divorce.validation.rules.d8;
+package uk.gov.hmcts.reform.divorce.validation.rules.compilers;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,6 +6,7 @@ import uk.gov.hmcts.reform.divorce.model.ccd.Address;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 import uk.gov.hmcts.reform.divorce.utils.DateUtils;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.*;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

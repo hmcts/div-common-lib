@@ -1,4 +1,6 @@
-package uk.gov.hmcts.reform.divorce.validation.rules.d8;
+package uk.gov.hmcts.reform.divorce.validation.rules.compilers;
+
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8JurisdictionConnection;
 
 public class JurisdictionAmendRuleCompiler extends AmendRuleCompiler {
 
