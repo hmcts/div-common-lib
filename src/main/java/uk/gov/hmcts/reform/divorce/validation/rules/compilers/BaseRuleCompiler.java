@@ -1,7 +1,6 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.compilers;
 
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
-import uk.gov.hmcts.reform.divorce.validation.rules.d8.Rule;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8InferredPetitionerGender;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8InferredRespondentGender;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8MarriageDate;
@@ -23,6 +22,7 @@ import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8FinancialOrder;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8DivorceCostsClaim;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8JurisdictionConnection;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8StatementOfTruth;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
