@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static uk.gov.hmcts.reform.divorce.utils.Constants.ABOUT_DIVORCE_AMEND_COMPILER_RULE_COUNT;
 
 public class AboutDivorceAmendRuleCompilerTest {
