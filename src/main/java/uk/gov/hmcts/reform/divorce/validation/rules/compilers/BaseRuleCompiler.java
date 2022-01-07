@@ -10,7 +10,6 @@ import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8PetitionerFirstName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8PetitionerLastName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8PetitionerContactDetailsConfidential;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8RespondentFirstName;
-import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8RespondentLastName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8LegalProceedings;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8ReasonForDivorce;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8ReasonForDivorceBehaviourDetails;
@@ -22,6 +21,7 @@ import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8FinancialOrder;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8DivorceCostsClaim;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8JurisdictionConnection;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8StatementOfTruth;
+import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8RespondentLastName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.Rule;
 
 import java.util.ArrayList;
