@@ -40,10 +40,9 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static uk.gov.hmcts.reform.divorce.utils.Constants.BASE_COMPILER_RULE_COUNT;
 
 public class BaseRuleCompilerTest {
-
-    public static final int BASE_RULE_COMPILER_MANDATORY_FIELDS_COUNT = 16;
 
     List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
@@ -90,7 +89,7 @@ public class BaseRuleCompilerTest {
     public void shouldReturnListWithMandatoryFieldErrorsWhenCoreCaseDataIsEmpty() {
         result = baseRuleCompiler.executeRules(coreCaseData);
 
-        assertThat(result.size(), is(BASE_RULE_COMPILER_MANDATORY_FIELDS_COUNT));
+        assertThat(result.size(), is(BASE_COMPILER_RULE_COUNT));
     }
 
     private List<Rule> constructCorrectOrderRules() {
