@@ -71,7 +71,7 @@ public class BaseRuleCompilerTest {
         assertThat(result.size(), is(mandatoryFields));
     }
 
-    public List<Rule> constructCorrectOrderRules() {
+    private List<Rule> constructCorrectOrderRules() {
         correctOrderRules.add(new D8InferredPetitionerGender()); //2
         correctOrderRules.add(new D8InferredRespondentGender()); //3
         correctOrderRules.add(new D8MarriageDate()); //4
@@ -97,7 +97,7 @@ public class BaseRuleCompilerTest {
         return correctOrderRules;
     }
 
-    public CoreCaseData generateDummyCaseData() {
+    private CoreCaseData generateDummyCaseData() {
         coreCaseData.setD8InferredPetitionerGender(Gender.FEMALE);
         coreCaseData.setD8InferredRespondentGender(Gender.MALE);
         coreCaseData.setD8RespondentFirstName("ashd");
