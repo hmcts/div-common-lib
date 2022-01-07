@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
-import uk.gov.hmcts.reform.divorce.validation.rules.compilers.RuleCompilerService;
 import uk.gov.hmcts.reform.divorce.validation.rules.compilers.RuleCompilerFactory;
+import uk.gov.hmcts.reform.divorce.validation.rules.compilers.RuleCompilerService;
 
 import java.util.List;
 import java.util.Optional;
