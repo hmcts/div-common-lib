@@ -6,5 +6,5 @@ import java.util.List;
 
 public abstract class Rule {
 
-    protected abstract List<String> execute(CoreCaseData coreCaseData, List<String> result);
+    public abstract List<String> execute(CoreCaseData coreCaseData, List<String> result);
 }

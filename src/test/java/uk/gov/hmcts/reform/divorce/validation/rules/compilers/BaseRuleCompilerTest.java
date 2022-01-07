@@ -21,8 +21,7 @@ import static org.junit.Assert.assertThat;
 
 public class BaseRuleCompilerTest {
 
-    private final int mandatoryFields = 16;
-    private final int invalidDummyFields = 7;
+    public static final int BASE_RULE_COMPILER_MANDATORY_FIELDS_COUNT = 16;
 
     List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
@@ -51,6 +50,7 @@ public class BaseRuleCompilerTest {
 
     @Test
     public void shouldGenerateCorrectErrorListWithGivenCoreCaseData() {
+        int invalidDummyFields = 7;
         coreCaseData = generateDummyCaseData();
         result = baseRuleCompiler.executeRules(coreCaseData);
 
@@ -68,7 +68,7 @@ public class BaseRuleCompilerTest {
     public void shouldReturnListWithMandatoryFieldErrorsWhenCoreCaseDataIsEmpty() {
         result = baseRuleCompiler.executeRules(coreCaseData);
 
-        assertThat(result.size(), is(mandatoryFields));
+        assertThat(result.size(), is(BASE_RULE_COMPILER_MANDATORY_FIELDS_COUNT));
     }
 
     private List<Rule> constructCorrectOrderRules() {
@@ -100,18 +100,12 @@ public class BaseRuleCompilerTest {
     private CoreCaseData generateDummyCaseData() {
         coreCaseData.setD8InferredPetitionerGender(Gender.FEMALE);
         coreCaseData.setD8InferredRespondentGender(Gender.MALE);
-        coreCaseData.setD8RespondentFirstName("ashd");
-        coreCaseData.setD8RespondentLastName("ioasjdoiasj");
+        coreCaseData.setD8RespondentFirstName("dummyD8RespondentFirstName");
+        coreCaseData.setD8RespondentLastName("dummyD8RespondentLastName");
         coreCaseData.setD8RespondentCorrespondenceAddress(new Address());
-        coreCaseData.setD8PetitionerFirstName("lsado");
-        coreCaseData.setD8PetitionerLastName(null);
-        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS)));
-        coreCaseData.setD8LegalProceedings(null);
-        coreCaseData.setD8MarriagePetitionerName("asdjaisdjia awodewiapoed");
-        coreCaseData.setD8MarriageRespondentName("sdjasjd dawid");
-        coreCaseData.setD8JurisdictionConnection(new ArrayList<>());
-        coreCaseData.setD8PetitionerContactDetailsConfidential(null);
-        coreCaseData.setD8ReasonForDivorce(null);
+        coreCaseData.setD8PetitionerFirstName("dummyD8PetitionerFirstName");
+        coreCaseData.setD8MarriagePetitionerName("dummyD8MarriagePetitionerName");
+        coreCaseData.setD8MarriageRespondentName("dummyD8MarriageRespondentName");
         coreCaseData.setD8StatementOfTruth("Yes");
         coreCaseData.setD8ReasonForDivorceAdulteryDetails(null);
         coreCaseData.setD8ReasonForDivorceBehaviourDetails(null);
@@ -119,6 +113,15 @@ public class BaseRuleCompilerTest {
         coreCaseData.setD8ReasonForDivorceDesertionDate(null);
         coreCaseData.setD8ReasonForDivorceSeperation(null);
         coreCaseData.setD8FinancialOrder("Yes");
+
+        // Set bad data (7 invalid fields):
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().plus(100, ChronoUnit.DAYS)));
+        coreCaseData.setD8PetitionerLastName(null);
+        coreCaseData.setD8PetitionerContactDetailsConfidential(null);
+        coreCaseData.setD8LegalProceedings(null);
+        coreCaseData.setD8ReasonForDivorce(null);
+        coreCaseData.setD8DivorceCostsClaim(null);
+        coreCaseData.setD8JurisdictionConnection(new ArrayList<>());
 
         return coreCaseData;
     }
