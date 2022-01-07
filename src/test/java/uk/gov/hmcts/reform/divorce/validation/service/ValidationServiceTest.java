@@ -7,13 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.config.MappingConfig;
+import uk.gov.hmcts.reform.divorce.model.ccd.Address;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
+import uk.gov.hmcts.reform.divorce.model.ccd.Gender;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
+import uk.gov.hmcts.reform.divorce.utils.DateUtils;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
+import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {
@@ -54,8 +63,40 @@ public class ValidationServiceTest {
     }
 
     @Test
-    public void givenNull_whenValidationIsCalledWithValidData_thenValidationWillFail() {
-        assertEquals(FAILED.getValue(), validationService.validate(null, "testplaceholder").getValidationStatus());
+    public void givenNull_whenValidationIsCalledWithNull_thenValidationWillFail() {
+        assertEquals(FAILED.getValue(), validationService.validate(null, null).getValidationStatus());
+    }
+
+    @Test
+    public void givenCaseId_WhenValidationIsCalledWithValidData_thenValidationWillSucceed(){
+        assertEquals(SUCCESS.getValue(), validationService.validate(generateValidDummyCaseData(), "testplaceholder").getValidationStatus());
+    }
+
+    private CoreCaseData generateValidDummyCaseData() {
+        coreCaseData.setD8InferredPetitionerGender(Gender.FEMALE);
+        coreCaseData.setD8InferredRespondentGender(Gender.MALE);
+        coreCaseData.setD8RespondentFirstName("dummyD8RespondentFirstName");
+        coreCaseData.setD8RespondentLastName("dummyD8RespondentLastName");
+        coreCaseData.setD8RespondentCorrespondenceAddress(new Address());
+        coreCaseData.setD8PetitionerFirstName("dummyD8PetitionerFirstName");
+        coreCaseData.setD8MarriagePetitionerName("dummyD8MarriagePetitionerName");
+        coreCaseData.setD8MarriageRespondentName("dummyD8MarriageRespondentName");
+        coreCaseData.setD8StatementOfTruth("Yes");
+        coreCaseData.setD8ReasonForDivorceAdulteryDetails(null);
+        coreCaseData.setD8ReasonForDivorceBehaviourDetails("test");
+        coreCaseData.setD8ReasonForDivorceDesertionDetails(null);
+        coreCaseData.setD8ReasonForDivorceDesertionDate(null);
+        coreCaseData.setD8ReasonForDivorceSeperation(null);
+        coreCaseData.setD8FinancialOrder("Yes");
+        coreCaseData.setD8MarriageDate(DateUtils.formatDate(Instant.now().minus(365 * 2, ChronoUnit.DAYS)));
+        coreCaseData.setD8PetitionerLastName("dummyD8PetitionerLastName");
+        coreCaseData.setD8PetitionerContactDetailsConfidential("keep");
+        coreCaseData.setD8LegalProceedings("No");
+        coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
+        coreCaseData.setD8DivorceCostsClaim("no");
+        coreCaseData.setD8JurisdictionConnection(new ArrayList<>(List.of("test")));
+
+        return coreCaseData;
     }
 
 }
