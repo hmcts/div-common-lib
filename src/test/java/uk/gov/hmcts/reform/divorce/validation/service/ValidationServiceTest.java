@@ -68,7 +68,7 @@ public class ValidationServiceTest {
     }
 
     @Test
-    public void givenCaseId_WhenValidationIsCalledWithValidData_thenValidationWillSucceed(){
+    public void givenCaseId_WhenValidationIsCalledWithValidData_thenValidationWillSucceed() {
         assertEquals(SUCCESS.getValue(), validationService.validate(generateValidDummyCaseData(), "testplaceholder").getValidationStatus());
     }
 
