@@ -21,6 +21,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
@@ -59,17 +61,39 @@ public class ValidationServiceTest {
         ValidationResponse response = validationService.validate(coreCaseData, "testplaceholder");
         assertEquals(FAILED.getValue(), response.getValidationStatus());
         assertNotEquals(0, response.getErrors().size());
-        //assertEquals(1, response.getErrors().size());
+    }
+
+    @Test
+    public void givenCaseId_whenValidationIsCalledWithNull_thenValidationWilLFail() {
+        ValidationResponse response = validationService.validate(null, "testplaceholder");
+        assertEquals(FAILED.getValue(), response.getValidationStatus());
+        assertEquals("Core Case Data was null", response.getErrors().get(0));
     }
 
     @Test
     public void givenNull_whenValidationIsCalledWithNull_thenValidationWillFail() {
-        assertEquals(FAILED.getValue(), validationService.validate(null, null).getValidationStatus());
+        ValidationResponse response = validationService.validate(null, null);
+        assertEquals(FAILED.getValue(), response.getValidationStatus());
+        assertEquals("Core Case Data was null", response.getErrors().get(0));
+    }
+
+    @Test
+    public void givenNull_WhenValidationIsCalledWithValidData_ThenValidationWillFail() {
+        ValidationResponse response = validationService.validate(generateValidDummyCaseData(), null);
+        assertEquals(FAILED.getValue(), response.getValidationStatus());
+        assertEquals("caseEventId was null", response.getErrors().get(0));
     }
 
     @Test
     public void givenCaseId_WhenValidationIsCalledWithValidData_thenValidationWillSucceed() {
         assertEquals(SUCCESS.getValue(), validationService.validate(generateValidDummyCaseData(), "testplaceholder").getValidationStatus());
+    }
+
+    @Test
+    public void givenNull_WhenValidationCalledWithMockitoAny_thenValidationWillFail() {
+        ValidationResponse response = validationService.validate(any(), anyString());
+        assertEquals(FAILED.getValue(), response.getValidationStatus());
+        assertEquals("Core Case Data was null", response.getErrors().get(0));
     }
 
     private CoreCaseData generateValidDummyCaseData() {
@@ -94,7 +118,7 @@ public class ValidationServiceTest {
         coreCaseData.setD8LegalProceedings("No");
         coreCaseData.setD8ReasonForDivorce("unreasonable-behaviour");
         coreCaseData.setD8DivorceCostsClaim("no");
-        coreCaseData.setD8JurisdictionConnection(new ArrayList<>(List.of("test")));
+        coreCaseData.setD8JurisdictionConnection(List.of("test"));
 
         return coreCaseData;
     }

@@ -33,7 +33,7 @@ public class ValidationServiceImpl implements ValidationService {
 
         if (Optional.ofNullable(caseEventId).isEmpty()) {
             log.info("caseEventId is null");
-            validationResponse.setErrors(List.of("Case Event Id was null"));
+            validationResponse.setErrors(List.of("caseEventId was null"));
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
             return validationResponse;
         }
