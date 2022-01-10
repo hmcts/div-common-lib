@@ -20,8 +20,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.FAILED;
 import static uk.gov.hmcts.reform.divorce.validation.service.ValidationStatus.SUCCESS;
 
