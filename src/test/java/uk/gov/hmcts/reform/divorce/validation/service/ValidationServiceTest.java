@@ -15,7 +15,6 @@ import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

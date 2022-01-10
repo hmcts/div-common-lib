@@ -28,23 +28,21 @@ import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8ReasonForDivorceSeperat
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8RespondentFirstName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8RespondentLastName;
 import uk.gov.hmcts.reform.divorce.validation.rules.d8.D8StatementOfTruth;
-import uk.gov.hmcts.reform.divorce.validation.rules.d8.Rule;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 import static uk.gov.hmcts.reform.divorce.utils.Constants.BASE_COMPILER_RULE_COUNT;
 
 public class BaseRuleCompilerTest {
 
-    List<Rule> correctOrderRules = new ArrayList<>();
     CoreCaseData coreCaseData;
     BaseRuleCompiler baseRuleCompiler;
     List<String> result;
@@ -53,7 +51,6 @@ public class BaseRuleCompilerTest {
     @Before
     public void setup() {
         baseRuleCompiler = new BaseRuleCompiler();
-        correctOrderRules = constructCorrectOrderRules();
         coreCaseData = new CoreCaseData();
         result = new ArrayList<>();
     }
@@ -62,11 +59,29 @@ public class BaseRuleCompilerTest {
     public void rulesShouldBeAddedInCorrectOrder() {
         BaseRuleCompiler baseRuleCompiler = new BaseRuleCompiler();
 
-        AtomicInteger i = new AtomicInteger();
-        baseRuleCompiler.rulesList.forEach(rule -> {
-            assertEquals(rule.getClass(), correctOrderRules.get(i.get()).getClass());
-            i.getAndIncrement();
-        });
+        assertThat(baseRuleCompiler.rulesList, contains(
+                instanceOf(D8InferredPetitionerGender.class),
+                instanceOf(D8InferredRespondentGender.class),
+                instanceOf(D8MarriageDate.class),
+                instanceOf(D8MarriagePetitionerName.class),
+                instanceOf(D8MarriageRespondentName.class),
+                instanceOf(D8PetitionerFirstName.class),
+                instanceOf(D8PetitionerLastName.class),
+                instanceOf(D8PetitionerContactDetailsConfidential.class),
+                instanceOf(D8RespondentFirstName.class),
+                instanceOf(D8RespondentLastName.class),
+                instanceOf(D8LegalProceedings.class),
+                instanceOf(D8ReasonForDivorce.class),
+                instanceOf(D8ReasonForDivorceBehaviourDetails.class),
+                instanceOf(D8ReasonForDivorceDesertionDate.class),
+                instanceOf(D8ReasonForDivorceDesertionDetails.class),
+                instanceOf(D8ReasonForDivorceSeperationDate.class),
+                instanceOf(D8ReasonForDivorceAdulteryDetails.class),
+                instanceOf(D8FinancialOrder.class),
+                instanceOf(D8DivorceCostsClaim.class),
+                instanceOf(D8JurisdictionConnection.class),
+                instanceOf(D8StatementOfTruth.class)
+        ));
     }
 
     @Test
@@ -85,37 +100,13 @@ public class BaseRuleCompilerTest {
         assertThat(result.get(6), is("D8JurisdictionConnection can not be null or empty. Actual data is: []"));
     }
 
+
+
     @Test
     public void shouldReturnListWithMandatoryFieldErrorsWhenCoreCaseDataIsEmpty() {
         result = baseRuleCompiler.executeRules(coreCaseData);
 
         assertThat(result.size(), is(BASE_COMPILER_RULE_COUNT));
-    }
-
-    private List<Rule> constructCorrectOrderRules() {
-        correctOrderRules.add(new D8InferredPetitionerGender()); //2
-        correctOrderRules.add(new D8InferredRespondentGender()); //3
-        correctOrderRules.add(new D8MarriageDate()); //4
-        correctOrderRules.add(new D8MarriagePetitionerName()); //5
-        correctOrderRules.add(new D8MarriageRespondentName()); //6
-        correctOrderRules.add(new D8PetitionerFirstName()); //8
-        correctOrderRules.add(new D8PetitionerLastName()); //9
-        correctOrderRules.add(new D8PetitionerContactDetailsConfidential()); //10
-        correctOrderRules.add(new D8RespondentFirstName()); //13
-        correctOrderRules.add(new D8RespondentLastName()); //14
-        correctOrderRules.add(new D8LegalProceedings()); //15
-        correctOrderRules.add(new D8ReasonForDivorce()); //16
-        correctOrderRules.add(new D8ReasonForDivorceBehaviourDetails()); //17
-        correctOrderRules.add(new D8ReasonForDivorceDesertionDate()); //18
-        correctOrderRules.add(new D8ReasonForDivorceDesertionDetails()); //20
-        correctOrderRules.add(new D8ReasonForDivorceSeperationDate()); //21
-        correctOrderRules.add(new D8ReasonForDivorceAdulteryDetails()); //22
-        correctOrderRules.add(new D8FinancialOrder()); //23
-        correctOrderRules.add(new D8DivorceCostsClaim()); //24
-        correctOrderRules.add(new D8JurisdictionConnection()); //25
-        correctOrderRules.add(new D8StatementOfTruth()); //27
-
-        return correctOrderRules;
     }
 
     private CoreCaseData generateDummyCaseData() {
