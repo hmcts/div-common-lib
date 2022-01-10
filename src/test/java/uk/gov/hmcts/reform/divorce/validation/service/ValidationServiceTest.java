@@ -88,13 +88,6 @@ public class ValidationServiceTest {
         assertEquals(SUCCESS.getValue(), validationService.validate(generateValidDummyCaseData(), "testplaceholder").getValidationStatus());
     }
 
-    @Test
-    public void givenNull_WhenValidationCalledWithMockitoAny_thenValidationWillFail() {
-        ValidationResponse response = validationService.validate(any(), anyString());
-        assertEquals(FAILED.getValue(), response.getValidationStatus());
-        assertEquals("Core Case Data was null", response.getErrors().get(0));
-    }
-
     private CoreCaseData generateValidDummyCaseData() {
         coreCaseData.setD8InferredPetitionerGender(Gender.FEMALE);
         coreCaseData.setD8InferredRespondentGender(Gender.MALE);
