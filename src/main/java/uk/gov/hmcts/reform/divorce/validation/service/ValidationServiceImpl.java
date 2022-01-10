@@ -25,7 +25,15 @@ public class ValidationServiceImpl implements ValidationService {
             .build();
 
         if (Optional.ofNullable(coreCaseData).isEmpty()) {
-            log.info("CoreCaseData is empty");
+            log.info("CoreCaseData is null");
+            validationResponse.setErrors(List.of("Core Case Data was null"));
+            validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
+            return validationResponse;
+        }
+
+        if (Optional.ofNullable(caseEventId).isEmpty()) {
+            log.info("caseEventId is null");
+            validationResponse.setErrors(List.of("Case Event Id was null"));
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
             return validationResponse;
         }
@@ -41,4 +49,5 @@ public class ValidationServiceImpl implements ValidationService {
 
         return validationResponse;
     }
+
 }
