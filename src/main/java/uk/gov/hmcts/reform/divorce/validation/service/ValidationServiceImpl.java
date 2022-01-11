@@ -19,6 +19,7 @@ public class ValidationServiceImpl implements ValidationService {
     @Override
     public ValidationResponse validate(CoreCaseData coreCaseData, String caseEventId) {
         log.info("Validating CoreCaseData");
+        String defaultCaseEventId = "default";
 
         ValidationResponse validationResponse = ValidationResponse.builder()
             .validationStatus(ValidationStatus.SUCCESS.getValue())
@@ -31,14 +32,7 @@ public class ValidationServiceImpl implements ValidationService {
             return validationResponse;
         }
 
-        if (Optional.ofNullable(caseEventId).isEmpty()) {
-            log.info("caseEventId is null");
-            validationResponse.setErrors(List.of("caseEventId was null"));
-            validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
-            return validationResponse;
-        }
-
-        ruleCompiler = RuleCompilerFactory.getRuleCompiler(coreCaseData, caseEventId);
+        ruleCompiler = RuleCompilerFactory.getRuleCompiler(coreCaseData, Optional.ofNullable(caseEventId).orElse(defaultCaseEventId));
         List<String> result = ruleCompiler.executeRules(coreCaseData);
 
         if (!result.isEmpty()) {
