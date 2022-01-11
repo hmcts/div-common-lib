@@ -75,10 +75,9 @@ public class ValidationServiceTest {
     }
 
     @Test
-    public void givenNull_WhenValidationIsCalledWithValidData_ThenValidationWillFail() {
+    public void givenNull_WhenValidationIsCalledWithValidData_ThenValidationWillSucceed() {
         ValidationResponse response = validationService.validate(generateValidDummyCaseData(), null);
-        assertEquals(FAILED.getValue(), response.getValidationStatus());
-        assertEquals("caseEventId was null", response.getErrors().get(0));
+        assertEquals(SUCCESS.getValue(), response.getValidationStatus());
     }
 
     @Test
