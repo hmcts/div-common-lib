@@ -7,57 +7,57 @@ import org.springframework.test.context.junit4.SpringRunner;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 public class D8ReasonForDivorceDesertionDateTest {
 
     private D8ReasonForDivorceDesertionDate rule;
     private CoreCaseData coreCaseData;
+    private List<String> result;
 
     @Before
     public void setup() {
         rule = new D8ReasonForDivorceDesertionDate();
         coreCaseData = new CoreCaseData();
+        result = new ArrayList<>();
     }
 
     @Test
-    public void whenShouldReturnTrueWhenFactIsDesertionAndD8ReasonForDivorceDesertionDateIsNull() {
+    public void shouldReturnResultWhenFactIsDesertionAndD8ReasonForDivorceDesertionDateIsNull() {
         coreCaseData.setD8ReasonForDivorce("desertion");
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(true, result);
+        assertThat(result.isEmpty(), is(false));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenFactIsNotDesertionAndD8ReasonForDivorceDesertionDateIsNull() {
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+    public void shouldReturnEmptyResultWhenFactIsNotDesertionAndD8ReasonForDivorceDesertionDateIsNull() {
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
-    public void whenShouldReturnFalseWhenD8ReasonForDivorceDesertionDateIsNotNull() {
+    public void shouldReturnEmptyResultWhenD8ReasonForDivorceDesertionDateIsNotNull() {
         coreCaseData.setD8ReasonForDivorceDesertionDate("dateString");
 
-        rule.setCoreCaseData(coreCaseData);
-        boolean result = rule.when();
+        result = rule.execute(coreCaseData, result);
 
-        assertEquals(false, result);
+        assertThat(result.isEmpty(), is(true));
     }
 
     @Test
-    public void thenShouldReturnErrorMessageWithNull() {
+    public void shouldReturnCorrectErrorMessageWithNull() {
         coreCaseData.setD8ReasonForDivorce("desertion");
-        rule.setCoreCaseData(coreCaseData);
 
-        rule.setResult(new ArrayList<>());
-        rule.then();
+        result = rule.execute(coreCaseData, result);
 
         assertEquals("D8ReasonForDivorceDesertionDate can not be null or empty. Actual data is: null",
-            rule.getResult().get(0));
+            result.get(0));
     }
 }

@@ -1,52 +1,47 @@
 package uk.gov.hmcts.reform.divorce.validation.service;
 
-import com.deliveredtechnologies.rulebook.FactMap;
-import com.deliveredtechnologies.rulebook.NameValueReferableMap;
-import com.deliveredtechnologies.rulebook.Result;
-import com.deliveredtechnologies.rulebook.model.RuleBook;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 import uk.gov.hmcts.reform.divorce.model.response.ValidationResponse;
+import uk.gov.hmcts.reform.divorce.validation.rules.compilers.RuleCompilerFactory;
+import uk.gov.hmcts.reform.divorce.validation.rules.compilers.RuleCompilerService;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
 public class ValidationServiceImpl implements ValidationService {
 
-    @Autowired
-    @Qualifier("D8RuleBook")
-    private RuleBook<List<String>> d8RuleBook;
+    private RuleCompilerService ruleCompiler;
 
     @Override
-    public ValidationResponse validate(CoreCaseData coreCaseData) {
+    public ValidationResponse validate(CoreCaseData coreCaseData, String caseEventId) {
         log.info("Validating CoreCaseData");
-
-        NameValueReferableMap<CoreCaseData> facts = new FactMap<>();
-
-        facts.setValue("coreCaseData", coreCaseData);
-        d8RuleBook.setDefaultResult(new ArrayList<>());
-        d8RuleBook.run(facts);
+        String defaultCaseEventId = "default";
 
         ValidationResponse validationResponse = ValidationResponse.builder()
             .validationStatus(ValidationStatus.SUCCESS.getValue())
             .build();
 
-        d8RuleBook.getResult().map(Result::getValue)
-            .ifPresent(result -> errorResponse(validationResponse, result));
+        if (Optional.ofNullable(coreCaseData).isEmpty()) {
+            log.info("CoreCaseData is null");
+            validationResponse.setErrors(List.of("Core Case Data was null"));
+            validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
+            return validationResponse;
+        }
 
-        return validationResponse;
-    }
+        ruleCompiler = RuleCompilerFactory.getRuleCompiler(coreCaseData, Optional.ofNullable(caseEventId).orElse(defaultCaseEventId));
+        List<String> result = ruleCompiler.executeRules(coreCaseData);
 
-    private void errorResponse(ValidationResponse validationResponse, List<String> result) {
         if (!result.isEmpty()) {
+            log.info("There were invalid fields in CoreCaseData, adding errors to validationResponse");
             validationResponse.setErrors(result);
             validationResponse.setValidationStatus(ValidationStatus.FAILED.getValue());
         }
+
+        return validationResponse;
     }
 
 }

@@ -1,41 +1,34 @@
 package uk.gov.hmcts.reform.divorce.validation.rules.d8;
 
-import com.deliveredtechnologies.rulebook.annotation.Given;
-import com.deliveredtechnologies.rulebook.annotation.Result;
-import com.deliveredtechnologies.rulebook.annotation.Rule;
-import com.deliveredtechnologies.rulebook.annotation.Then;
-import com.deliveredtechnologies.rulebook.annotation.When;
-import lombok.Data;
 import uk.gov.hmcts.reform.divorce.model.ccd.CoreCaseData;
 
 import java.util.List;
 import java.util.Optional;
 
-@Rule(order = 25)
-@Data
-public class D8JurisdictionConnection {
+public class D8JurisdictionConnection extends Rule {
 
     private static final String BLANK_SPACE = " ";
     private static final String ACTUAL_DATA = "Actual data is: %s";
     private static final String ERROR_MESSAGE = "D8JurisdictionConnection can not be null or empty.";
 
-    @Result
-    public List<String> result;
+    @Override
+    public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
+        if (isBlank(coreCaseData.getD8JurisdictionConnection())) {
+            result.add(String.join(
+                    BLANK_SPACE, // delimiter
+                    ERROR_MESSAGE,
+                    String.format(ACTUAL_DATA, coreCaseData.getD8JurisdictionConnection())
+            ));
+        }
 
-    @Given("coreCaseData")
-    public CoreCaseData coreCaseData = new CoreCaseData();
-
-    @When
-    public boolean when() {
-        return !Optional.ofNullable(coreCaseData.getD8JurisdictionConnection()).isPresent();
+        return result;
     }
 
-    @Then
-    public void then() {
-        result.add(String.join(
-            BLANK_SPACE, // delimiter
-            ERROR_MESSAGE,
-            String.format(ACTUAL_DATA, coreCaseData.getD8JurisdictionConnection())
-        ));
+    private boolean isBlank(List<String> d8JurisdictionConnection) {
+        if (Optional.ofNullable(d8JurisdictionConnection).isEmpty()) {
+            return true;
+        }
+
+        return d8JurisdictionConnection.isEmpty();
     }
 }
