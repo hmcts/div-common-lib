@@ -71,7 +71,7 @@ public class D8ReasonForDivorce extends Rule {
                 .orElse(Collections.emptyList());
         String reason;
         if (!previousReasons.isEmpty()) {
-            reason = previousReasons.get(previousReasons.size()-1);
+            reason = previousReasons.get(previousReasons.size() - 1);
         }  else {
             reason = null;
         }
