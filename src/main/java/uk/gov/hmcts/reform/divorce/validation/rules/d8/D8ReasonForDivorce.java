@@ -69,15 +69,9 @@ public class D8ReasonForDivorce extends Rule {
     private void setReasonForDivorce(CoreCaseData coreCaseData) {
         List<String> previousReasons = Optional.ofNullable(coreCaseData.getPreviousReasonsForDivorce())
                 .orElse(Collections.emptyList());
-        String reason;
-        if (!previousReasons.isEmpty()) {
-            reason = previousReasons.get(previousReasons.size() - 1);
-        }  else {
-            reason = null;
-        }
+        final String reason = !previousReasons.isEmpty() ? previousReasons.get(previousReasons.size() - 1) : null;
 
         reasonForDivorce = Optional.ofNullable(coreCaseData.getD8ReasonForDivorce())
                 .orElse(reason);
-        System.out.println(reasonForDivorce);
     }
 }
