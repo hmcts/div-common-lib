@@ -26,10 +26,10 @@ public class D8ReasonForDivorce extends Rule {
         setReasonForDivorce(coreCaseData);
         if (StringUtils.isBlank(reasonForDivorce)
                 || getAllowedReasonsForDivorce(coreCaseData.getD8MarriageDate()).stream()
-                .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()))) {
+                .noneMatch(reason -> reason.equalsIgnoreCase(reasonForDivorce))) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
-                    StringUtils.isBlank(reasonForDivorce)
+                    !StringUtils.isBlank(reasonForDivorce)
                             ? ERROR_MESSAGE_INVALID
                             : ERROR_MESSAGE_NULL,
                     String.format(ACTUAL_DATA, reasonForDivorce)
@@ -67,13 +67,17 @@ public class D8ReasonForDivorce extends Rule {
     }
 
     private void setReasonForDivorce(CoreCaseData coreCaseData) {
-        List<String> previousReasons = Optional.ofNullable(coreCaseData.getPreviousReasonsForDivorce()).orElse(Collections.emptyList());
-        int last = 0;
+        List<String> previousReasons = Optional.ofNullable(coreCaseData.getPreviousReasonsForDivorce())
+                .orElse(Collections.emptyList());
+        String reason;
         if (!previousReasons.isEmpty()) {
-            last = previousReasons.size() - 1;
+            reason = previousReasons.get(previousReasons.size()-1);
+        }  else {
+            reason = null;
         }
 
         reasonForDivorce = Optional.ofNullable(coreCaseData.getD8ReasonForDivorce())
-                .orElse(previousReasons.get(last));
+                .orElse(reason);
+        System.out.println(reasonForDivorce);
     }
 }
