@@ -660,4 +660,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("RefusalRejectionReason")
     private List<String> refusalRejectionReason;
 
+    @JsonProperty("PreviousRefusalRejectionReason")
+    private List<String> previousRefusalRejectionReason;
+
 }

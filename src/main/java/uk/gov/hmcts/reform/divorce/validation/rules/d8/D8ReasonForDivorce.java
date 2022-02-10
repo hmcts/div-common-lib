@@ -7,6 +7,7 @@ import uk.gov.hmcts.reform.divorce.utils.DateUtils;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,18 +19,20 @@ public class D8ReasonForDivorce extends Rule {
     private static final String ERROR_MESSAGE_NULL = "D8ReasonForDivorce can not be null or empty.";
     private static final String ERROR_MESSAGE_INVALID =
         "D8ReasonForDivorce is invalid for the current date of marriage.";
+    private String reasonForDivorce;
 
     @Override
     public List<String> execute(CoreCaseData coreCaseData, List<String> result) {
-        if (StringUtils.isBlank(coreCaseData.getD8ReasonForDivorce())
+        setReasonForDivorce(coreCaseData);
+        if (StringUtils.isBlank(reasonForDivorce)
                 || getAllowedReasonsForDivorce(coreCaseData.getD8MarriageDate()).stream()
                 .noneMatch(reason -> reason.equalsIgnoreCase(coreCaseData.getD8ReasonForDivorce()))) {
             result.add(String.join(
                     BLANK_SPACE, // delimiter
-                    Optional.ofNullable(coreCaseData.getD8ReasonForDivorce()).isPresent()
+                    StringUtils.isBlank(reasonForDivorce)
                             ? ERROR_MESSAGE_INVALID
                             : ERROR_MESSAGE_NULL,
-                    String.format(ACTUAL_DATA, coreCaseData.getD8ReasonForDivorce())
+                    String.format(ACTUAL_DATA, reasonForDivorce)
             ));
         }
         return result;
@@ -61,5 +64,16 @@ public class D8ReasonForDivorce extends Rule {
         }
 
         return reasonsForDivorce;
+    }
+
+    private void setReasonForDivorce(CoreCaseData coreCaseData) {
+        List<String> previousReasons = Optional.ofNullable(coreCaseData.getPreviousReasonsForDivorce()).orElse(Collections.emptyList());
+        int last = 0;
+        if (!previousReasons.isEmpty()) {
+            last = previousReasons.size() - 1;
+        }
+
+        reasonForDivorce = Optional.ofNullable(coreCaseData.getD8ReasonForDivorce())
+                .orElse(previousReasons.get(last));
     }
 }

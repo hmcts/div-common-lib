@@ -15,9 +15,14 @@ public class RuleCompilerFactory {
     public static final String NO_CRITERIA = "noCriteria";
 
     public static RuleCompilerService getRuleCompiler(CoreCaseData coreCaseData, String caseEventId) {
+
         List<?> rejectionReasons = Optional.ofNullable(coreCaseData.getRefusalRejectionReason())
-                .map(List.class::cast)
-                .orElse(emptyList());
+                    .map(List.class::cast)
+                    .orElse(
+                            Optional.ofNullable(coreCaseData.getPreviousRefusalRejectionReason())
+                                    .map(List.class::cast)
+                                    .orElse(emptyList())
+                    );
 
         if (caseEventId.equals(AMEND_PETITION_FOR_REFUSAL_REJECTION)) {
             if (rejectionReasons.contains(NO_JURISDICTION)) {
