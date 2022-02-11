@@ -663,4 +663,7 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("PreviousRefusalRejectionReason")
     private List<String> previousRefusalRejectionReason;
 
+    @JsonProperty("PreviousReasonsForDivorceRefusal")
+    private List<String> previousReasonsForDivorceRefusal;
+
 }
