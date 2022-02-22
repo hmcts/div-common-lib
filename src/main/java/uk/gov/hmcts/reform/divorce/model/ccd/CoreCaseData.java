@@ -621,6 +621,9 @@ public class CoreCaseData extends AosCaseData {
     @JsonProperty("DecreeNisiGrantedDate")
     private String decreeNisiGrantedDate;
 
+    @JsonProperty("DecreeAbsoluteGrantedDate")
+    private String decreeAbsoluteGrantedDate;
+
     @JsonProperty("CourtName")
     private String courtName;
 
