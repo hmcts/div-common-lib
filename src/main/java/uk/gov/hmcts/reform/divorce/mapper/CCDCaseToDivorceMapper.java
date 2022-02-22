@@ -168,6 +168,7 @@ public abstract class CCDCaseToDivorceMapper {
     @Mapping(source = "previousIssueDate", dateFormat = SIMPLE_DATE_FORMAT, target = "previousIssueDate")
     @Mapping(source = "previousReasonsForDivorce", target = "previousReasonsForDivorce")
     @Mapping(source = "decreeNisiGrantedDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeNisiGrantedDate")
+    @Mapping(source = "decreeAbsoluteGrantedDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeAbsoluteGrantedDate")
     @Mapping(source = "decreeAbsoluteEligibleFromDate", dateFormat = SIMPLE_DATE_FORMAT, target = "decreeAbsoluteEligibleFromDate")
     @Mapping(source = "dateRespondentEligibleForDA", dateFormat = SIMPLE_DATE_FORMAT, target = "dateRespondentEligibleForDA")
     @Mapping(source = "dateCaseNoLongerEligibleForDA", dateFormat = SIMPLE_DATE_FORMAT, target = "dateCaseNoLongerEligibleForDA")
