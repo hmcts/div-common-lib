@@ -585,6 +585,8 @@ public class DivorceSession {
     private String costsOrderAdditionalInfo;
     @ApiModelProperty(value = "Date Decree Nisi has been pronounced")
     private Date decreeNisiGrantedDate;
+    @ApiModelProperty(value = "Date Decree Absolute has been granted")
+    private Date decreeAbsoluteGrantedDate;
     @ApiModelProperty(value = "Date Decree Absolute can be aplied for")
     private Date decreeAbsoluteEligibleFromDate;
     //Dn Approval Fields Mapping End
