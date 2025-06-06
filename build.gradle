@@ -43,7 +43,8 @@ compileTestJava {
 }
 
 repositories {
-    jcenter()
+    mavenLocal()
+    mavenCentral()
 }
 
 jar {
