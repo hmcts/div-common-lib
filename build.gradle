@@ -118,8 +118,6 @@ ext {
     feignVersion = '10.2.3'
     feignFormVersion = '3.5.0'
     springfoxSwagger = '2.9.2'
-    commonsCollections4 = '4.1'
-    commonsLang3 = '3.9'
     springVersion = '2.1.14.RELEASE'
     mapstruct = '1.2.0.Final'
     jsonPathAssert = '2.2.0'
@@ -138,13 +136,12 @@ dependencies {
     api group: 'io.github.openfeign', name: 'feign-jackson', version: feignVersion
     api group: 'io.github.openfeign', name: 'feign-httpclient', version: feignVersion
     api group: 'io.github.openfeign.form', name: 'feign-form', version: feignFormVersion
-    implementation 'org.projectlombok:lombok:1.18.18'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
 
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.1'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.13.0'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.13.0'
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
 
@@ -152,15 +149,15 @@ dependencies {
 
     testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.24.1'
     testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock'
-    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
+    testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     testImplementation group: 'com.jayway.jsonpath', name: 'json-path-assert', version: jsonPathAssert
 
     implementation group: 'com.deliveredtechnologies', name: 'rulebook-core', version: '0.9.1'
     implementation group: 'javax.validation', name: 'validation-api', version: '2.0.0.Final'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: springfoxSwagger
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxSwagger
-    implementation group: 'org.apache.commons', name: 'commons-collections4', version: commonsCollections4
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsLang3
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.5.0'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.17.0'
 
     compileOnly group: 'org.mapstruct', name: 'mapstruct-processor', version: mapstruct
     annotationProcessor("org.mapstruct:mapstruct-processor:${mapstruct}")
