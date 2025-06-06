@@ -9,8 +9,11 @@ plugins {
 group 'uk.gov.hmcts.reform'
 version '1.2.16'
 
-sourceCompatibility = 11
-targetCompatibility = 11
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
@@ -117,7 +120,7 @@ ext {
     feignVersion = '10.2.3'
     feignFormVersion = '3.5.0'
     springfoxSwagger = '2.9.2'
-    springVersion = '2.1.14.RELEASE'
+    springVersion = '2.5.15'
     mapstruct = '1.2.0.Final'
 }
 
@@ -140,6 +143,9 @@ dependencies {
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.13.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.13.0'
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
 
     testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springVersion
 
