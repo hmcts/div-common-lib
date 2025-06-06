@@ -113,7 +113,7 @@ publishing {
 
 
 ext {
-    lombokVersion = '1.18.8'
+    lombokVersion = '1.18.38'
     springCloudVersion = 'Greenwich.SR2'
     feignVersion = '10.2.3'
     feignFormVersion = '3.5.0'
