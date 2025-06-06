@@ -3,11 +3,22 @@ Re-usable features for all divorce java projects
 
 ### Prerequisites
 
-- [JDK 8](https://www.oracle.com/java)
+- [JDK 17](https://www.oracle.com/java)
 
 ## Usage
 
-Just include the library as your dependency. 
+This library is hosted on Azure DevOps Artifacts and can be used in your project by adding the following to your `build.gradle` file:
+
+```gradle
+repositories {
+    maven {
+        url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1'
+    }
+}
+dependencies {
+  implementation 'com.github.hmcts:div-common-lib:LATEST_TAG'
+}
+```
 
 ## Building
 
