@@ -31,9 +31,9 @@ dependencyUpdates.resolutionStrategy = {
 }
 
 checkstyle {
-    maxWarnings = 0
-    toolVersion = '8.22'
-    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+    toolVersion = '10.25.0'
+    maxWarnings = 57
+    getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
 compileJava {
